@@ -1,4 +1,11 @@
 package dsw.gerumap.app.swing.view;
 
-public class MainFrame {
+import javax.swing.*;
+
+public class MainFrame extends JFrame {
+    public MainFrame(){
+        super();
+        setSize(300,200);
+        setTitle("GUI");
+    }
 }

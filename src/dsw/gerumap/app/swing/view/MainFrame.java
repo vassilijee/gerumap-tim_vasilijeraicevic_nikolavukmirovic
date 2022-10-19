@@ -8,6 +8,7 @@ public class MainFrame extends JFrame {
         super();
         setSize(300, 200);
         setTitle("GUI");
+        setBackground(new Color(93, 109, 126));
 
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
@@ -17,7 +18,12 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
+        // menu
         MyMenuBar menu=new MyMenuBar();
         this.setJMenuBar(menu);
+
+        // toolbar
+        Toolbar toolbar = new Toolbar();
+        add(toolbar, BorderLayout.NORTH);
     }
 }

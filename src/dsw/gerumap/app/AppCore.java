@@ -1,8 +1,6 @@
 package dsw.gerumap.app;
 
-import dsw.gerumap.app.swing.view.MainFrame;
-
-import java.awt.*;
+import dsw.gerumap.app.gui.swing.view.MainFrame;
 
 public class AppCore {
     public static void main(String[] args) {

@@ -11,7 +11,7 @@ public class Toolbar extends JToolBar {
         super(SwingConstants.HORIZONTAL);
         JButton btnNew = new JButton();
         btnNew.setToolTipText("New");
-        btnNew.setIcon(new ImageIcon("src/dsw/gerumap/app/swing/controller/images/new.jpg"));
+        btnNew.setIcon(new ImageIcon("src/dsw/gerumap/app/gui/swing/controller/images/new.jpg"));
         add(btnNew);
 
         setBackground(new Color(174, 182, 191));

@@ -15,8 +15,8 @@ public class AppCore extends ApplicationFramework {
         appCore.initialise(gui);
         appCore.run();
         //!!!!!!!!!!!!!!!!!!!!!!
-        MainFrame mainFrame = MainFrame.getInstance();
-        mainFrame.setVisible(true);
+        //MainFrame mainFrame = MainFrame.getInstance();
+        //mainFrame.setVisible(true);
     }
 
     private AppCore() {

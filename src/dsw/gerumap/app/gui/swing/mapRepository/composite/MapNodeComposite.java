@@ -9,10 +9,11 @@ public class MapNodeComposite {
         this.children = children;
     }
 
-    public void addChild(MapNode child){
+    public void addChild(MapNode child) {
 
     }
-    public void deleteChild(MapNode child){
+
+    public void deleteChild(MapNode child) {
 
     }
 

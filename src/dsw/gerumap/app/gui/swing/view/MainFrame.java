@@ -15,20 +15,22 @@ public class MainFrame extends JFrame {
     private JMenuBar menu;
 
     private JToolBar toolBar;
+
     private MainFrame() {
 
     }
-    private void initialise(){
+
+    private void initialise() {
         actionManager = new ActionManager();
         initialiseGUI();
     }
 
-    private void initialiseGUI(){
+    private void initialiseGUI() {
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
         int screenHeight = screenSize.height;
         int screenWidth = screenSize.width;
-        setSize(screenWidth/2, screenHeight/2);
+        setSize(screenWidth / 2, screenHeight / 2);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("GeRuMap app");
@@ -48,14 +50,15 @@ public class MainFrame extends JFrame {
         split.setOneTouchExpandable(true);
     }
 
-    public static MainFrame getInstance(){
-        if(instance == null){
+    public static MainFrame getInstance() {
+        if (instance == null) {
             instance = new MainFrame();
+            instance.initialise();
         }
         return instance;
     }
 
-    public ActionManager getActionManager(){
+    public ActionManager getActionManager() {
         return actionManager;
     }
 }

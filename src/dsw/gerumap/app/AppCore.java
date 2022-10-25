@@ -7,7 +7,8 @@ import dsw.gerumap.app.gui.swing.view.MainFrame;
 
 public class AppCore extends ApplicationFramework {
 
-    private static AppCore instance = null;
+    private static AppCore instance;
+
     public static void main(String[] args) {
         Gui gui = new SwingGui();
         ApplicationFramework appCore = AppCore.getInstance();
@@ -23,8 +24,8 @@ public class AppCore extends ApplicationFramework {
         this.gui.start();
     }
 
-    public static AppCore getInstance(){
-        if(instance == null){
+    public static AppCore getInstance() {
+        if (instance == null) {
             instance = new AppCore();
         }
         return instance;

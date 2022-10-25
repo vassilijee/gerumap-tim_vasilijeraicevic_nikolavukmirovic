@@ -1,14 +1,13 @@
 package dsw.gerumap.app.gui.swing.view;
 
 import dsw.gerumap.app.gui.swing.controller.ActionManager;
-import dsw.gerumap.app.gui.swing.controller.ExitAction;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
 
-    private static MainFrame instance = null;
+    private static MainFrame instance;
 
     private ActionManager actionManager;
 

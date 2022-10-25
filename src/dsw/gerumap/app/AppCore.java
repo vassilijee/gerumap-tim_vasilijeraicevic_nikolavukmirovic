@@ -9,7 +9,7 @@ public class AppCore extends ApplicationFramework {
 
     private static AppCore instance = null;
     public static void main(String[] args) {
-        Gui gui = (Gui) new SwingGui();
+        Gui gui = new SwingGui();
         ApplicationFramework appCore = AppCore.getInstance();
         appCore.initialise(gui);
         appCore.run();

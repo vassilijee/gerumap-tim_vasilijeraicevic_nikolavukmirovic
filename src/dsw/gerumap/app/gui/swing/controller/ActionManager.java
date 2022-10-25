@@ -12,4 +12,12 @@ public class ActionManager {
         exitAction = new ExitAction();
         newProjectAction = new NewProjectAction();
     }
+
+    public ExitAction getExitAction(){
+        return exitAction;
+    }
+
+    public NewProjectAction getNewProjectAction(){
+        return newProjectAction;
+    }
 }

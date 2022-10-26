@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.net.URL;
 
 public abstract class AbstractGerumapAction extends AbstractAction {
-
     public Icon loadIcon(String fileName) {
 
         URL imageURL = getClass().getResource(fileName);

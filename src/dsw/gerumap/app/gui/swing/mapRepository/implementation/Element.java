@@ -1,4 +1,6 @@
 package dsw.gerumap.app.gui.swing.mapRepository.implementation;
 
-public class Element {
+import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNode;
+
+public class Element extends MapNode {
 }

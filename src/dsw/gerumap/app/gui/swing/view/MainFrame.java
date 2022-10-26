@@ -6,13 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
-
     private static MainFrame instance;
-
     private ActionManager actionManager;
-
     private JMenuBar menu;
-
     private JToolBar toolBar;
 
     private MainFrame() {
@@ -46,7 +42,7 @@ public class MainFrame extends JFrame {
         JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scroll, desktop);
         getContentPane().add(split, BorderLayout.CENTER);
         split.setDividerLocation(250);
-        split.setOneTouchExpandable(true);
+//        split.setOneTouchExpandable(true);
     }
 
     public static MainFrame getInstance() {

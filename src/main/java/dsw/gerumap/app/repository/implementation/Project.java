@@ -1,8 +1,7 @@
-package main.java.dsw.gerumap.app.repository.implementation;
+package dsw.gerumap.app.repository.implementation;
 
-
-import main.java.dsw.gerumap.app.repository.composite.MapNode;
-import main.java.dsw.gerumap.app.repository.composite.MapNodeComposite;
+import dsw.gerumap.app.repository.composite.MapNode;
+import dsw.gerumap.app.repository.composite.MapNodeComposite;
 
 import java.util.List;
 

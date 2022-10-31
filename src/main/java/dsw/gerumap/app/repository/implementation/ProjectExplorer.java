@@ -1,9 +1,6 @@
-package main.java.dsw.gerumap.app.repository.implementation;
-
-
-import main.java.dsw.gerumap.app.repository.composite.MapNode;
-import main.java.dsw.gerumap.app.repository.composite.MapNodeComposite;
-
+package dsw.gerumap.app.repository.implementation;
+import dsw.gerumap.app.repository.composite.MapNode;
+import dsw.gerumap.app.repository.composite.MapNodeComposite;
 import java.util.List;
 
 public class ProjectExplorer extends MapNodeComposite {

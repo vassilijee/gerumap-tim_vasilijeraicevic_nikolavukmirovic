@@ -1,4 +1,4 @@
-package dsw.gerumap.app.core;
+package main.java.dsw.gerumap.app.core;
 
 import lombok.NoArgsConstructor;
 import lombok.Setter;

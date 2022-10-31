@@ -1,7 +1,7 @@
-package dsw.gerumap.app.gui.swing.view;
+package main.java.dsw.gerumap.app.gui.swing.view;
 
-import dsw.gerumap.app.gui.swing.controller.ActionManager;
 
+import main.java.dsw.gerumap.app.gui.swing.controller.ActionManager;
 import javax.swing.*;
 import java.awt.*;
 

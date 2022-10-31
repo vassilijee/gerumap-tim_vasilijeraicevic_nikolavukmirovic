@@ -1,4 +1,4 @@
-package dsw.gerumap.app.gui.swing.mapRepository.composite;
+package main.java.dsw.gerumap.app.repository.composite;
 
 import java.util.List;
 

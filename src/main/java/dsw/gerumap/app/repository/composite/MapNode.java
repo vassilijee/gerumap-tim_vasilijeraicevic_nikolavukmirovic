@@ -1,4 +1,4 @@
-package dsw.gerumap.app.gui.swing.mapRepository.composite;
+package main.java.dsw.gerumap.app.repository.composite;
 
 public class MapNode {
     private String name;

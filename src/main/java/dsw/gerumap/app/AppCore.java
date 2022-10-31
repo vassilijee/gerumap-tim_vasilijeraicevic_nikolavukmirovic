@@ -1,9 +1,9 @@
-package dsw.gerumap.app;
+package main.java.dsw.gerumap.app;
 
-import dsw.gerumap.app.core.ApplicationFramework;
-import dsw.gerumap.app.core.Gui;
-import dsw.gerumap.app.gui.swing.SwingGui;
-import dsw.gerumap.app.gui.swing.view.MainFrame;
+
+import main.java.dsw.gerumap.app.core.ApplicationFramework;
+import main.java.dsw.gerumap.app.core.Gui;
+import main.java.dsw.gerumap.app.gui.swing.SwingGui;
 
 public class AppCore extends ApplicationFramework {
 

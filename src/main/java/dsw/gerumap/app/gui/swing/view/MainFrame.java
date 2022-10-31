@@ -2,15 +2,18 @@ package dsw.gerumap.app.gui.swing.view;
 
 
 import dsw.gerumap.app.gui.swing.controller.ActionManager;
+import dsw.gerumap.app.gui.swing.tree.MapTree;
+import dsw.gerumap.app.gui.swing.tree.MapTreeImplementation;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
-    private static MainFrame instance;
     private ActionManager actionManager;
     private JMenuBar menu;
     private JToolBar toolBar;
+    private MapTree mapTree;
+    private static MainFrame instance;
 
     private MainFrame() {
 
@@ -18,6 +21,7 @@ public class MainFrame extends JFrame {
 
     private void initialise() {
         actionManager = new ActionManager();
+        mapTree = new MapTreeImplementation();
         initialiseGUI();
     }
 

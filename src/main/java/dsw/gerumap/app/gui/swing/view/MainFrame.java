@@ -12,6 +12,7 @@ public class MainFrame extends JFrame {
     private ActionManager actionManager;
     private JMenuBar menu;
     private JToolBar toolBar;
+    private JTabbedPane tab;
     private MapTree mapTree;
     private static MainFrame instance;
 
@@ -48,6 +49,20 @@ public class MainFrame extends JFrame {
         getContentPane().add(split, BorderLayout.CENTER);
         split.setDividerLocation(250);
 //        split.setOneTouchExpandable(true);
+
+        TabbedPane tabbedPane = new TabbedPane();
+        JPanel test1 = new JPanel();
+        test1.add(new JLabel("test1"));
+        JPanel test2 = new JPanel();
+        test2.add(new JLabel("test2"));
+        JPanel test3 = new JPanel();
+        test3.add(new JLabel("test3"));
+
+        tabbedPane.addTab("test1", test1);
+        tabbedPane.addTab("test2", test2);
+        tabbedPane.addTab("test3", test3);
+
+        getContentPane().add(tabbedPane,BorderLayout.CENTER);
     }
 
     public static MainFrame getInstance() {

@@ -8,7 +8,9 @@ import lombok.Setter;
 
 public class ActionManager {
     private ExitAction exitAction;
-    private NewProjectAction newProjectAction;
+    private NewAction newAction;
+    private RenameAction renameAction;
+    private DeleteAction deleteAction;
 
     public ActionManager() {
         initialiseActions();
@@ -16,7 +18,8 @@ public class ActionManager {
 
     private void initialiseActions() {
         exitAction = new ExitAction();
-        newProjectAction = new NewProjectAction();
+        newAction = new NewAction();
+        renameAction = new RenameAction();
+        deleteAction = new DeleteAction();
     }
-
 }

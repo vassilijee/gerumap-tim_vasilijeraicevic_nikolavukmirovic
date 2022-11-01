@@ -50,6 +50,7 @@ public class MainFrame extends JFrame {
         split.setDividerLocation(250);
 //        split.setOneTouchExpandable(true);
 
+
         TabbedPane tabbedPane = new TabbedPane();
         JPanel test1 = new JPanel();
         test1.add(new JLabel("test1"));
@@ -62,7 +63,9 @@ public class MainFrame extends JFrame {
         tabbedPane.addTab("test2", test2);
         tabbedPane.addTab("test3", test3);
 
-        getContentPane().add(tabbedPane,BorderLayout.CENTER);
+        tabbedPane.setPreferredSize(new Dimension(500, 30));
+
+        desktop.add(tabbedPane);
     }
 
     public static MainFrame getInstance() {

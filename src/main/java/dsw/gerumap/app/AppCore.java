@@ -7,11 +7,10 @@ import dsw.gerumap.app.core.MapRepository;
 import dsw.gerumap.app.gui.swing.SwingGui;
 import dsw.gerumap.app.repository.MapRepositoryImpl;
 
-// drugacije sve
 public class AppCore {
     public static void main(String[] args) {
-        Gui gui = new SwingGui();
         ApplicationFramework appCore = ApplicationFramework.getInstance();
+        Gui gui = new SwingGui();
         MapRepository mapRepository = new MapRepositoryImpl();
         appCore.initialise(gui, mapRepository);
         appCore.run();

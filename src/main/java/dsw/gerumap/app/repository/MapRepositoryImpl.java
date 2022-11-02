@@ -9,12 +9,12 @@ public class MapRepositoryImpl implements MapRepository {
     private ProjectExplorer projectExplorer;
 
     public MapRepositoryImpl() {
-        projectExplorer = new ProjectExplorer("MyProjectExplorer");
+        projectExplorer = new ProjectExplorer("My Project Explorer");
     }
 
     @Override
     public ProjectExplorer getProjectExplorer() {
-        return null;
+        return projectExplorer;
     }
 
     @Override

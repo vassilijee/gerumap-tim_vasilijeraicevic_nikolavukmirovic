@@ -1,9 +1,10 @@
 package dsw.gerumap.app.core;
 
+import lombok.Getter;
 import lombok.Setter;
 
 @Setter
-
+@Getter
 public class ApplicationFramework {
     protected Gui gui;
     protected MapRepository mapRepository;

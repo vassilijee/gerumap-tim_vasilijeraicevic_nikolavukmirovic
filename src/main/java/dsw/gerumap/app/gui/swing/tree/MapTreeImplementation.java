@@ -17,6 +17,7 @@ import java.util.Random;
 public class MapTreeImplementation implements MapTree {
     private MapTreeView treeView;
     private DefaultTreeModel treeModel;
+    private static int projectCount = 0;
 
     @Override
     public MapTreeView generateTree(ProjectExplorer projectExplorer) {
@@ -57,9 +58,7 @@ public class MapTreeImplementation implements MapTree {
 
     private MapNode createChild(MapNode parent) {
         if (parent instanceof ProjectExplorer) {
-            int count = this.getSelectedNode().getChildCount();
-            count++;
-            return new Project("Project " + count, parent);
+            return new Project("Project " + ProjectCount(), parent);
         } else if (parent instanceof Project) {
             int count = this.getSelectedNode().getChildCount();
             count++;
@@ -67,5 +66,10 @@ public class MapTreeImplementation implements MapTree {
         } else {
             return null;
         }
+    }
+
+    private int ProjectCount(){
+        projectCount++;
+        return projectCount;
     }
 }

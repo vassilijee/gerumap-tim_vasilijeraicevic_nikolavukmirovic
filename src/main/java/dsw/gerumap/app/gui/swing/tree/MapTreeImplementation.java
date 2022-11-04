@@ -18,6 +18,7 @@ public class MapTreeImplementation implements MapTree {
     private MapTreeView treeView;
     private DefaultTreeModel treeModel;
     private static int projectCount = 0;
+    private static int mapCount;
 
     @Override
     public MapTreeView generateTree(ProjectExplorer projectExplorer) {
@@ -41,6 +42,7 @@ public class MapTreeImplementation implements MapTree {
 
     @Override
     public void removeChild(MapTreeItem child) {
+        //mapCount--;
         treeModel.removeNodeFromParent(child);
         SwingUtilities.updateComponentTreeUI(treeView);
     }
@@ -60,9 +62,8 @@ public class MapTreeImplementation implements MapTree {
         if (parent instanceof ProjectExplorer) {
             return new Project("Project " + ProjectCount(), parent);
         } else if (parent instanceof Project) {
-            int count = this.getSelectedNode().getChildCount();
-            count++;
-            return new MindMap("MindMap " + count, parent);
+            mapCount = this.getSelectedNode().getChildCount();
+            return new MindMap("MindMap " + mapCount, parent);
         } else {
             return null;
         }

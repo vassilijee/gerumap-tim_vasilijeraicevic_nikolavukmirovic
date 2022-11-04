@@ -20,6 +20,8 @@ public class MainFrame extends JFrame {
     private JToolBar toolBar;
     private JTabbedPane tab;
     private MapTree mapTree;
+    // da li sme ???? public
+    public TabbedPane tabbedPane;
     private static MainFrame instance;
 
     private MainFrame() {
@@ -60,7 +62,7 @@ public class MainFrame extends JFrame {
         split.setOneTouchExpandable(true);
 
 
-        TabbedPane tabbedPane = new TabbedPane();
+        tabbedPane = new TabbedPane();
 //        JPanel test1 = new JPanel();
 //        test1.add(new JLabel("test1"));
 //        JPanel test2 = new JPanel();

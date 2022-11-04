@@ -10,9 +10,9 @@ public class Project extends MapNodeComposite {
 
     @Override
     public void addChild(MapNode child) {
-        if(child != null && child instanceof MindMap){
+        if (child instanceof MindMap) {
             MindMap map = (MindMap) child;
-            if(this.getChildren().contains(map)){
+            if (this.getChildren().contains(map)) {
                 this.getChildren().add(map);
             }
         }

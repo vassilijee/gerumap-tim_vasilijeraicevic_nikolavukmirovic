@@ -13,5 +13,6 @@ public class MapTreeSelectionListener  implements TreeSelectionListener {
         MapTreeItem treeItemSelected = (MapTreeItem) path.getLastPathComponent();
         System.out.println("Selektovan cvor:" + treeItemSelected.getMapNode().getName());
         System.out.println("getPath: " + e.getPath());
+
     }
 }

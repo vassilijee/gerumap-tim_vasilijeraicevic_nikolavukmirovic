@@ -48,7 +48,7 @@ public class MainFrame extends JFrame {
         add(toolBar, BorderLayout.NORTH);
 
         JTree projectExplorer = mapTree.generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
-        JPanel desktop = new JPanel();
+        JPanel desktop = new JPanel(new BorderLayout());
 
         JScrollPane scroll = new JScrollPane(projectExplorer);
         scroll.setMinimumSize(new Dimension(200, 150));
@@ -69,6 +69,7 @@ public class MainFrame extends JFrame {
         tabbedPane.addTab("test1", test1);
         tabbedPane.addTab("test2", test2);
         tabbedPane.addTab("test3", test3);
+
 
         tabbedPane.setPreferredSize(new Dimension(500, 30));
 

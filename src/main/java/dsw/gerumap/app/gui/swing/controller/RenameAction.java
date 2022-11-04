@@ -21,18 +21,23 @@ public class RenameAction extends AbstractGerumapAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
-        String text = selected.toString();
-        JTextField field = new JTextField(text, 20);
-        JOptionPane pane = new JOptionPane(field, JOptionPane.PLAIN_MESSAGE,JOptionPane.OK_CANCEL_OPTION, null);
-        JDialog dialog = pane.createDialog("Rename");
-        dialog.setVisible(true);
-        dialog.dispose();
-        Object value = pane.getValue();
-        if(value instanceof Integer){
-            int result = (int)value;
-            if(result == JOptionPane.OK_OPTION){
-                String newName = field.getText();
-                MainFrame.getInstance().getMapTree().renameChild(selected, newName);
+
+        if(selected == null){
+            return;
+        }else{
+            String text = selected.toString();
+            JTextField field = new JTextField(text, 20);
+            JOptionPane pane = new JOptionPane(field, JOptionPane.PLAIN_MESSAGE,JOptionPane.OK_CANCEL_OPTION, null);
+            JDialog dialog = pane.createDialog("Rename");
+            dialog.setVisible(true);
+            dialog.dispose();
+            Object value = pane.getValue();
+            if(value instanceof Integer){
+                int result = (int)value;
+                if(result == JOptionPane.OK_OPTION){
+                    String newName = field.getText();
+                    MainFrame.getInstance().getMapTree().renameChild(selected, newName);
+                }
             }
         }
     }

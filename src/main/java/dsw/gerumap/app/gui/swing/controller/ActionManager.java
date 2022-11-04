@@ -11,6 +11,7 @@ public class ActionManager {
     private NewAction newAction;
     private RenameAction renameAction;
     private DeleteAction deleteAction;
+    private InfoAction infoAction;
 
     public ActionManager() {
         initialiseActions();
@@ -21,5 +22,6 @@ public class ActionManager {
         newAction = new NewAction();
         renameAction = new RenameAction();
         deleteAction = new DeleteAction();
+        infoAction = new InfoAction();
     }
 }

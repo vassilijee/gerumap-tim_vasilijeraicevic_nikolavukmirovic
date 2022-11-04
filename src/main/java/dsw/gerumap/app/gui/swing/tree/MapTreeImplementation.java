@@ -27,7 +27,6 @@ public class MapTreeImplementation implements MapTree {
     }
 
 
-
     @Override
     public void addChild(MapTreeItem parent) {
         if (!(parent.getMapNode() instanceof MapNodeComposite))
@@ -69,7 +68,7 @@ public class MapTreeImplementation implements MapTree {
         }
     }
 
-    private int ProjectCount(){
+    private int ProjectCount() {
         projectCount++;
         return projectCount;
     }

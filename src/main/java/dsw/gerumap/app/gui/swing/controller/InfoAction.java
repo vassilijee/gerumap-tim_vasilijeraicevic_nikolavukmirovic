@@ -3,7 +3,7 @@ package dsw.gerumap.app.gui.swing.controller;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-public class InfoAction extends AbstractGerumapAction{
+public class InfoAction extends AbstractGerumapAction {
     public InfoAction() {
         //putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_F4, InputEvent.ALT_DOWN_MASK));
         putValue(SMALL_ICON, loadIcon("/images/info.png"));

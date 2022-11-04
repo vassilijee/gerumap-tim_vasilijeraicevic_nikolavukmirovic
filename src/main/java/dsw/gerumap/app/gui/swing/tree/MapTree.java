@@ -8,7 +8,10 @@ public interface MapTree {
     MapTreeView generateTree(ProjectExplorer projectExplorer);
 
     void addChild(MapTreeItem parent);
+
     void removeChild(MapTreeItem child);
+
     void renameChild(MapTreeItem child, String newName);
+
     MapTreeItem getSelectedNode();
 }

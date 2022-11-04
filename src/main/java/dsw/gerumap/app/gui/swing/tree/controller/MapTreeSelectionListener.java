@@ -8,7 +8,7 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
 
 
-public class MapTreeSelectionListener  implements TreeSelectionListener {
+public class MapTreeSelectionListener implements TreeSelectionListener {
     @Override
     public void valueChanged(TreeSelectionEvent e) {
         TreePath path = e.getPath();

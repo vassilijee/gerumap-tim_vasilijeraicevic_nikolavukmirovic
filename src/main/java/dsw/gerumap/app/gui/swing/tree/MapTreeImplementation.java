@@ -10,9 +10,7 @@ import dsw.gerumap.app.repository.implementation.Project;
 import dsw.gerumap.app.repository.implementation.ProjectExplorer;
 
 import javax.swing.*;
-import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
-import java.util.Random;
 
 public class MapTreeImplementation implements MapTree {
     private MapTreeView treeView;
@@ -27,6 +25,8 @@ public class MapTreeImplementation implements MapTree {
         treeView = new MapTreeView(treeModel);
         return treeView;
     }
+
+
 
     @Override
     public void addChild(MapTreeItem parent) {

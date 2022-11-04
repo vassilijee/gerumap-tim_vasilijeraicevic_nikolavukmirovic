@@ -3,6 +3,7 @@ package dsw.gerumap.app.gui.swing.view;
 
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.controller.ActionManager;
+import dsw.gerumap.app.gui.swing.controller.TabAction;
 import dsw.gerumap.app.gui.swing.tree.MapTree;
 import dsw.gerumap.app.gui.swing.tree.MapTreeImplementation;
 import lombok.Getter;
@@ -49,6 +50,7 @@ public class MainFrame extends JFrame {
 
         JTree projectExplorer = mapTree.generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
         JPanel desktop = new JPanel(new BorderLayout());
+        projectExplorer.addMouseListener(new TabAction());
 
         JScrollPane scroll = new JScrollPane(projectExplorer);
         scroll.setMinimumSize(new Dimension(200, 150));
@@ -59,19 +61,19 @@ public class MainFrame extends JFrame {
 
 
         TabbedPane tabbedPane = new TabbedPane();
-        JPanel test1 = new JPanel();
-        test1.add(new JLabel("test1"));
-        JPanel test2 = new JPanel();
-        test2.add(new JLabel("test2"));
-        JPanel test3 = new JPanel();
-        test3.add(new JLabel("test3"));
+//        JPanel test1 = new JPanel();
+//        test1.add(new JLabel("test1"));
+//        JPanel test2 = new JPanel();
+//        test2.add(new JLabel("test2"));
+//        JPanel test3 = new JPanel();
+//        test3.add(new JLabel("test3"));
+//
+//        tabbedPane.addTab("test1", test1);
+//        tabbedPane.addTab("test2", test2);
+//        tabbedPane.addTab("test3", test3);
 
-        tabbedPane.addTab("test1", test1);
-        tabbedPane.addTab("test2", test2);
-        tabbedPane.addTab("test3", test3);
 
-
-        tabbedPane.setPreferredSize(new Dimension(500, 30));
+//        tabbedPane.setPreferredSize(new Dimension(500, 30));
 
         desktop.add(tabbedPane);
     }

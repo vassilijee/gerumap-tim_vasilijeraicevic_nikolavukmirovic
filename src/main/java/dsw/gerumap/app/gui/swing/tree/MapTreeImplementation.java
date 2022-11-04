@@ -9,12 +9,14 @@ import dsw.gerumap.app.repository.implementation.Project;
 import dsw.gerumap.app.repository.implementation.ProjectExplorer;
 
 import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import java.util.Random;
 
 public class MapTreeImplementation implements MapTree {
     private MapTreeView treeView;
     private DefaultTreeModel treeModel;
+    private static int count = 0;
 
     @Override
     public MapTreeView generateTree(ProjectExplorer projectExplorer) {
@@ -37,14 +39,27 @@ public class MapTreeImplementation implements MapTree {
     }
 
     @Override
+    public void removeChild(MapTreeItem child) {
+        DefaultMutableTreeNode root = (DefaultMutableTreeNode) treeModel.getRoot();
+        treeModel.removeNodeFromParent(child);
+        SwingUtilities.updateComponentTreeUI(treeView);
+    }
+
+    @Override
     public MapTreeItem getSelectedNode() {
         return (MapTreeItem) treeView.getLastSelectedPathComponent();
     }
 
     private MapNode createChild(MapNode parent) {
-        if (parent instanceof ProjectExplorer)
-            return new Project("Project" + new Random().nextInt(100), parent);
+        if (parent instanceof ProjectExplorer){
+            return new Project("Project" + CountObj(), parent);
+        }
         return null;
+    }
+
+    private int CountObj(){
+        count++;
+        return count;
     }
 
 }

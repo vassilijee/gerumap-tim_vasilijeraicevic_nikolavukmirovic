@@ -29,6 +29,13 @@ public class RenameAction extends AbstractGerumapAction {
             JTextField field = new JTextField(text, 20);
             JOptionPane pane = new JOptionPane(field, JOptionPane.PLAIN_MESSAGE,JOptionPane.OK_CANCEL_OPTION, null);
             JDialog dialog = pane.createDialog("Rename");
+            dialog.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowOpened(WindowEvent e) {
+                    field.requestFocus();
+                    field.selectAll();
+                }
+            });
             dialog.setVisible(true);
             dialog.dispose();
             Object value = pane.getValue();

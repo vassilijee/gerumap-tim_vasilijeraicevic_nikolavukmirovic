@@ -40,8 +40,13 @@ public class MapTreeImplementation implements MapTree {
 
     @Override
     public void removeChild(MapTreeItem child) {
-        DefaultMutableTreeNode root = (DefaultMutableTreeNode) treeModel.getRoot();
         treeModel.removeNodeFromParent(child);
+        SwingUtilities.updateComponentTreeUI(treeView);
+    }
+
+    @Override
+    public void renameChild(MapTreeItem child, String newName) {
+        child.setName(newName);
         SwingUtilities.updateComponentTreeUI(treeView);
     }
 

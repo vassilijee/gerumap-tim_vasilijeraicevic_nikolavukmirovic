@@ -9,5 +9,6 @@ public interface MapTree {
 
     void addChild(MapTreeItem parent);
     void removeChild(MapTreeItem child);
+    void renameChild(MapTreeItem child, String newName);
     MapTreeItem getSelectedNode();
 }

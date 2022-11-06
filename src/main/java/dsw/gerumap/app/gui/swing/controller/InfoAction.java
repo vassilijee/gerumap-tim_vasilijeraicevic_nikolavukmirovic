@@ -14,7 +14,6 @@ public class InfoAction extends AbstractGerumapAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         JLabel label1 = new JLabel("<html>Vasilije Raicevic RN 90/22<br>Nikola Vukmirovic RN 41/21</html>");
-        //JLabel label2 = new JLabel("Nikola Vukmirovic RN 41/21");
         JOptionPane pane = new JOptionPane(label1);
         JDialog dialog = pane.createDialog("Info");
         dialog.setVisible(true);

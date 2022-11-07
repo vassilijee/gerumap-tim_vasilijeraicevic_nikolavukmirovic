@@ -13,7 +13,7 @@ public class TabAction extends AbstractGerumapAction implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getClickCount() == 2) {
-            MainFrame.getInstance().tabbedPane.removeAll();
+            MainFrame.getInstance().getTabbedPane().removeAll();
             MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
             for (int i = 0; i < selected.getChildCount(); i++) {
                 JPanel temp = new JPanel();

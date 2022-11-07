@@ -6,6 +6,8 @@ import dsw.gerumap.app.gui.swing.controller.ActionManager;
 import dsw.gerumap.app.gui.swing.controller.TabAction;
 import dsw.gerumap.app.gui.swing.tree.MapTree;
 import dsw.gerumap.app.gui.swing.tree.MapTreeImplementation;
+import dsw.gerumap.app.observer.ISubscriber;
+import dsw.gerumap.app.repository.implementation.MindMap;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,15 +16,14 @@ import java.awt.*;
 
 @Getter
 @Setter
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements ISubscriber {
     private ActionManager actionManager;
     private JMenuBar menu;
     private JToolBar toolBar;
-    private JTabbedPane tab;
     private MapTree mapTree;
-    // da li sme ???? public
-    public TabbedPane tabbedPane;
+    private TabbedPane tabbedPane;
     private static MainFrame instance;
+    private MindMap mindMap;
 
     private MainFrame() {
 
@@ -61,22 +62,7 @@ public class MainFrame extends JFrame {
         split.setDividerLocation(250);
         split.setOneTouchExpandable(true);
 
-
         tabbedPane = new TabbedPane();
-//        JPanel test1 = new JPanel();
-//        test1.add(new JLabel("test1"));
-//        JPanel test2 = new JPanel();
-//        test2.add(new JLabel("test2"));
-//        JPanel test3 = new JPanel();
-//        test3.add(new JLabel("test3"));
-//
-//        tabbedPane.addTab("test1", test1);
-//        tabbedPane.addTab("test2", test2);
-//        tabbedPane.addTab("test3", test3);
-
-
-//        tabbedPane.setPreferredSize(new Dimension(500, 30));
-
         desktop.add(tabbedPane);
     }
 
@@ -86,5 +72,10 @@ public class MainFrame extends JFrame {
             instance.initialise();
         }
         return instance;
+    }
+
+    @Override
+    public void update(Object notification) {
+        //SwingUtilities.updateComponentTreeUI(getInstance().getTree);
     }
 }

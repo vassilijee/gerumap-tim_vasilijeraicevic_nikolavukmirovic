@@ -3,6 +3,7 @@ package dsw.gerumap.app.gui.swing.tree;
 
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
+import dsw.gerumap.app.observer.ISubscriber;
 import dsw.gerumap.app.repository.composite.MapNode;
 import dsw.gerumap.app.repository.composite.MapNodeComposite;
 import dsw.gerumap.app.repository.implementation.MindMap;
@@ -50,6 +51,8 @@ public class MapTreeImplementation implements MapTree {
     public void renameChild(MapTreeItem child, String newName) {
         child.setName(newName);
         SwingUtilities.updateComponentTreeUI(treeView);
+        child.getMapNode().notifySubscribers(this);
+
     }
 
     @Override

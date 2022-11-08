@@ -10,6 +10,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 @Setter
 public class MapTreeItem extends DefaultMutableTreeNode {
     private MapNode mapNode;
+    private String author = "/";
 
     public MapTreeItem(MapNode nodeModel) {
         this.mapNode = nodeModel;

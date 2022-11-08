@@ -66,6 +66,11 @@ public class MapTreeImplementation implements MapTree {
         this.treeView.expandPath(treeView.getSelectionPath());
     }
 
+    @Override
+    public void changeAuthor(MapTreeItem child, String author) {
+        child.setAuthor(author);
+    }
+
     private MapNode createChild(MapNode parent) {
         if (parent instanceof ProjectExplorer) {
             return new Project("Project " + ProjectCount(), parent);

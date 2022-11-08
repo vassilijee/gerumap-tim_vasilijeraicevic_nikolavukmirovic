@@ -24,6 +24,7 @@ public class MainFrame extends JFrame implements ISubscriber {
     private TabbedPane tabbedPane;
     private static MainFrame instance;
     private MindMap mindMap;
+    private JLabel projectName;
 
     private MainFrame() {
 
@@ -61,9 +62,10 @@ public class MainFrame extends JFrame implements ISubscriber {
         getContentPane().add(split, BorderLayout.CENTER);
         split.setDividerLocation(250);
         split.setOneTouchExpandable(true);
-
+        projectName = new JLabel("PROJECT NAME", JLabel.CENTER);
         tabbedPane = new TabbedPane();
-        desktop.add(tabbedPane);
+        desktop.add(tabbedPane, BorderLayout.CENTER);
+        desktop.add(projectName, BorderLayout.NORTH);
     }
 
     public static MainFrame getInstance() {

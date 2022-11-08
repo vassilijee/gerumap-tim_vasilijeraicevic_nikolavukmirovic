@@ -3,6 +3,7 @@ package dsw.gerumap.app.gui.swing.controller;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
+import dsw.gerumap.app.repository.implementation.Project;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -20,7 +21,9 @@ public class TabAction extends AbstractGerumapAction implements MouseListener {
             else {
                 MainFrame.getInstance().getMapTree().expandPath();
                 MainFrame.getInstance().getTabbedPane().removeAll();
-                MainFrame.getInstance().getProjectName().setText(selected.toString() + " Autor: " + selected.getAuthor());
+                if(selected.getMapNode() instanceof Project){
+                    MainFrame.getInstance().getProjectName().setText(selected.toString() + " Autor: " + selected.getAuthor());
+                }
                 for (int i = 0; i < selected.getChildCount(); i++) {
                     JPanel temp = new JPanel();
                     String titleOfMap = selected.getChildAt(i).toString();

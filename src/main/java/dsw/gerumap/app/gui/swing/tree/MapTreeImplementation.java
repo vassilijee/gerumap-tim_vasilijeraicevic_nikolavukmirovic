@@ -6,6 +6,7 @@ import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
 import dsw.gerumap.app.observer.ISubscriber;
 import dsw.gerumap.app.repository.composite.MapNode;
 import dsw.gerumap.app.repository.composite.MapNodeComposite;
+import dsw.gerumap.app.repository.implementation.Element;
 import dsw.gerumap.app.repository.implementation.MindMap;
 import dsw.gerumap.app.repository.implementation.Project;
 import dsw.gerumap.app.repository.implementation.ProjectExplorer;
@@ -17,7 +18,7 @@ public class MapTreeImplementation implements MapTree {
     private MapTreeView treeView;
     private DefaultTreeModel treeModel;
     private static int projectCount = 0;
-    private static int mapCount;
+
 
     @Override
     public MapTreeView generateTree(ProjectExplorer projectExplorer) {
@@ -64,9 +65,12 @@ public class MapTreeImplementation implements MapTree {
         if (parent instanceof ProjectExplorer) {
             return new Project("Project " + ProjectCount(), parent);
         } else if (parent instanceof Project) {
-            mapCount = this.getSelectedNode().getChildCount();
+            int mapCount = this.getSelectedNode().getChildCount();
             return new MindMap("MindMap " + mapCount, parent);
-        } else {
+        }else if(parent instanceof MindMap){
+            int elementCount = this.getSelectedNode().getChildCount();
+            return new Element("Element " + elementCount, parent);
+        }else {
             return null;
         }
     }

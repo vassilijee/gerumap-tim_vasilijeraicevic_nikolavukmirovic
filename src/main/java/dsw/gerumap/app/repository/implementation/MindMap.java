@@ -7,7 +7,7 @@ import dsw.gerumap.app.repository.composite.MapNodeComposite;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MindMap extends MapNode {
+public class MindMap extends MapNodeComposite {
     List<ISubscriber> subscribers;
 
     public MindMap(String name, MapNode parent) {
@@ -42,13 +42,13 @@ public class MindMap extends MapNode {
         }
     }
 
-//    @Override
-//    public void addChild(MapNode child) {
-//        if(child != null && child instanceof Element){
-//            Element element = (Element) child;
-//            if(!this.getChildren().contains(element)){
-//                this.getChildren().add(element);
-//            }
-//        }
-//    }
+    @Override
+    public void addChild(MapNode child) {
+        if(child instanceof Element){
+            Element element = (Element) child;
+            if(!this.getChildren().contains(element)){
+                this.getChildren().add(element);
+            }
+        }
+    }
 }

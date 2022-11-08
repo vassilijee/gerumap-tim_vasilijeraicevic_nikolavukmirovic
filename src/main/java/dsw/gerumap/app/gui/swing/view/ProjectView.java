@@ -3,7 +3,9 @@ package dsw.gerumap.app.gui.swing.view;
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.controller.TabAction;
 import dsw.gerumap.app.gui.swing.tree.MapTree;
+import dsw.gerumap.app.gui.swing.tree.MapTreeImplementation;
 import dsw.gerumap.app.observer.ISubscriber;
+import dsw.gerumap.app.repository.composite.MapNode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,14 +15,11 @@ import java.awt.*;
 @Getter
 
 public class ProjectView extends JFrame implements ISubscriber {
-    private JTree mapTree;
     private TabbedPane tabbedPane;
     private JLabel projectName;
     private JScrollPane scroll;
     private JSplitPane split;
     private JPanel desktop;
-
-
 
     public ProjectView(JTree projectExplorer) {
         desktop = new JPanel(new BorderLayout());
@@ -38,6 +37,6 @@ public class ProjectView extends JFrame implements ISubscriber {
 
     @Override
     public void update(Object notification) {
-        MainFrame.getInstance().getProjectName().setText(notification.toString());
+        MainFrame.getInstance().getProjectView().getProjectName().setText(notification.toString());
     }
 }

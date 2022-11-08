@@ -73,7 +73,9 @@ public class MapTreeImplementation implements MapTree {
 
     private MapNode createChild(MapNode parent) {
         if (parent instanceof ProjectExplorer) {
-            return new Project("Project " + ProjectCount(), parent);
+            Project p = new Project("Project " + ProjectCount(), parent);
+
+            return p;
         } else if (parent instanceof Project) {
             int mapCount = this.getSelectedNode().getChildCount();
             return new MindMap("MindMap " + mapCount, parent);

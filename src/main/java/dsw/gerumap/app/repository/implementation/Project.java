@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Project extends MapNodeComposite {
-    List<ISubscriber> subscribers;
+    private List<ISubscriber> subscribers = getSubscriberList();
 
     public Project(String name, MapNode parent) {
         super(name, parent);

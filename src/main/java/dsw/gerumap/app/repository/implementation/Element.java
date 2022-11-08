@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Element extends MapNode {
-    List<ISubscriber> subscribers;
-
+    private List<ISubscriber> subscribers = getSubscriberList();
     public Element(String name, MapNode parent) {
         super(name, parent);
     }
@@ -17,7 +16,7 @@ public class Element extends MapNode {
     public void addSubscriber(ISubscriber sub) {
 
         if (sub == null) return;
-        if (this.subscribers == null) this.subscribers = new ArrayList<>();
+        if (this.getSubscriberList() == null) this.subscribers = new ArrayList<>();
         if (this.subscribers.contains(sub)) return;
         this.subscribers.add(sub);
         System.out.println("dodat" + sub);

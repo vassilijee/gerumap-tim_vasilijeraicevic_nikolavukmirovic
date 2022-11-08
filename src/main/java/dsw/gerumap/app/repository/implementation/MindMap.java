@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MindMap extends MapNodeComposite {
-    List<ISubscriber> subscribers;
+    private List<ISubscriber> subscribers = getSubscriberList();
     private boolean template = false;
 
     public MindMap(String name, MapNode parent) {

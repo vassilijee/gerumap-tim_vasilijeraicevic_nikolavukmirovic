@@ -61,6 +61,11 @@ public class MapTreeImplementation implements MapTree {
         return (MapTreeItem) treeView.getLastSelectedPathComponent();
     }
 
+    @Override
+    public void expandPath() {
+        this.treeView.expandPath(treeView.getSelectionPath());
+    }
+
     private MapNode createChild(MapNode parent) {
         if (parent instanceof ProjectExplorer) {
             return new Project("Project " + ProjectCount(), parent);

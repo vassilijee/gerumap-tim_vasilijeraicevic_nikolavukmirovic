@@ -13,5 +13,7 @@ public interface MapTree {
 
     void renameChild(MapTreeItem child, String newName);
 
+    void expandPath();
+
     MapTreeItem getSelectedNode();
 }

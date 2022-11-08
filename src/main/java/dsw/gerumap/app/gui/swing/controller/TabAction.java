@@ -1,6 +1,7 @@
 package dsw.gerumap.app.gui.swing.controller;
 
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
+import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 
 import javax.swing.*;
@@ -13,6 +14,7 @@ public class TabAction extends AbstractGerumapAction implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getClickCount() == 2) {
+            MainFrame.getInstance().getMapTree().expandPath();
             MainFrame.getInstance().getTabbedPane().removeAll();
             MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
             MainFrame.getInstance().getProjectName().setText(selected.toString());

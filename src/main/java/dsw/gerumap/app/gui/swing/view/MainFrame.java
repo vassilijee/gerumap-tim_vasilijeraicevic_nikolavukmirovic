@@ -62,7 +62,7 @@ public class MainFrame extends JFrame implements ISubscriber {
         getContentPane().add(split, BorderLayout.CENTER);
         split.setDividerLocation(250);
         split.setOneTouchExpandable(true);
-        projectName = new JLabel("PROJECT NAME", JLabel.CENTER);
+        projectName = new JLabel("", JLabel.CENTER);
         tabbedPane = new TabbedPane();
         desktop.add(tabbedPane, BorderLayout.CENTER);
         desktop.add(projectName, BorderLayout.NORTH);

@@ -9,6 +9,7 @@ import java.util.List;
 
 public class MindMap extends MapNodeComposite {
     List<ISubscriber> subscribers;
+    private boolean template = false;
 
     public MindMap(String name, MapNode parent) {
         super(name, parent);

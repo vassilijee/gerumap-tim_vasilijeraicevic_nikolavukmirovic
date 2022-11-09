@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MindMap extends MapNodeComposite {
-    private List<ISubscriber> subscribers = getSubscriberList();
     private boolean template = false;
 
     public MindMap(String name, MapNode parent) {
@@ -17,37 +16,35 @@ public class MindMap extends MapNodeComposite {
 
     @Override
     public void addSubscriber(ISubscriber sub) {
-        if (sub == null)
+        if (sub == null) return;
+        if (this.getSubscriberList() == null)
+            this.setSubscriberList(new ArrayList<>());
+        if (this.getSubscriberList().contains(sub))
             return;
-        if (this.subscribers == null)
-            this.subscribers = new ArrayList<>();
-        if (this.subscribers.contains(sub))
-            return;
-        this.subscribers.add(sub);
+        this.getSubscriberList().add(sub);
         System.out.println("dodat" + sub);
     }
 
     @Override
     public void removeSubscriber(ISubscriber sub) {
-        if (sub == null || this.subscribers == null || !this.subscribers.contains(sub))
-            return;
-        this.subscribers.remove(sub);
+        if (sub == null || this.getSubscriberList() == null || !this.getSubscriberList().contains(sub)) return;
+        this.getSubscriberList().remove(sub);
     }
 
     @Override
     public void notifySubscribers(Object notification) {
-        if (notification == null || this.subscribers == null || this.subscribers.isEmpty()) return;
+        if (notification == null || this.getSubscriberList() == null || this.getSubscriberList().isEmpty()) return;
 
-        for (ISubscriber listener : subscribers) {
+        for (ISubscriber listener : getSubscriberList()) {
             listener.update(notification);
         }
     }
 
     @Override
     public void addChild(MapNode child) {
-        if(child instanceof Element){
+        if (child instanceof Element) {
             Element element = (Element) child;
-            if(!this.getChildren().contains(element)){
+            if (!this.getChildren().contains(element)) {
                 this.getChildren().add(element);
             }
         }

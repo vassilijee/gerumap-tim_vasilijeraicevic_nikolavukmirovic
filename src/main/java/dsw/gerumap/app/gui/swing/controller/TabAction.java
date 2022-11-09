@@ -1,5 +1,6 @@
 package dsw.gerumap.app.gui.swing.controller;
 
+import com.sun.tools.javac.Main;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
@@ -16,19 +17,19 @@ public class TabAction extends AbstractGerumapAction implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         if (e.getClickCount() == 2) {
             MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
-            if(selected == null)
+            if (selected == null)
                 return;
             else {
                 MainFrame.getInstance().getMapTree().expandPath();
-                MainFrame.getInstance().getTabbedPane().removeAll();
-                if(selected.getMapNode() instanceof Project){
-                    MainFrame.getInstance().getProjectName().setText(selected.toString() + " Autor: " + selected.getAuthor());
+                MainFrame.getInstance().getProjectView().getTabbedPane().removeAll();
+                if (selected.getMapNode() instanceof Project) {
+                    MainFrame.getInstance().getProjectView().getProjectName().setText(selected + " Autor: " + selected.getAuthor());
                 }
                 for (int i = 0; i < selected.getChildCount(); i++) {
                     JPanel temp = new JPanel();
                     String titleOfMap = selected.getChildAt(i).toString();
                     System.out.printf(selected.getChildAt(i).toString() + "\n");
-                    MainFrame.getInstance().getTabbedPane().addTab(titleOfMap, temp);
+                    MainFrame.getInstance().getProjectView().getTabbedPane().addTab(titleOfMap, temp);
                     temp.add(new JLabel(selected.toString()));
                     temp.add(new JLabel(titleOfMap));
                 }
@@ -36,6 +37,7 @@ public class TabAction extends AbstractGerumapAction implements MouseListener {
             }
         }
     }
+
 
     @Override
     public void mousePressed(MouseEvent e) {

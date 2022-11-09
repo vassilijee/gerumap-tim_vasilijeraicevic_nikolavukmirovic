@@ -73,7 +73,7 @@ public class MapTreeImplementation implements MapTree {
 
     private MapNode createChild(MapNode parent) {
         if (parent instanceof ProjectExplorer) {
-            Project p = new Project("Project " + ProjectCount(), parent);
+            Project p = new Project("Project " + projectCount(), parent);
 
             return p;
         } else if (parent instanceof Project) {
@@ -87,7 +87,7 @@ public class MapTreeImplementation implements MapTree {
         }
     }
 
-    private int ProjectCount() {
+    private int projectCount() {
         projectCount++;
         return projectCount;
     }

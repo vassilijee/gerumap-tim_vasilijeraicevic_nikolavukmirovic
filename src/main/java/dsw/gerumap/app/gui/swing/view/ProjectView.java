@@ -16,10 +16,10 @@ public class ProjectView extends JFrame implements ISubscriber {
     private JLabel projectName;
     private JScrollPane scroll;
     private JSplitPane split;
-    private MindMapView desktop;
+    private JPanel desktop;
 
     public ProjectView(JTree projectExplorer) {
-        desktop = new MindMapView(new BorderLayout());
+        desktop = new JPanel(new BorderLayout());
         scroll = new JScrollPane(projectExplorer);
         scroll.setMinimumSize(new Dimension(200, 150));
         split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scroll, desktop);

@@ -31,7 +31,7 @@ public class TabAction extends AbstractGerumapAction implements MouseListener {
                 for (int i = 0; i < selected.getChildCount(); i++) {
                     JPanel temp = new JPanel();
                     String titleOfMap = selected.getChildAt(i).toString();
-                    System.out.printf(selected.getChildAt(i).toString() + "\n");
+                    System.out.println(selected.getChildAt(i).toString() + "\n");
                     MainFrame.getInstance().getProjectView().getTabbedPane().addTab(titleOfMap, temp);
                     temp.add(new JLabel(titleOfMap));
                 }

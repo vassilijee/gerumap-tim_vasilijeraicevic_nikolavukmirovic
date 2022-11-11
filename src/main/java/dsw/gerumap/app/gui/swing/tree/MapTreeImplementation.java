@@ -66,7 +66,7 @@ public class MapTreeImplementation implements MapTree {
     }
 
     @Override
-    public void changeAuthor(MapTreeItem child, String author) {
+    public void changeAuthor(Project child, String author) {
         child.setAuthor(author);
     }
 

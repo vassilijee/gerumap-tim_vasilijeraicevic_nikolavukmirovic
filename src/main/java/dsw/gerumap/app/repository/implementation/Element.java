@@ -34,7 +34,7 @@ public class Element extends MapNode {
             return;
 
         for (ISubscriber listener : getSubscriberList()) {
-            listener.update(notification);
+            listener.update(this, notification);
         }
     }
 }

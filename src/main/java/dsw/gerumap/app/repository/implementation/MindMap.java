@@ -36,7 +36,7 @@ public class MindMap extends MapNodeComposite {
         if (notification == null || this.getSubscriberList() == null || this.getSubscriberList().isEmpty()) return;
 
         for (ISubscriber listener : getSubscriberList()) {
-            listener.update(notification);
+            listener.update(this, notification);
         }
     }
 

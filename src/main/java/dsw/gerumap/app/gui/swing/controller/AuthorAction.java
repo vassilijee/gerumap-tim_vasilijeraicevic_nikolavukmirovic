@@ -21,7 +21,7 @@ public class AuthorAction extends AbstractGerumapAction{
     public void actionPerformed(ActionEvent e) {
         MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
         if(selected.getMapNode() instanceof Project){
-            String text = selected.getAuthor();
+            String text = ((Project) selected.getMapNode()).getAuthor();
             JTextField field = new JTextField(text);
             JOptionPane pane = new JOptionPane(field, JOptionPane.PLAIN_MESSAGE, JOptionPane.OK_CANCEL_OPTION, null);
             JDialog dialog = pane.createDialog("Author");
@@ -39,8 +39,8 @@ public class AuthorAction extends AbstractGerumapAction{
                 int result = (int) value;
                 if (result == JOptionPane.OK_OPTION) {
                     String newName = field.getText();
-                    MainFrame.getInstance().getMapTree().changeAuthor(selected, newName);
-                    MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode().notifySubscribers(this);
+                    MainFrame.getInstance().getMapTree().changeAuthor((Project) selected.getMapNode(), newName);
+                    MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode().notifySubscribers("AUTHOR");
                 }
             }
         }else{

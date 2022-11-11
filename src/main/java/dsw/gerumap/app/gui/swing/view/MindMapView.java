@@ -8,6 +8,7 @@ import java.awt.*;
 
 public class MindMapView extends JPanel implements ISubscriber {
     public MindMapView(BorderLayout borderLayout) {
+        setLayout(borderLayout);
     }
 
     @Override

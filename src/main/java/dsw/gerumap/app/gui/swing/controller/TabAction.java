@@ -4,6 +4,7 @@ import com.sun.tools.javac.Main;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
+import dsw.gerumap.app.gui.swing.view.MindMapView;
 import dsw.gerumap.app.repository.implementation.Project;
 
 import javax.swing.*;
@@ -29,7 +30,7 @@ public class TabAction extends AbstractGerumapAction implements MouseListener {
                     MainFrame.getInstance().getProjectView().getProjectName().setText(selected + " Autor: " + ((Project) selected.getMapNode()).getAuthor());
                 }
                 for (int i = 0; i < selected.getChildCount(); i++) {
-                    JPanel temp = new JPanel();
+                    MindMapView temp = new MindMapView();
                     String titleOfMap = selected.getChildAt(i).toString();
                     System.out.println(selected.getChildAt(i).toString() + "\n");
                     MainFrame.getInstance().getProjectView().getTabbedPane().addTab(titleOfMap, temp);

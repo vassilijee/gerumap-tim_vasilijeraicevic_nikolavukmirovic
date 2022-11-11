@@ -11,6 +11,9 @@ public class MindMapView extends JPanel implements ISubscriber {
         setLayout(borderLayout);
     }
 
+    public MindMapView() {
+    }
+
     @Override
     public void update(IPublisher iPublisher, Object notification) {
 

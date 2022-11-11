@@ -45,35 +45,19 @@ public class MainFrame extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("GeRuMap app");
-
         menu = new MyMenuBar();
         setJMenuBar(menu);
-
         toolBar = new Toolbar();
         add(toolBar, BorderLayout.NORTH);
-
-
-
         JTree projectExplorer = mapTree.generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
         projectExplorer.addMouseListener(new TabAction());
-
-        projectView = new ProjectView(projectExplorer);
-        getContentPane().add(projectView.getSplit());
-
-//        JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scroll, desktop);
-//        getContentPane().add(split, BorderLayout.CENTER);
-
-//        JPanel desktop = new JPanel(new BorderLayout());
-//        JScrollPane scroll = new JScrollPane(projectExplorer);
-//        scroll.setMinimumSize(new Dimension(200, 150));
-//        JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scroll, desktop);
-//        getContentPane().add(split, BorderLayout.CENTER);
-//        split.setDividerLocation(250);
-//        split.setOneTouchExpandable(true);
-//        projectName = new JLabel("", JLabel.CENTER);
-//        tabbedPane = new TabbedPane();
-//        desktop.add(tabbedPane, BorderLayout.CENTER);
-//        desktop.add(projectName, BorderLayout.NORTH);
+        projectView = new ProjectView();
+        JScrollPane scroll = new JScrollPane(projectExplorer);
+        scroll.setMinimumSize(new Dimension(200, 150));
+        JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scroll, projectView);
+        getContentPane().add(split, BorderLayout.CENTER);
+        split.setDividerLocation(250);
+        split.setOneTouchExpandable(true);
     }
 
     public static MainFrame getInstance() {

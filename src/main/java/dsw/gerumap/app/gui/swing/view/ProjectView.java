@@ -15,22 +15,14 @@ import java.awt.*;
 public class ProjectView extends JPanel implements ISubscriber {
     private TabbedPane tabbedPane;
     private JLabel projectName;
-    private JScrollPane scroll;
-    private JSplitPane split;
     private JPanel desktop;
 
-    public ProjectView(JTree projectExplorer) {
-        desktop = new JPanel(new BorderLayout());
-        scroll = new JScrollPane(projectExplorer);
-        scroll.setMinimumSize(new Dimension(200, 150));
-        split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scroll, desktop);
-        //getContentPane().add(split, BorderLayout.CENTER);
-        split.setDividerLocation(250);
-        split.setOneTouchExpandable(true);
+    public ProjectView() {
+        this.setLayout(new BorderLayout());
         projectName = new JLabel("", JLabel.CENTER);
         tabbedPane = new TabbedPane();
-        desktop.add(tabbedPane, BorderLayout.CENTER);
-        desktop.add(projectName, BorderLayout.NORTH);
+        this.add(tabbedPane, BorderLayout.CENTER);
+        this.add(projectName, BorderLayout.NORTH);
     }
 
     @Override
@@ -39,6 +31,8 @@ public class ProjectView extends JPanel implements ISubscriber {
             Project project = (Project) iPublisher;
             MainFrame.getInstance().getProjectView().getProjectName().setText(project.getName()+  " Autor: "+ project.getAuthor());
         }else if(notification.equals("DELETE")){
+            MainFrame.getInstance().getProjectView().getTabbedPane().removeAll();
+            MainFrame.getInstance().getProjectView().getProjectName().setText("");
         }else if(notification.equals("AUTHOR")){
             Project project = (Project) iPublisher;
             MainFrame.getInstance().getProjectView().getProjectName().setText(project.getName() + " Autor: "+ project.getAuthor());

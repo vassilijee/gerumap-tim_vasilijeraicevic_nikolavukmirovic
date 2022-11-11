@@ -3,7 +3,6 @@ package dsw.gerumap.app.gui.swing.tree;
 
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
-import dsw.gerumap.app.observer.ISubscriber;
 import dsw.gerumap.app.repository.composite.MapNode;
 import dsw.gerumap.app.repository.composite.MapNodeComposite;
 import dsw.gerumap.app.repository.implementation.Element;

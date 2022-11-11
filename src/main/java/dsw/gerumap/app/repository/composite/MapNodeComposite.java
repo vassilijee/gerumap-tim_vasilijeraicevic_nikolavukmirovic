@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 public abstract class MapNodeComposite extends MapNode {
-    List<MapNode> children;
+    private List<MapNode> children;
 
     public MapNodeComposite(String name, MapNode parent) {
         super(name, parent);

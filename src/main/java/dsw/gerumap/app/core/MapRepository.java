@@ -7,5 +7,5 @@ import dsw.gerumap.app.repository.implementation.ProjectExplorer;
 public interface MapRepository {
     ProjectExplorer getProjectExplorer();
 
-    void addChild1(MapNodeComposite parent, MapNode child);
+    void addChild(MapNodeComposite parent, MapNode child);
 }

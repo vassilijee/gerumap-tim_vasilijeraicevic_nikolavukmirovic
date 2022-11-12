@@ -42,7 +42,7 @@ public class MapTreeImplementation implements MapTree {
 
     @Override
     public void removeChild(MapTreeItem child) {
-        //mapCount--;
+
         treeModel.removeNodeFromParent(child);
         SwingUtilities.updateComponentTreeUI(treeView);
     }

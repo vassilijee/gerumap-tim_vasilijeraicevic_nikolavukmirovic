@@ -15,6 +15,7 @@ public interface MapTree {
     void renameChild(MapTreeItem child, String newName);
 
     void expandPath();
+
     void changeAuthor(Project child, String author);
 
     MapTreeItem getSelectedNode();

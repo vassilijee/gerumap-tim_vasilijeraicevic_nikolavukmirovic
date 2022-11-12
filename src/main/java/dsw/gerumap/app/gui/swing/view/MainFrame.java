@@ -24,7 +24,7 @@ public class MainFrame extends JFrame {
     private static MainFrame instance;
     private MindMap mindMap;
     private JLabel projectName;
-    private ProjectView projectView ;
+    private ProjectView projectView;
 
     private MainFrame() {
 

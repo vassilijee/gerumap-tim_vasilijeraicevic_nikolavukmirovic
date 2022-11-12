@@ -78,10 +78,10 @@ public class MapTreeImplementation implements MapTree {
         } else if (parent instanceof Project) {
             int mapCount = this.getSelectedNode().getChildCount();
             return new MindMap("MindMap " + mapCount, parent);
-        }else if(parent instanceof MindMap){
+        } else if (parent instanceof MindMap) {
             int elementCount = this.getSelectedNode().getChildCount();
             return new Element("Element " + elementCount, parent);
-        }else {
+        } else {
             return null;
         }
     }

@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class AuthorAction extends AbstractGerumapAction{
+public class AuthorAction extends AbstractGerumapAction {
 
     public AuthorAction() {
         putValue(SMALL_ICON, loadIcon("/images/author.png"));
@@ -20,7 +20,7 @@ public class AuthorAction extends AbstractGerumapAction{
     @Override
     public void actionPerformed(ActionEvent e) {
         MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
-        if(selected.getMapNode() instanceof Project){
+        if (selected.getMapNode() instanceof Project) {
             String text = ((Project) selected.getMapNode()).getAuthor();
             JTextField field = new JTextField(text);
             JOptionPane pane = new JOptionPane(field, JOptionPane.PLAIN_MESSAGE, JOptionPane.OK_CANCEL_OPTION, null);
@@ -43,8 +43,8 @@ public class AuthorAction extends AbstractGerumapAction{
                     MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode().notifySubscribers("AUTHOR");
                 }
             }
-        }else{
+        } else {
             return;
         }
-      }
+    }
 }

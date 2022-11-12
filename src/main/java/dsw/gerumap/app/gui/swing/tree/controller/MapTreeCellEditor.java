@@ -29,13 +29,11 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
 
     public boolean isCellEditable(EventObject arg0) {
         if (arg0 instanceof MouseEvent)
-            if (((MouseEvent) arg0).getClickCount() == 3) {
-                return true;
-            }
+            return ((MouseEvent) arg0).getClickCount() == 3;
         return false;
     }
 
-    public void actionPerformed(ActionEvent e){
+    public void actionPerformed(ActionEvent e) {
 
         if (!(clickedOn instanceof MapTreeItem))
             return;

@@ -13,12 +13,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class TabAction extends AbstractGerumapAction implements MouseListener {
-
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getClickCount() == 2) {
             MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
-            if(selected.getMapNode() instanceof Project){
+            if (selected.getMapNode() instanceof Project) {
                 selected.getMapNode().addSubscriber(MainFrame.getInstance().getProjectView());
             }
             if (selected == null)
@@ -35,6 +34,7 @@ public class TabAction extends AbstractGerumapAction implements MouseListener {
                     System.out.println(selected.getChildAt(i).toString() + "\n");
                     MainFrame.getInstance().getProjectView().getTabbedPane().addTab(titleOfMap, temp);
                     temp.add(new JLabel(titleOfMap));
+                    // TREBA DA DODAJE SVAKI NOVI TAB NA SUBSCRIBERE
                 }
                 System.out.println("size: " + selected.getChildCount());
             }

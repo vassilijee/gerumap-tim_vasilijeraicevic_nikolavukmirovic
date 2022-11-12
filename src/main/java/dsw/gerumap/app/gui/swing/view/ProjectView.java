@@ -44,7 +44,10 @@ public class ProjectView extends JPanel implements ISubscriber {
             int index = MainFrame.getInstance().getMapTree().getSelectedNode().getChildCount();
             String name = String.valueOf(MainFrame.getInstance().getMapTree().getSelectedNode().getChildAt(index-1));
             TabbedPane pane = MainFrame.getInstance().getProjectView().getTabbedPane();
-            pane.addTab(name, new JLabel(name));
+            MindMapView tab = new MindMapView();
+            tab.setTitle(name);
+            pane.addTab(tab.getTitle(), tab);
+            tab.add(new JLabel(tab.getTitle()));
         }
     }
 }

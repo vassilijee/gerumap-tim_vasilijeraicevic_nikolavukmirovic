@@ -1,16 +1,22 @@
 package dsw.gerumap.app.gui.swing.controller;
 
-import com.sun.tools.javac.Main;
+
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
-import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
+
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.gui.swing.view.MindMapView;
+
+import dsw.gerumap.app.repository.composite.MapNode;
+import dsw.gerumap.app.repository.composite.MapNodeComposite;
+import dsw.gerumap.app.repository.implementation.MindMap;
 import dsw.gerumap.app.repository.implementation.Project;
 
 import javax.swing.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
 
 public class TabAction extends AbstractGerumapAction implements MouseListener {
     @Override
@@ -35,6 +41,14 @@ public class TabAction extends AbstractGerumapAction implements MouseListener {
                     MainFrame.getInstance().getProjectView().getTabbedPane().addTab(titleOfMap, temp);
                     temp.add(new JLabel(titleOfMap));
                     // TREBA DA DODAJE SVAKI NOVI TAB NA SUBSCRIBERE
+                    if(selected.getMapNode() instanceof Project){
+                        MapNode mapNode = selected.getMapNode();
+                        MapNodeComposite mapNodeComposite = (MapNodeComposite) mapNode;
+                        List<MapNode> mapNodes = mapNodeComposite.getChildren();
+                        System.out.println(mapNodes.size());
+//                        MindMap mindMap = (MindMap) mapNodes.get(i);
+//                        mindMap.addSubscriber(temp);
+                    }
                 }
                 System.out.println("size: " + selected.getChildCount());
             }

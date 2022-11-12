@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.swing.tree.DefaultMutableTreeNode;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,5 +25,13 @@ public class MapTreeItem extends DefaultMutableTreeNode {
     public void setName(String name) {
         this.mapNode.setName(name);
         this.getMapNode().notifySubscribers(this);
+    }
+
+    public List<Object> getChildren() {
+        List<Object> children = new ArrayList<>();
+        for (int i = 0; i < this.getChildCount(); i++){
+            children.add(this.getChildAt(i));
+        }
+        return children;
     }
 }

@@ -3,12 +3,15 @@ package dsw.gerumap.app.gui.swing.view;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.observer.IPublisher;
 import dsw.gerumap.app.observer.ISubscriber;
+import dsw.gerumap.app.repository.composite.MapNode;
+import dsw.gerumap.app.repository.implementation.MindMap;
 import dsw.gerumap.app.repository.implementation.Project;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 @Setter
 @Getter
@@ -37,7 +40,11 @@ public class ProjectView extends JPanel implements ISubscriber {
         } else if (notification.equals("AUTHOR")) {
             Project project = (Project) iPublisher;
             MainFrame.getInstance().getProjectView().getProjectName().setText(project.getName() + " Autor: " + project.getAuthor());
+        }else if(notification.equals("NEW")){
+            int index = MainFrame.getInstance().getMapTree().getSelectedNode().getChildCount();
+            String name = String.valueOf(MainFrame.getInstance().getMapTree().getSelectedNode().getChildAt(index-1));
+            TabbedPane pane = MainFrame.getInstance().getProjectView().getTabbedPane();
+            pane.addTab(name, new JLabel(name));
         }
-
     }
 }

@@ -12,6 +12,9 @@ import dsw.gerumap.app.repository.implementation.ProjectExplorer;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeNode;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapTreeImplementation implements MapTree {
     private MapTreeView treeView;
@@ -58,6 +61,15 @@ public class MapTreeImplementation implements MapTree {
     @Override
     public MapTreeItem getSelectedNode() {
         return (MapTreeItem) treeView.getLastSelectedPathComponent();
+    }
+
+    @Override
+    public List<TreeNode> getChildren(MapTreeItem parent) {
+        List<TreeNode> children = new ArrayList<TreeNode>();
+        for (int i = 0; i < parent.getChildCount(); i++){
+            children.set(i, parent.getChildAt(i));
+        }
+        return children;
     }
 
     @Override

@@ -3,15 +3,12 @@ package dsw.gerumap.app.gui.swing.view;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.observer.IPublisher;
 import dsw.gerumap.app.observer.ISubscriber;
-import dsw.gerumap.app.repository.composite.MapNode;
-import dsw.gerumap.app.repository.implementation.MindMap;
 import dsw.gerumap.app.repository.implementation.Project;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.List;
 
 @Setter
 @Getter
@@ -45,9 +42,13 @@ public class ProjectView extends JPanel implements ISubscriber {
             String name = String.valueOf(MainFrame.getInstance().getMapTree().getSelectedNode().getChildAt(index - 1));
             TabbedPane pane = MainFrame.getInstance().getProjectView().getTabbedPane();
             MindMapView tab = new MindMapView();
+            MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode().addSubscriber(MainFrame.getInstance().getProjectView());
             tab.setTitle(name);
             pane.addTab(tab.getTitle(), tab);
             tab.add(new JLabel(tab.getTitle()));
+            // ovaj -1 ga muci nesto, radi ali izbacuje greske kad se renameuje novi MindMap nakon sto ga je dodao observer
+            MapTreeItem item = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode().getChildren().get(MainFrame.getInstance().getMapTree().getSelectedNode().getChildCount() - 1);
+            item.getMapNode().addSubscriber(tab);
         }
     }
 }

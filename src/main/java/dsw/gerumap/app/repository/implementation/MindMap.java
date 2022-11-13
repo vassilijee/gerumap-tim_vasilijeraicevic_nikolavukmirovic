@@ -5,10 +5,9 @@ import dsw.gerumap.app.repository.composite.MapNode;
 import dsw.gerumap.app.repository.composite.MapNodeComposite;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MindMap extends MapNodeComposite {
-    private boolean template = false;
+//    private boolean template = false;
 
     public MindMap(String name, MapNode parent) {
         super(name, parent);
@@ -22,7 +21,7 @@ public class MindMap extends MapNodeComposite {
         if (this.getSubscriberList().contains(sub))
             return;
         this.getSubscriberList().add(sub);
-        System.out.println("dodat" + sub);
+        System.out.println("dodat " + sub);
     }
 
     @Override

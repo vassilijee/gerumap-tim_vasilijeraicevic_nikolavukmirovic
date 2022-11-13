@@ -3,6 +3,7 @@ package dsw.gerumap.app.gui.swing.controller;
 
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
+import dsw.gerumap.app.observer.ISubscriber;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -25,6 +26,7 @@ public class DeleteAction extends AbstractGerumapAction {
             return;
         } else {
             MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode().notifySubscribers("DELETE");
+//            selected.getMapNode().removeSubscriber();
             MainFrame.getInstance().getMapTree().removeChild(selected);
         }
     }

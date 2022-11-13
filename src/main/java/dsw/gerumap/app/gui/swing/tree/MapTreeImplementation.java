@@ -66,7 +66,7 @@ public class MapTreeImplementation implements MapTree {
     @Override
     public List<TreeNode> getChildren(MapTreeItem parent) {
         List<TreeNode> children = new ArrayList<TreeNode>();
-        for (int i = 0; i < parent.getChildCount(); i++){
+        for (int i = 0; i < parent.getChildCount(); i++) {
             children.set(i, parent.getChildAt(i));
         }
         return children;

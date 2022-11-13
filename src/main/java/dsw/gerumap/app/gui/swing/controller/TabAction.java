@@ -29,7 +29,7 @@ public class TabAction extends AbstractGerumapAction implements MouseListener {
                 MainFrame.getInstance().getProjectView().getProjectName().setText(selected + " Autor: " + ((Project) selected.getMapNode()).getAuthor());
                 List<Object> children = selected.getChildren();
                 System.out.println(children.size());
-                for(int i = 0; i < selected.getChildCount(); i++){
+                for (int i = 0; i < selected.getChildCount(); i++) {
                     MindMapView tab = new MindMapView();
                     tab.setTitle(selected.getChildAt(i).toString());
                     MainFrame.getInstance().getProjectView().getTabbedPane().addTab(tab.getTitle(), tab);
@@ -37,8 +37,8 @@ public class TabAction extends AbstractGerumapAction implements MouseListener {
                     MapTreeItem item = (MapTreeItem) children.get(i);
                     item.getMapNode().addSubscriber(tab);
                 }
-            }else if(selected.getMapNode() instanceof MindMap){
-                for(int i = 0; i < selected.getChildCount(); i++){
+            } else if (selected.getMapNode() instanceof MindMap) {
+                for (int i = 0; i < selected.getChildCount(); i++) {
                     JPanel tab = new JPanel();
                     String title = selected.getChildAt(i).toString();
                     MainFrame.getInstance().getProjectView().getTabbedPane().addTab(title, tab);

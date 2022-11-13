@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
+
 @Getter
 @Setter
 public class MindMapView extends JPanel implements ISubscriber {
@@ -18,16 +19,17 @@ public class MindMapView extends JPanel implements ISubscriber {
 
     @Override
     public void update(IPublisher iPublisher, Object notification) {
-        if(notification.equals("RENAME")){
+        if (notification.equals("RENAME")) {
             MindMap map = (MindMap) iPublisher;
             TabbedPane pane = MainFrame.getInstance().getProjectView().getTabbedPane();
             int index = pane.indexOfTab(this.getTitle());
             pane.setTitleAt(index, map.getName());
-        }else if(notification.equals("DELETE")){
+        } else if (notification.equals("DELETE")) {
             MindMap map = (MindMap) iPublisher;
             TabbedPane pane = MainFrame.getInstance().getProjectView().getTabbedPane();
             int index = pane.indexOfTab(this.getTitle());
             pane.removeTabAt(index);
+
         }
     }
 }

@@ -32,10 +32,11 @@ public abstract class MapNodeComposite extends MapNode {
         }
         return this;
     }
-    public MapNode getChildByIndex(int index){
+
+    public MapNode getChildByIndex(int index) {
         List<MapNode> children = this.getChildren();
-        for (int i = 0; i < children.size(); i++){
-            if(i == index){
+        for (int i = 0; i < children.size(); i++) {
+            if (i == index) {
                 return children.get(i);
             }
         }

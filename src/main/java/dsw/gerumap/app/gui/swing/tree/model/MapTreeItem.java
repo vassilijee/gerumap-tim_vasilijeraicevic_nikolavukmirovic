@@ -29,7 +29,7 @@ public class MapTreeItem extends DefaultMutableTreeNode {
 
     public List<Object> getChildren() {
         List<Object> children = new ArrayList<>();
-        for (int i = 0; i < this.getChildCount(); i++){
+        for (int i = 0; i < this.getChildCount(); i++) {
             children.add(this.getChildAt(i));
         }
         return children;

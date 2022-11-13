@@ -40,9 +40,9 @@ public class ProjectView extends JPanel implements ISubscriber {
         } else if (notification.equals("AUTHOR")) {
             Project project = (Project) iPublisher;
             MainFrame.getInstance().getProjectView().getProjectName().setText(project.getName() + " Autor: " + project.getAuthor());
-        }else if(notification.equals("NEW")){
+        } else if (notification.equals("NEW")) {
             int index = MainFrame.getInstance().getMapTree().getSelectedNode().getChildCount();
-            String name = String.valueOf(MainFrame.getInstance().getMapTree().getSelectedNode().getChildAt(index-1));
+            String name = String.valueOf(MainFrame.getInstance().getMapTree().getSelectedNode().getChildAt(index - 1));
             TabbedPane pane = MainFrame.getInstance().getProjectView().getTabbedPane();
             MindMapView tab = new MindMapView();
             tab.setTitle(name);

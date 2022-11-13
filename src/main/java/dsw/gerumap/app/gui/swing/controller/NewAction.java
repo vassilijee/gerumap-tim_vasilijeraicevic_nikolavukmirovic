@@ -21,7 +21,6 @@ public class NewAction extends AbstractGerumapAction {
 
     public void actionPerformed(ActionEvent arg0) {
         MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
-
         if (!(selected == null)) {
             MainFrame.getInstance().getMapTree().addChild(selected);
             MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode().notifySubscribers("NEW");

@@ -12,6 +12,9 @@ import dsw.gerumap.app.repository.implementation.ProjectExplorer;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeNode;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapTreeImplementation implements MapTree {
     private MapTreeView treeView;
@@ -42,7 +45,7 @@ public class MapTreeImplementation implements MapTree {
 
     @Override
     public void removeChild(MapTreeItem child) {
-        //mapCount--;
+
         treeModel.removeNodeFromParent(child);
         SwingUtilities.updateComponentTreeUI(treeView);
     }
@@ -61,12 +64,21 @@ public class MapTreeImplementation implements MapTree {
     }
 
     @Override
+    public List<TreeNode> getChildren(MapTreeItem parent) {
+        List<TreeNode> children = new ArrayList<TreeNode>();
+        for (int i = 0; i < parent.getChildCount(); i++) {
+            children.set(i, parent.getChildAt(i));
+        }
+        return children;
+    }
+
+    @Override
     public void expandPath() {
         this.treeView.expandPath(treeView.getSelectionPath());
     }
 
     @Override
-    public void changeAuthor(MapTreeItem child, String author) {
+    public void changeAuthor(Project child, String author) {
         child.setAuthor(author);
     }
 
@@ -78,10 +90,10 @@ public class MapTreeImplementation implements MapTree {
         } else if (parent instanceof Project) {
             int mapCount = this.getSelectedNode().getChildCount();
             return new MindMap("MindMap " + mapCount, parent);
-        }else if(parent instanceof MindMap){
+        } else if (parent instanceof MindMap) {
             int elementCount = this.getSelectedNode().getChildCount();
             return new Element("Element " + elementCount, parent);
-        }else {
+        } else {
             return null;
         }
     }

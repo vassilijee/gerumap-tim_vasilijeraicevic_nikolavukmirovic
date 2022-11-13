@@ -1,42 +1,53 @@
 package dsw.gerumap.app.gui.swing.view;
 
-import dsw.gerumap.app.core.ApplicationFramework;
-import dsw.gerumap.app.gui.swing.controller.TabAction;
-import dsw.gerumap.app.gui.swing.tree.MapTree;
-import dsw.gerumap.app.gui.swing.tree.MapTreeImplementation;
+import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
+import dsw.gerumap.app.observer.IPublisher;
 import dsw.gerumap.app.observer.ISubscriber;
 import dsw.gerumap.app.repository.composite.MapNode;
+import dsw.gerumap.app.repository.implementation.MindMap;
+import dsw.gerumap.app.repository.implementation.Project;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
+
 @Setter
 @Getter
 
-public class ProjectView extends JFrame implements ISubscriber {
+public class ProjectView extends JPanel implements ISubscriber {
     private TabbedPane tabbedPane;
     private JLabel projectName;
-    private JScrollPane scroll;
-    private JSplitPane split;
     private JPanel desktop;
 
-    public ProjectView(JTree projectExplorer) {
-        desktop = new JPanel(new BorderLayout());
-        scroll = new JScrollPane(projectExplorer);
-        scroll.setMinimumSize(new Dimension(200, 150));
-        split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scroll, desktop);
-        getContentPane().add(split, BorderLayout.CENTER);
-        split.setDividerLocation(250);
-        split.setOneTouchExpandable(true);
+    public ProjectView() {
+        this.setLayout(new BorderLayout());
         projectName = new JLabel("", JLabel.CENTER);
         tabbedPane = new TabbedPane();
-        desktop.add(tabbedPane, BorderLayout.CENTER);
-        desktop.add(projectName, BorderLayout.NORTH);
+        this.add(tabbedPane, BorderLayout.CENTER);
+        this.add(projectName, BorderLayout.NORTH);
     }
 
     @Override
-    public void update(Object notification) {
-        MainFrame.getInstance().getProjectView().getProjectName().setText(notification.toString());
+    public void update(IPublisher iPublisher, Object notification) {
+        if (notification.equals("RENAME")) {
+            Project project = (Project) iPublisher;
+            MainFrame.getInstance().getProjectView().getProjectName().setText(project.getName() + " Autor: " + project.getAuthor());
+        } else if (notification.equals("DELETE")) {
+            MainFrame.getInstance().getProjectView().getTabbedPane().removeAll();
+            MainFrame.getInstance().getProjectView().getProjectName().setText("");
+        } else if (notification.equals("AUTHOR")) {
+            Project project = (Project) iPublisher;
+            MainFrame.getInstance().getProjectView().getProjectName().setText(project.getName() + " Autor: " + project.getAuthor());
+        } else if (notification.equals("NEW")) {
+            int index = MainFrame.getInstance().getMapTree().getSelectedNode().getChildCount();
+            String name = String.valueOf(MainFrame.getInstance().getMapTree().getSelectedNode().getChildAt(index - 1));
+            TabbedPane pane = MainFrame.getInstance().getProjectView().getTabbedPane();
+            MindMapView tab = new MindMapView();
+            tab.setTitle(name);
+            pane.addTab(tab.getTitle(), tab);
+            tab.add(new JLabel(tab.getTitle()));
+        }
     }
 }

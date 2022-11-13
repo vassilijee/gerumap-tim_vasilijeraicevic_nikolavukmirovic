@@ -48,7 +48,7 @@ public class ProjectExplorer extends MapNodeComposite {
             return;
 
         for (ISubscriber listener : getSubscriberList()) {
-            listener.update(notification);
+            listener.update(this, notification);
         }
     }
 }

@@ -21,6 +21,12 @@ public abstract class MapNode implements IPublisher {
         this.parent = parent;
     }
 
+    public MapNode(String name, MapNode parent, List<ISubscriber> subscriberList) {
+        this.name = name;
+        this.parent = parent;
+        this.subscriberList = subscriberList;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o != null && o instanceof MapNode) {

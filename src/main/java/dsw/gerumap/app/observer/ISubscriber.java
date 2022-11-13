@@ -1,5 +1,6 @@
 package dsw.gerumap.app.observer;
 
+
 public interface ISubscriber {
-    void update(Object notification);
+    void update(IPublisher iPublisher, Object notification);
 }

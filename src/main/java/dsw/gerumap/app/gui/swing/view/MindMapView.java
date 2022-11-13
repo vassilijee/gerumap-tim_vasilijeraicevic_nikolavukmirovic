@@ -24,12 +24,12 @@ public class MindMapView extends JPanel implements ISubscriber {
             TabbedPane pane = MainFrame.getInstance().getProjectView().getTabbedPane();
             int index = pane.indexOfTab(this.getTitle());
             pane.setTitleAt(index, map.getName());
+            this.setTitle(map.getName());
         } else if (notification.equals("DELETE")) {
             MindMap map = (MindMap) iPublisher;
             TabbedPane pane = MainFrame.getInstance().getProjectView().getTabbedPane();
             int index = pane.indexOfTab(this.getTitle());
             pane.removeTabAt(index);
-
         }
     }
 }

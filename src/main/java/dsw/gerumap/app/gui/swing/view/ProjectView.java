@@ -47,8 +47,7 @@ public class ProjectView extends JPanel implements ISubscriber {
             tab.setTitle(name);
             pane.addTab(tab.getTitle(), tab);
             tab.add(new JLabel(tab.getTitle()));
-            // ovaj -1 ga muci nesto, radi ali izbacuje greske kad se renameuje novi MindMap nakon sto ga je dodao observer
-            MapTreeItem item = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode().getChildren().get(MainFrame.getInstance().getMapTree().getSelectedNode().getChildCount() - 1);
+            MapTreeItem item = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode().getChildren().get(index - 1);
             item.getMapNode().addSubscriber(tab);
         }
     }

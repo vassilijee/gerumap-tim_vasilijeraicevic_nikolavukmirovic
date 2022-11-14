@@ -54,7 +54,6 @@ public class MapTreeImplementation implements MapTree {
     public void renameChild(MapTreeItem child, String newName) {
         child.setName(newName);
         SwingUtilities.updateComponentTreeUI(treeView);
-        child.getMapNode().notifySubscribers(this);
     }
 
     @Override
@@ -64,7 +63,7 @@ public class MapTreeImplementation implements MapTree {
 
     @Override
     public List<TreeNode> getChildren(MapTreeItem parent) {
-        List<TreeNode> children = new ArrayList<TreeNode>();
+        List<TreeNode> children = new ArrayList<>();
         for (int i = 0; i < parent.getChildCount(); i++) {
             children.set(i, parent.getChildAt(i));
         }
@@ -83,9 +82,7 @@ public class MapTreeImplementation implements MapTree {
 
     private MapNode createChild(MapNode parent) {
         if (parent instanceof ProjectExplorer) {
-            Project p = new Project("Project " + projectCount(), parent);
-
-            return p;
+            return new Project("Project " + projectCount(), parent);
         } else if (parent instanceof Project) {
             int mapCount = this.getSelectedNode().getChildCount();
             return new MindMap("MindMap " + mapCount, parent);

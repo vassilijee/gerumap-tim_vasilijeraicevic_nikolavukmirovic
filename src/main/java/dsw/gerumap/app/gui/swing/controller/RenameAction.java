@@ -3,6 +3,9 @@ package dsw.gerumap.app.gui.swing.controller;
 
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
+import dsw.gerumap.app.message.MessageGenerator;
+import dsw.gerumap.app.repository.implementation.ProjectExplorer;
+import org.xml.sax.ErrorHandler;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -23,6 +26,9 @@ public class RenameAction extends AbstractGerumapAction {
         MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
 
         if (selected == null) {
+            return;
+        } else if (selected.getMapNode() instanceof ProjectExplorer) {
+            MessageGenerator.getInstance().CantRenameException("My Project Explorer");
         } else {
             String text = selected.toString();
             JTextField field = new JTextField(text, 20);

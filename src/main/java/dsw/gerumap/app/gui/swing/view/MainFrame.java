@@ -6,6 +6,9 @@ import dsw.gerumap.app.gui.swing.controller.ActionManager;
 import dsw.gerumap.app.gui.swing.controller.TabAction;
 import dsw.gerumap.app.gui.swing.tree.MapTree;
 import dsw.gerumap.app.gui.swing.tree.MapTreeImplementation;
+import dsw.gerumap.app.message.ConsoleLogger;
+import dsw.gerumap.app.message.FileLogger;
+import dsw.gerumap.app.message.MessageGenerator;
 import dsw.gerumap.app.repository.implementation.MindMap;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,6 +36,8 @@ public class MainFrame extends JFrame {
     private void initialise() {
         actionManager = new ActionManager();
         mapTree = new MapTreeImplementation();
+        MessageGenerator.getInstance().addSubscriber(new ConsoleLogger());
+        MessageGenerator.getInstance().addSubscriber(new FileLogger());
         initialiseGUI();
     }
 

@@ -31,14 +31,12 @@ public class ProjectView extends JPanel implements ISubscriber {
     @Override
     public void update(IPublisher iPublisher, Object notification) {
         if (notification.equals("RENAME")) {
-            Project project = (Project) iPublisher;
-            MainFrame.getInstance().getProjectView().getProjectName().setText(project.getName() + " Autor: " + project.getAuthor());
+           projectName.setText(this.project.getName() + " Autor: " + this.project.getAuthor());
         } else if (notification.equals("DELETE")) {
             MainFrame.getInstance().getProjectView().getTabbedPane().removeAll();
             MainFrame.getInstance().getProjectView().getProjectName().setText("");
         } else if (notification.equals("AUTHOR")) {
-            Project project = (Project) iPublisher;
-            MainFrame.getInstance().getProjectView().getProjectName().setText(project.getName() + " Autor: " + project.getAuthor());
+            projectName.setText(this.project.getName() + " Autor: " + this.project.getAuthor());
         } else if (notification.equals("NEW")) {
             int index = MainFrame.getInstance().getMapTree().getSelectedNode().getChildCount();
             String name = String.valueOf(MainFrame.getInstance().getMapTree().getSelectedNode().getChildAt(index - 1));

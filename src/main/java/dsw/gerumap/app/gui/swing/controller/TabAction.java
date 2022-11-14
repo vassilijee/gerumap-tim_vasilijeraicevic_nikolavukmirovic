@@ -7,6 +7,7 @@ import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.gui.swing.view.MindMapView;
 
 import dsw.gerumap.app.repository.composite.MapNode;
+import dsw.gerumap.app.repository.implementation.Element;
 import dsw.gerumap.app.repository.implementation.MindMap;
 import dsw.gerumap.app.repository.implementation.Project;
 
@@ -23,8 +24,9 @@ public class TabAction extends AbstractGerumapAction implements MouseListener {
         if (e.getClickCount() == 2) {
             MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
             MainFrame.getInstance().getMapTree().expandPath();
-            MainFrame.getInstance().getProjectView().getTabbedPane().removeAll();
             if (selected.getMapNode() instanceof Project) {
+                MainFrame.getInstance().getProjectView().getTabbedPane().removeAll();
+                selected.getMapNode().removeSubscriber(MainFrame.getInstance().getProjectView());
                 selected.getMapNode().addSubscriber(MainFrame.getInstance().getProjectView());
                 MainFrame.getInstance().getProjectView().getProjectName().setText(selected + " Autor: " + ((Project) selected.getMapNode()).getAuthor());
                 List<Object> children = selected.getChildren();
@@ -35,24 +37,18 @@ public class TabAction extends AbstractGerumapAction implements MouseListener {
                     MainFrame.getInstance().getProjectView().getTabbedPane().addTab(tab.getTitle(), tab);
                     tab.add(new JLabel(tab.getTitle()));
                     MapTreeItem item = (MapTreeItem) children.get(i);
+                    item.getMapNode().removeSubscriber(tab);
                     item.getMapNode().addSubscriber(tab);
                 }
-            } else if (selected.getMapNode() instanceof MindMap) {
-                for (int i = 0; i < selected.getChildCount(); i++) {
-                    JPanel tab = new JPanel();
-                    String title = selected.getChildAt(i).toString();
-                    MainFrame.getInstance().getProjectView().getTabbedPane().addTab(title, tab);
-                    tab.add(new JLabel(title));
-                }
             }
-//            for (int i = 0; i < selected.getChildCount(); i++) {
-//                MindMapView temp = new MindMapView();
-//                String titleOfMap = selected.getChildAt(i).toString();
-//                System.out.println(selected.getChildAt(i).toString() + "\n");
-//                MainFrame.getInstance().getProjectView().getTabbedPane().addTab(titleOfMap, temp);
-//                temp.add(new JLabel(titleOfMap));
-//                // TREBA DA DODAJE SVAKI NOVI TAB NA SUBSCRIBERE
-//            }
+//            } else if (selected.getMapNode() instanceof MindMap) {
+//                return;
+////                for (int i = 0; i < selected.getChildCount(); i++) {
+////                    JPanel tab = new JPanel();
+////                    String title = selected.getChildAt(i).toString();
+////                    MainFrame.getInstance().getProjectView().getTabbedPane().addTab(title, tab);
+////                    tab.add(new JLabel(title));
+////                }
             System.out.println("size: " + selected.getChildCount());
         }
     }

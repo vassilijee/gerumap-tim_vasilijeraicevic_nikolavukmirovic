@@ -55,7 +55,6 @@ public class MapTreeImplementation implements MapTree {
         child.setName(newName);
         SwingUtilities.updateComponentTreeUI(treeView);
         child.getMapNode().notifySubscribers(this);
-
     }
 
     @Override

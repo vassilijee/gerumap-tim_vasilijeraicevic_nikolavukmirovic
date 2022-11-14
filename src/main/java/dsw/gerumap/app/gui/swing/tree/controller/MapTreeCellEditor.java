@@ -40,6 +40,5 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
 
         MapTreeItem clicked = (MapTreeItem) clickedOn;
         clicked.setName(e.getActionCommand());
-
     }
 }

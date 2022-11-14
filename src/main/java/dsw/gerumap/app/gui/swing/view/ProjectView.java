@@ -17,6 +17,7 @@ public class ProjectView extends JPanel implements ISubscriber {
     private TabbedPane tabbedPane;
     private JLabel projectName;
     private JPanel desktop;
+    private  Project project;
 
     public ProjectView() {
         this.setLayout(new BorderLayout());

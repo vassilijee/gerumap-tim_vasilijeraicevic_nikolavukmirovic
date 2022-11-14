@@ -13,6 +13,7 @@ import java.awt.*;
 @Setter
 public class MindMapView extends JPanel implements ISubscriber {
     private String title;
+    private MindMap mindMap;
 
     public MindMapView() {
     }
@@ -23,8 +24,9 @@ public class MindMapView extends JPanel implements ISubscriber {
             MindMap map = (MindMap) iPublisher;
             TabbedPane pane = MainFrame.getInstance().getProjectView().getTabbedPane();
             int index = pane.indexOfTab(this.getTitle());
-            pane.setTitleAt(index, map.getName());
             this.setTitle(map.getName());
+            pane.setTitleAt(index, map.getName());
+
         } else if (notification.equals("DELETE")) {
             MindMap map = (MindMap) iPublisher;
             TabbedPane pane = MainFrame.getInstance().getProjectView().getTabbedPane();

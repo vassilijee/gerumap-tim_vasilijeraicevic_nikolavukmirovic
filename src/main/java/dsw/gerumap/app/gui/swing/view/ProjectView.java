@@ -52,4 +52,15 @@ public class ProjectView extends JPanel implements ISubscriber {
             item.getMapNode().addSubscriber(tab);
         }
     }
+
+    public void setProject(Project project) {
+        if(this.project != null){
+            this.project.removeSubscriber(this);
+        }else{
+            projectName.setText("");
+            tabbedPane.removeAll();
+        }
+        this.project = project;
+        project.addSubscriber(this);
+    }
 }

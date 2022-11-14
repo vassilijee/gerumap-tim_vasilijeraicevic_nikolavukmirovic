@@ -37,7 +37,8 @@ public class MainFrame extends JFrame {
         actionManager = new ActionManager();
         mapTree = new MapTreeImplementation();
         MessageGenerator.getInstance().addSubscriber(new ConsoleLogger());
-        MessageGenerator.getInstance().addSubscriber(new FileLogger());
+//        zakomentarisano jer je log.txt readOnly iz nekog razloga
+//        MessageGenerator.getInstance().addSubscriber(new FileLogger());
         initialiseGUI();
     }
 

@@ -1,8 +1,11 @@
 package dsw.gerumap.app.gui.swing.tree;
 
 
+import dsw.gerumap.app.factory.GenFactory;
+import dsw.gerumap.app.factory.NodeFactory;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
+import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.repository.composite.MapNode;
 import dsw.gerumap.app.repository.composite.MapNodeComposite;
 import dsw.gerumap.app.repository.implementation.Element;
@@ -13,6 +16,7 @@ import dsw.gerumap.app.repository.implementation.ProjectExplorer;
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
+import javax.swing.tree.TreePath;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,17 +85,21 @@ public class MapTreeImplementation implements MapTree {
     }
 
     private MapNode createChild(MapNode parent) {
-        if (parent instanceof ProjectExplorer) {
-            return new Project("Project " + projectCount(), parent);
-        } else if (parent instanceof Project) {
-            int mapCount = this.getSelectedNode().getChildCount();
-            return new MindMap("MindMap " + mapCount, parent);
-        } else if (parent instanceof MindMap) {
-            int elementCount = this.getSelectedNode().getChildCount();
-            return new Element("Element " + elementCount, parent);
-        } else {
-            return null;
-        }
+        NodeFactory nodeFactory = GenFactory.generateFactory(parent);
+        MapNode node = nodeFactory.createNode(parent);
+        return node;
+//        if (parent instanceof ProjectExplorer) {
+//            return new
+//            // Project("Project " + projectCount(), parent);
+//        } else if (parent instanceof Project) {
+//            int mapCount = this.getSelectedNode().getChildCount();
+//            return new MindMap("MindMap " + mapCount, parent);
+//        } else if (parent instanceof MindMap) {
+//            int elementCount = this.getSelectedNode().getChildCount();
+//            return new Element("Element " + elementCount, parent);
+//        } else {
+//            return null;
+//        }
     }
 
     private int projectCount() {

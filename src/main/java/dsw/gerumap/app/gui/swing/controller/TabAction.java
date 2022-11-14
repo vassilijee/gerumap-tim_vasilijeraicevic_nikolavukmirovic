@@ -2,13 +2,8 @@ package dsw.gerumap.app.gui.swing.controller;
 
 
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
-
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.gui.swing.view.MindMapView;
-
-import dsw.gerumap.app.repository.composite.MapNode;
-import dsw.gerumap.app.repository.implementation.Element;
-import dsw.gerumap.app.repository.implementation.MindMap;
 import dsw.gerumap.app.repository.implementation.Project;
 
 import javax.swing.*;

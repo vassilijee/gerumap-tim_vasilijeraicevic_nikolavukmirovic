@@ -33,4 +33,14 @@ public class MindMapView extends JPanel implements ISubscriber {
             pane.removeTabAt(index);
         }
     }
+
+    public void setMindMap(MindMap mindMap) {
+        if(this.mindMap != null){
+            this.mindMap.removeSubscriber(this);
+        }else{
+            title = "";
+        }
+        this.mindMap = mindMap;
+        mindMap.addSubscriber(this);
+    }
 }

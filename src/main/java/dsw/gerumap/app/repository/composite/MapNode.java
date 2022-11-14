@@ -64,6 +64,6 @@ public abstract class MapNode implements IPublisher {
 
     public void setName(String name) {
         this.name = name;
-        this.notifySubscribers(this);
+        this.notifySubscribers("RENAME");
     }
 }

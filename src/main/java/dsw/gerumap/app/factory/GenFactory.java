@@ -7,13 +7,12 @@ import dsw.gerumap.app.repository.implementation.ProjectExplorer;
 
 public class GenFactory {
     public static NodeFactory generateFactory(Object obj) {
-        if(obj instanceof ProjectExplorer)
+        if (obj instanceof ProjectExplorer)
             return new ProjectFactory();
-        if(obj instanceof Project)
+        if (obj instanceof Project)
             return new MindMapFactory();
-        if(obj instanceof MindMap)
+        if (obj instanceof MindMap)
             return new ElementFactory();
         return null;
-
     }
 }

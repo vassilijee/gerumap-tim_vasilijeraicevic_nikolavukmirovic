@@ -85,21 +85,10 @@ public class MapTreeImplementation implements MapTree {
     }
 
     private MapNode createChild(MapNode parent) {
+        int count = this.getSelectedNode().getChildCount();
         NodeFactory nodeFactory = GenFactory.generateFactory(parent);
-        MapNode node = nodeFactory.createNode(parent);
+        MapNode node = nodeFactory.createNode(parent, count);
         return node;
-//        if (parent instanceof ProjectExplorer) {
-//            return new
-//            // Project("Project " + projectCount(), parent);
-//        } else if (parent instanceof Project) {
-//            int mapCount = this.getSelectedNode().getChildCount();
-//            return new MindMap("MindMap " + mapCount, parent);
-//        } else if (parent instanceof MindMap) {
-//            int elementCount = this.getSelectedNode().getChildCount();
-//            return new Element("Element " + elementCount, parent);
-//        } else {
-//            return null;
-//        }
     }
 
     private int projectCount() {

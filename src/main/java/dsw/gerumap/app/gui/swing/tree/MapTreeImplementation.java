@@ -1,6 +1,7 @@
 package dsw.gerumap.app.gui.swing.tree;
 
 
+import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.factory.GenFactory;
 import dsw.gerumap.app.factory.NodeFactory;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
@@ -42,6 +43,7 @@ public class MapTreeImplementation implements MapTree {
 
         MapNode child = createChild(parent.getMapNode());
         parent.add(new MapTreeItem(child));
+        ApplicationFramework.getInstance().getMapRepository().addChild((MapNodeComposite) parent.getMapNode(), child);
         ((MapNodeComposite) parent.getMapNode()).addChild(child);
         treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);

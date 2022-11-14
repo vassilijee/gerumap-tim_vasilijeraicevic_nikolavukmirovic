@@ -16,6 +16,8 @@ public class MindMapView extends JPanel implements ISubscriber {
     private MindMap mindMap;
 
     public MindMapView() {
+        //this.mindMap = null;
+        //title = "";
     }
 
     @Override

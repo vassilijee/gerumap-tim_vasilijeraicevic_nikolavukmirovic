@@ -20,6 +20,7 @@ public class ProjectView extends JPanel implements ISubscriber {
     private  Project project;
 
     public ProjectView() {
+        this.project = null;
         this.setLayout(new BorderLayout());
         projectName = new JLabel("", JLabel.CENTER);
         tabbedPane = new TabbedPane();

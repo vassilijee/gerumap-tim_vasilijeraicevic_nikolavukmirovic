@@ -22,9 +22,15 @@ public class Project extends MapNodeComposite {
     public void addChild(MapNode child) {
         if (child instanceof MindMap) {
             MindMap map = (MindMap) child;
-            if (this.getChildren().contains(map)) {
+            if (!this.getChildren().contains(map)) {
                 this.getChildren().add(map);
+                this.notifySubscribers("NEW");
             }
         }
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+        this.notifySubscribers("AUTHOR");
     }
 }

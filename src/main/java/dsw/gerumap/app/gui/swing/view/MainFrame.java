@@ -3,7 +3,6 @@ package dsw.gerumap.app.gui.swing.view;
 
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.controller.ActionManager;
-import dsw.gerumap.app.gui.swing.controller.TabAction;
 import dsw.gerumap.app.gui.swing.tree.MapTree;
 import dsw.gerumap.app.gui.swing.tree.MapTreeImplementation;
 import dsw.gerumap.app.repository.implementation.MindMap;
@@ -50,7 +49,6 @@ public class MainFrame extends JFrame {
         toolBar = new Toolbar();
         add(toolBar, BorderLayout.NORTH);
         JTree projectExplorer = mapTree.generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
-        projectExplorer.addMouseListener(new TabAction());
         projectView = new ProjectView();
         JScrollPane scroll = new JScrollPane(projectExplorer);
         scroll.setMinimumSize(new Dimension(200, 150));

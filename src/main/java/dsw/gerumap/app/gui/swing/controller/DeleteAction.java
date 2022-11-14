@@ -25,8 +25,6 @@ public class DeleteAction extends AbstractGerumapAction {
         if (selected == null) {
             return;
         } else {
-            MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode().notifySubscribers("DELETE");
-//            selected.getMapNode().removeSubscriber();
             MainFrame.getInstance().getMapTree().removeChild(selected);
         }
     }

@@ -17,12 +17,13 @@ public abstract class MapNodeComposite extends MapNode {
         this.children = new ArrayList<>();
     }
 
-    public MapNodeComposite(String name, MapNode parent, List<ISubscriber> subscriberList) {
-        super(name, parent, subscriberList);
-        this.children = new ArrayList<>();
-    }
 
     public abstract void addChild(MapNode child);
+
+    public void removeChild(MapNode child){
+        children.remove(child);
+        this.notifySubscribers("DELETE");
+    }
 
     public MapNode getChildByName(String name) {
         for (MapNode child : this.getChildren()) {

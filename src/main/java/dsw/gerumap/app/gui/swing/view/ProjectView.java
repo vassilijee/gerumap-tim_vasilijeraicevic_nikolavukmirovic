@@ -46,6 +46,7 @@ public class ProjectView extends JPanel implements ISubscriber {
                 tabbedPane.setTitleAt(project.getChildren().indexOf((MindMap) object), ((MindMap) object).getName());
             }
         }else if(notification.equals("DELETE")){
+            tabbedPane.remove(project.getChildren().indexOf((MindMap)object));
         }else if(notification.equals("AUTHOR")){
             this.projectName.setText(this.project.getName() + " Autor: " + this.project.getAuthor());
         }
@@ -68,7 +69,7 @@ public class ProjectView extends JPanel implements ISubscriber {
              project.getChildren()) {
             MindMapView tab = new MindMapView();
             tab.setMindMap((MindMap) child);
-            //child.addSubscriber(this);
+            child.addSubscriber(this);
             tabbedPane.add(tab.getTitle(), tab);
             tab.add(new JLabel(tab.getTitle()));
         }

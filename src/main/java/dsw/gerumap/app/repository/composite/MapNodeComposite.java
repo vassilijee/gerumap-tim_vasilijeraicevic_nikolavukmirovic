@@ -21,8 +21,8 @@ public abstract class MapNodeComposite extends MapNode {
     public abstract void addChild(MapNode child);
 
     public void removeChild(MapNode child){
+        this.notifySubscribers(child,"DELETE");
         children.remove(child);
-        this.notifySubscribers(this,"DELETE");
     }
 
     public MapNode getChildByName(String name) {

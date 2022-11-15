@@ -21,20 +21,16 @@ public class MindMapView extends JPanel implements ISubscriber {
     }
 
     @Override
-    public void update(Object iPublisher, Object notification) {
-//        if (notification.equals("RENAME")) {
-//            TabbedPane pane = MainFrame.getInstance().getProjectView().getTabbedPane();
-//            int index = pane.indexOfTab(this.getTitle());
-//            pane.setTitleAt(index, this.getTitle());
-//        } else if (notification.equals("DELETE")) {
-//            TabbedPane pane = MainFrame.getInstance().getProjectView().getTabbedPane();
-//            int index = pane.indexOfTab(this.getTitle());
-//            pane.removeTabAt(index);
-//        }
+    public void update(Object object, Object notification) {
+        if(notification.equals("RENAME")){
+            this.removeAll();
+            this.add(new JLabel(mindMap.getName()));
+        }
     }
 
     public void setMindMap(MindMap mindMap) {
         this.mindMap = mindMap;
+        mindMap.addSubscriber(this);
         title = mindMap.getName();
     }
 }

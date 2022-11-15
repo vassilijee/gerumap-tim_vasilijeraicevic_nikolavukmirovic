@@ -36,7 +36,6 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
             }else if(((MouseEvent) arg0).getClickCount() == 2){
                 if(MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode() instanceof Project){
                     MainFrame.getInstance().getProjectView().setProject((Project) MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode());
-                    MainFrame.getInstance().getMapTree().expandPath();
                 }
             }
         }

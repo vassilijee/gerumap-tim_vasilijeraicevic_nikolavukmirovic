@@ -24,13 +24,13 @@ public class Project extends MapNodeComposite {
             MindMap map = (MindMap) child;
             if (!this.getChildren().contains(map)) {
                 this.getChildren().add(map);
-                this.notifySubscribers("NEW");
+                this.notifySubscribers(map, "NEW");
             }
         }
     }
 
     public void setAuthor(String author) {
         this.author = author;
-        this.notifySubscribers("AUTHOR");
+        this.notifySubscribers(this, "AUTHOR");
     }
 }

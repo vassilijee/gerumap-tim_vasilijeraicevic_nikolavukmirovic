@@ -33,21 +33,19 @@ public class ProjectView extends JPanel implements ISubscriber {
     }
 
     @Override
-    public void update(Object publisher, Object notification) {
+    public void update(Object object, Object notification) {
         if(notification.equals("NEW")){
             MindMapView tab = new MindMapView();
-            tab.setMindMap((MindMap) publisher);
-            ((MindMap) publisher).addSubscriber(this);
-            tabbedPane.addTab(((MindMap) publisher).getName(), tab);
-
+            tab.setMindMap((MindMap) object);
+            ((MindMap) object).addSubscriber(this);
+            tabbedPane.addTab(((MindMap) object).getName(), tab);
         }else if(notification.equals("RENAME")){
-            if(publisher instanceof Project){
+            if(object instanceof Project){
                 this.projectName.setText(this.project.getName() + " Autor: " + this.project.getAuthor());
-            }else if(publisher instanceof  MindMap){
-                tabbedPane.setTitleAt(project.getChildren().indexOf((MindMap) publisher), ((MindMap) publisher).getName());
+            }else if(object instanceof  MindMap){
+                tabbedPane.setTitleAt(project.getChildren().indexOf((MindMap) object), ((MindMap) object).getName());
             }
         }else if(notification.equals("DELETE")){
-            tabbedPane.remove(project.getChildren().indexOf(publisher));
         }else if(notification.equals("AUTHOR")){
             this.projectName.setText(this.project.getName() + " Autor: " + this.project.getAuthor());
         }
@@ -70,8 +68,10 @@ public class ProjectView extends JPanel implements ISubscriber {
              project.getChildren()) {
             MindMapView tab = new MindMapView();
             tab.setMindMap((MindMap) child);
+            //child.addSubscriber(this);
             tabbedPane.add(tab.getTitle(), tab);
             tab.add(new JLabel(tab.getTitle()));
         }
+        //MainFrame.getInstance().getMapTree().expandPath();
     }
 }

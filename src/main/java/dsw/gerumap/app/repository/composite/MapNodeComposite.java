@@ -22,7 +22,7 @@ public abstract class MapNodeComposite extends MapNode {
 
     public void removeChild(MapNode child){
         children.remove(child);
-        this.notifySubscribers("DELETE");
+        this.notifySubscribers(this,"DELETE");
     }
 
     public MapNode getChildByName(String name) {

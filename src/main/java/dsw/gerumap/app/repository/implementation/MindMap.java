@@ -19,7 +19,6 @@ public class MindMap extends MapNodeComposite {
             Element element = (Element) child;
             if (!this.getChildren().contains(element)) {
                 this.getChildren().add(element);
-                this.notifySubscribers("NEW");
             }
         }
     }

@@ -1,6 +1,5 @@
 package dsw.gerumap.app.repository.composite;
 
-import dsw.gerumap.app.observer.ISubscriber;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,8 +19,8 @@ public abstract class MapNodeComposite extends MapNode {
 
     public abstract void addChild(MapNode child);
 
-    public void removeChild(MapNode child){
-        this.notifySubscribers(child,"DELETE");
+    public void removeChild(MapNode child) {
+        this.notifySubscribers(child, "DELETE");
         children.remove(child);
     }
 

@@ -1,11 +1,7 @@
 package dsw.gerumap.app.repository.implementation;
 
-import dsw.gerumap.app.observer.ISubscriber;
 import dsw.gerumap.app.repository.composite.MapNode;
 import dsw.gerumap.app.repository.composite.MapNodeComposite;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ProjectExplorer extends MapNodeComposite {
 
@@ -21,7 +17,6 @@ public class ProjectExplorer extends MapNodeComposite {
                 this.getChildren().add(project);
                 this.notifySubscribers(project, "NEW");
             }
-
         }
     }
 }

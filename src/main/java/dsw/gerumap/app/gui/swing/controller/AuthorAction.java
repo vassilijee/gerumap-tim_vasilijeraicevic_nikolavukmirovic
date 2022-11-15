@@ -23,7 +23,7 @@ public class AuthorAction extends AbstractGerumapAction {
     public void actionPerformed(ActionEvent e) {
         MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
 
-        if(selected != null){
+        if (selected != null) {
             if (selected.getMapNode() instanceof Project) {
                 String text = ((Project) selected.getMapNode()).getAuthor();
                 JTextField field = new JTextField(text);
@@ -49,7 +49,7 @@ public class AuthorAction extends AbstractGerumapAction {
             } else {
                 ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.AUTHOR_CANNOT_BE_ADDED);
             }
-        }else{
+        } else {
             ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.NOTHING_IS_SELECTED);
         }
     }

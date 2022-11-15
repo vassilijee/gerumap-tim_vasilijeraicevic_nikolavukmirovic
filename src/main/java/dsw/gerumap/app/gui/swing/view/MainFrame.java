@@ -5,8 +5,6 @@ import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.controller.ActionManager;
 import dsw.gerumap.app.gui.swing.tree.MapTree;
 import dsw.gerumap.app.gui.swing.tree.MapTreeImplementation;
-import dsw.gerumap.app.errorLogger.ConsoleLogger;
-import dsw.gerumap.app.message.MessageGeneratorImplementation;
 import dsw.gerumap.app.repository.implementation.MindMap;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,10 +19,7 @@ public class MainFrame extends JFrame {
     private JMenuBar menu;
     private JToolBar toolBar;
     private MapTree mapTree;
-    private TabbedPane tabbedPane;
     private static MainFrame instance;
-    private MindMap mindMap;
-    private JLabel projectName;
     private ProjectView projectView;
     private JTree projectExplorer;
 
@@ -35,7 +30,7 @@ public class MainFrame extends JFrame {
     private void initialise() {
         actionManager = new ActionManager();
         mapTree = new MapTreeImplementation();
-       // MessageGeneratorImplementation.getInstance().addSubscriber(new ConsoleLogger());
+//        MessageGeneratorImplementation.getInstance().addSubscriber(new ConsoleLogger());
 //        zakomentarisano jer je log.txt readOnly iz nekog razloga
 //        MessageGenerator.getInstance().addSubscriber(new FileLogger());
         initialiseGUI();

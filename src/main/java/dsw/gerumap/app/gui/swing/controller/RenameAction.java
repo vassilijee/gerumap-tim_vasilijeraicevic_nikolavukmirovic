@@ -5,8 +5,6 @@ import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.message.EventType;
-import dsw.gerumap.app.message.MessageGeneratorImplementation;
-import dsw.gerumap.app.repository.implementation.ProjectExplorer;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -28,7 +26,7 @@ public class RenameAction extends AbstractGerumapAction {
 
         if (selected == null) {
             ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.NOTHING_IS_SELECTED);
-        }else {
+        } else {
             String text = selected.toString();
             JTextField field = new JTextField(text, 20);
             JOptionPane pane = new JOptionPane(field, JOptionPane.PLAIN_MESSAGE, JOptionPane.OK_CANCEL_OPTION, null);
@@ -47,9 +45,9 @@ public class RenameAction extends AbstractGerumapAction {
                 int result = (int) value;
                 if (result == JOptionPane.OK_OPTION) {
                     String newName = field.getText();
-                    if(newName.equals("")){
+                    if (newName.equals("")) {
                         ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.NAME_CANNOT_BE_EMPTY);
-                    }else{
+                    } else {
                         MainFrame.getInstance().getMapTree().renameChild(selected, newName);
                     }
                 }

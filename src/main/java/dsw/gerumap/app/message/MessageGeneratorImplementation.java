@@ -1,7 +1,6 @@
 package dsw.gerumap.app.message;
 
 import dsw.gerumap.app.core.MessageGenerator;
-import dsw.gerumap.app.observer.IPublisher;
 import dsw.gerumap.app.observer.ISubscriber;
 import lombok.Getter;
 import lombok.Setter;
@@ -43,15 +42,15 @@ public class MessageGeneratorImplementation implements MessageGenerator {
 
     @Override
     public void generate(EventType eventType) {
-        if(eventType.equals(EventType.NAME_CANNOT_BE_EMPTY)){
+        if (eventType.equals(EventType.NAME_CANNOT_BE_EMPTY)) {
             this.notifySubscribers(new Message("[ERROR] [" + timeStamp + "] Polje za ime ne moze biti prazno."), "ERROR");
-        }else if(eventType.equals(EventType.AUTHOR_CANNOT_BE_ADDED)){
+        } else if (eventType.equals(EventType.AUTHOR_CANNOT_BE_ADDED)) {
             this.notifySubscribers(new Message("[ERROR] [" + timeStamp + "] Cvor ne moze imati autora"), "ERROR");
-        }else if(eventType.equals(EventType.CHILD_CANNOT_BE_ADDED)){
+        } else if (eventType.equals(EventType.CHILD_CANNOT_BE_ADDED)) {
             this.notifySubscribers(new Message("[ERROR] [" + timeStamp + "] Cvor ne moze imati dete"), "ERROR");
-        }else if(eventType.equals(EventType.NODE_CANNOT_BE_DELETED)){
+        } else if (eventType.equals(EventType.NODE_CANNOT_BE_DELETED)) {
             this.notifySubscribers(new Message("[ERROR] [" + timeStamp + "] Cvor ne moze biti obrisan"), "ERROR");
-        }else if(eventType.equals(EventType.NOTHING_IS_SELECTED)){
+        } else if (eventType.equals(EventType.NOTHING_IS_SELECTED)) {
             this.notifySubscribers(new Message("[ERROR] [" + timeStamp + "] Nista nije selektovano"), "ERROR");
         }
     }

@@ -2,3 +2,5 @@
 [ERROR] [15.11.2022. 16:43] Nista nije selektovano
 [ERROR] [15.11.2022. 16:43] Cvor ne moze imati autora
 [ERROR] [15.11.2022. 16:43] Cvor ne moze imati dete
+[ERROR] [15.11.2022. 17:03] Cvor ne moze biti obrisan
+[ERROR] [15.11.2022. 17:04] Cvor ne moze biti obrisan

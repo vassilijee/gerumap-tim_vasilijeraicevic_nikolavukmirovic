@@ -30,11 +30,11 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
     }
 
     public boolean isCellEditable(EventObject arg0) {
-        if (arg0 instanceof MouseEvent){
-            if(((MouseEvent) arg0).getClickCount() == 3){
+        if (arg0 instanceof MouseEvent) {
+            if (((MouseEvent) arg0).getClickCount() == 3) {
                 return true;
-            }else if(((MouseEvent) arg0).getClickCount() == 2){
-                if(MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode() instanceof Project){
+            } else if (((MouseEvent) arg0).getClickCount() == 2) {
+                if (MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode() instanceof Project) {
                     MainFrame.getInstance().getProjectView().setProject((Project) MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode());
                 }
             }
@@ -43,10 +43,8 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
     }
 
     public void actionPerformed(ActionEvent e) {
-
         if (!(clickedOn instanceof MapTreeItem))
             return;
-
         MapTreeItem clicked = (MapTreeItem) clickedOn;
         clicked.setName(e.getActionCommand());
     }

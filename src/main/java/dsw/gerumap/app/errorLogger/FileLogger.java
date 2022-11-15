@@ -2,6 +2,7 @@ package dsw.gerumap.app.errorLogger;
 
 import dsw.gerumap.app.core.ErrorLogger;
 import dsw.gerumap.app.message.Message;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -12,7 +13,7 @@ public class FileLogger implements ErrorLogger {
 
     @Override
     public void update(Object object, Object notification) {
-        if(notification.equals("ERROR")){
+        if (notification.equals("ERROR")) {
             Log((Message) object);
         }
     }

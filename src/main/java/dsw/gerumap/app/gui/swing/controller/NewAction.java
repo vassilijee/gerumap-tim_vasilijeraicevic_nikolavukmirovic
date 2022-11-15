@@ -1,9 +1,12 @@
 package dsw.gerumap.app.gui.swing.controller;
 
+import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
+import dsw.gerumap.app.message.EventType;
 import dsw.gerumap.app.observer.ISubscriber;
 import dsw.gerumap.app.repository.composite.MapNodeComposite;
+import dsw.gerumap.app.repository.implementation.Element;
 import dsw.gerumap.app.repository.implementation.Project;
 
 import javax.swing.*;
@@ -22,7 +25,13 @@ public class NewAction extends AbstractGerumapAction {
     public void actionPerformed(ActionEvent arg0) {
         MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
         if (!(selected == null)) {
-            MainFrame.getInstance().getMapTree().addChild(selected);
+            if(selected.getMapNode() instanceof Element){
+                ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.CHILD_CANNOT_BE_ADDED);
+            }else{
+                MainFrame.getInstance().getMapTree().addChild(selected);
+            }
+        }else{
+            ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.NOTHING_IS_SELECTED);
         }
     }
 }

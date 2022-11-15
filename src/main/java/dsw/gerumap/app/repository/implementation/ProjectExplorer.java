@@ -19,7 +19,7 @@ public class ProjectExplorer extends MapNodeComposite {
             Project project = (Project) child;
             if (!this.getChildren().contains(project)) {
                 this.getChildren().add(project);
-
+                this.notifySubscribers(project, "NEW");
             }
 
         }

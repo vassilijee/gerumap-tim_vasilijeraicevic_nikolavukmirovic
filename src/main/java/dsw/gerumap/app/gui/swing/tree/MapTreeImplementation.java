@@ -51,8 +51,8 @@ public class MapTreeImplementation implements MapTree {
 
     @Override
     public void removeChild(MapTreeItem child) {
-
-        treeModel.removeNodeFromParent(child);
+        child.removeFromParent();
+        ((MapNodeComposite) child.getMapNode().getParent()).removeChild(child.getMapNode());
         SwingUtilities.updateComponentTreeUI(treeView);
     }
 
@@ -84,6 +84,7 @@ public class MapTreeImplementation implements MapTree {
     @Override
     public void changeAuthor(Project child, String author) {
         child.setAuthor(author);
+
     }
 
     private MapNode createChild(MapNode parent) {

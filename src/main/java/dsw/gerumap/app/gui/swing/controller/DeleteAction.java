@@ -29,8 +29,6 @@ public class DeleteAction extends AbstractGerumapAction {
         } else if (selected.getMapNode() instanceof ProjectExplorer) {
             MessageGenerator.getInstance().CantDeleteException("My Project Explorer");
         } else {
-            MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode().notifySubscribers("DELETE");
-//            selected.getMapNode().removeSubscriber();
             MainFrame.getInstance().getMapTree().removeChild(selected);
         }
     }

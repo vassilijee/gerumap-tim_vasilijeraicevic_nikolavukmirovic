@@ -53,17 +53,17 @@ public abstract class MapNode implements IPublisher {
     }
 
     @Override
-    public void notifySubscribers(Object notification) {
+    public void notifySubscribers(Object object, Object notification) {
         if (notification == null || this.getSubscriberList() == null || this.getSubscriberList().isEmpty())
             return;
 
         for (ISubscriber listener : getSubscriberList()) {
-            listener.update(this, notification);
+            listener.update(object, notification);
         }
     }
 
     public void setName(String name) {
         this.name = name;
-        this.notifySubscribers("RENAME");
+        this.notifySubscribers(this,"RENAME");
     }
 }

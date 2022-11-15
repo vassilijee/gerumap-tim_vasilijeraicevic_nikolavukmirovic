@@ -40,7 +40,6 @@ public class AuthorAction extends AbstractGerumapAction {
                 if (result == JOptionPane.OK_OPTION) {
                     String newName = field.getText();
                     MainFrame.getInstance().getMapTree().changeAuthor((Project) selected.getMapNode(), newName);
-                    MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode().notifySubscribers("AUTHOR");
                 }
             }
         } else {

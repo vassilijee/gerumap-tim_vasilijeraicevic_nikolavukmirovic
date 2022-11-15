@@ -49,7 +49,6 @@ public class RenameAction extends AbstractGerumapAction {
                 if (result == JOptionPane.OK_OPTION) {
                     String newName = field.getText();
                     MainFrame.getInstance().getMapTree().renameChild(selected, newName);
-                    MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode().notifySubscribers("RENAME");
                 }
             }
         }

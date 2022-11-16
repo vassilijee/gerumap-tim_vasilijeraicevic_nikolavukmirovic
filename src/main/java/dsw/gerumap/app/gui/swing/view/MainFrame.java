@@ -5,7 +5,8 @@ import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.controller.ActionManager;
 import dsw.gerumap.app.gui.swing.tree.MapTree;
 import dsw.gerumap.app.gui.swing.tree.MapTreeImplementation;
-import dsw.gerumap.app.repository.implementation.MindMap;
+import dsw.gerumap.app.observer.ISubscriber;
+import dsw.gerumap.app.repository.implementation.Project;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +15,7 @@ import java.awt.*;
 
 @Getter
 @Setter
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements ISubscriber {
     private ActionManager actionManager;
     private JMenuBar menu;
     private JToolBar toolBar;
@@ -31,7 +32,6 @@ public class MainFrame extends JFrame {
         actionManager = new ActionManager();
         mapTree = new MapTreeImplementation();
 //        MessageGeneratorImplementation.getInstance().addSubscriber(new ConsoleLogger());
-//        zakomentarisano jer je log.txt readOnly iz nekog razloga
 //        MessageGenerator.getInstance().addSubscriber(new FileLogger());
         initialiseGUI();
     }
@@ -65,5 +65,13 @@ public class MainFrame extends JFrame {
             instance.initialise();
         }
         return instance;
+    }
+
+    @Override
+    public void update(Object publisher, Object notification) {
+        if (notification.equals("DELETE")) {
+            if (publisher instanceof Project)
+                System.out.println("NE RADI");
+        }
     }
 }

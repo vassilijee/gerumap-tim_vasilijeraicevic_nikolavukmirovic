@@ -1,13 +1,11 @@
 package dsw.gerumap.app.gui.swing.view;
 
-import dsw.gerumap.app.observer.IPublisher;
 import dsw.gerumap.app.observer.ISubscriber;
 import dsw.gerumap.app.repository.implementation.MindMap;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.swing.*;
-import java.awt.*;
 
 @Getter
 @Setter
@@ -22,7 +20,7 @@ public class MindMapView extends JPanel implements ISubscriber {
 
     @Override
     public void update(Object object, Object notification) {
-        if(notification.equals("RENAME")){
+        if (notification.equals("RENAME")) {
             this.removeAll();
             this.add(new JLabel(mindMap.getName()));
         }

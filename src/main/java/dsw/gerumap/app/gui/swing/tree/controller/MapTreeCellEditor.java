@@ -9,19 +9,19 @@ import javax.swing.tree.DefaultTreeCellEditor;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.EventObject;
 
-public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionListener {
+public class MapTreeCellEditor extends DefaultTreeCellEditor {
     private Object clickedOn = null;
 
     public MapTreeCellEditor(JTree tree, DefaultTreeCellRenderer renderer) {
         super(tree, renderer);
     }
 
-    public Component getTreeCellEditorComponent(JTree arg0, Object arg1, boolean arg2, boolean arg3, boolean arg4, int arg5) {
-        //super.getTreeCellEditorComponent(arg0,arg1,arg2,arg3,arg4,arg5);
+    public Component getTreeCellEditorComponent(JTree arg0, Object arg1, boolean arg2, boolean arg3, boolean arg4,
+            int arg5) {
+        // super.getTreeCellEditorComponent(arg0,arg1,arg2,arg3,arg4,arg5);
         clickedOn = arg1;
         JTextField edit = new JTextField(arg1.toString());
         edit.addActionListener(this);
@@ -34,7 +34,8 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
                 return true;
             } else if (((MouseEvent) arg0).getClickCount() == 2) {
                 if (MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode() instanceof Project) {
-                    MainFrame.getInstance().getProjectView().setProject((Project) MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode());
+                    MainFrame.getInstance().getProjectView()
+                            .setProject((Project) MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode());
                     MainFrame.getInstance().getMapTree().expandPath();
                 }
             }

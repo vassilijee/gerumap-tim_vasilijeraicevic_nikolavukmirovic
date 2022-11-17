@@ -1,6 +1,5 @@
 package dsw.gerumap.app;
 
-
 import dsw.gerumap.app.core.*;
 import dsw.gerumap.app.errorLogger.ErrorFactory;
 import dsw.gerumap.app.gui.swing.SwingGui;

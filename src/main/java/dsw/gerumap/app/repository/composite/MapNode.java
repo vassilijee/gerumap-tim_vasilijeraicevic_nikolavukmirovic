@@ -36,9 +36,11 @@ public abstract class MapNode implements IPublisher {
         }
         return false;
     }
+
     @Override
     public void addSubscriber(ISubscriber sub) {
-        if (sub == null) return;
+        if (sub == null)
+            return;
         if (this.getSubscriberList() == null)
             this.setSubscriberList(new ArrayList<>());
         if (this.getSubscriberList().contains(sub))
@@ -48,7 +50,8 @@ public abstract class MapNode implements IPublisher {
 
     @Override
     public void removeSubscriber(ISubscriber sub) {
-        if (sub == null || this.getSubscriberList() == null || !this.getSubscriberList().contains(sub)) return;
+        if (sub == null || this.getSubscriberList() == null || !this.getSubscriberList().contains(sub))
+            return;
         this.getSubscriberList().remove(sub);
     }
 
@@ -64,6 +67,6 @@ public abstract class MapNode implements IPublisher {
 
     public void setName(String name) {
         this.name = name;
-        this.notifySubscribers(this,"RENAME");
+        this.notifySubscribers(this, "RENAME");
     }
 }

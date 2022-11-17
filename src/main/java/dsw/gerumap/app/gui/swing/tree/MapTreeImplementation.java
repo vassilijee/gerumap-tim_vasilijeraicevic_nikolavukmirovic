@@ -1,6 +1,5 @@
 package dsw.gerumap.app.gui.swing.tree;
 
-
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.factory.GenFactory;
 import dsw.gerumap.app.factory.NodeFactory;
@@ -9,23 +8,18 @@ import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.repository.composite.MapNode;
 import dsw.gerumap.app.repository.composite.MapNodeComposite;
-import dsw.gerumap.app.repository.implementation.Element;
-import dsw.gerumap.app.repository.implementation.MindMap;
 import dsw.gerumap.app.repository.implementation.Project;
 import dsw.gerumap.app.repository.implementation.ProjectExplorer;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
-import javax.swing.tree.TreePath;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MapTreeImplementation implements MapTree {
     private MapTreeView treeView;
     private DefaultTreeModel treeModel;
-    private static int projectCount = 0;
-
 
     @Override
     public MapTreeView generateTree(ProjectExplorer projectExplorer) {
@@ -34,7 +28,6 @@ public class MapTreeImplementation implements MapTree {
         treeView = new MapTreeView(treeModel);
         return treeView;
     }
-
 
     @Override
     public void addChild(MapTreeItem parent) {
@@ -93,10 +86,5 @@ public class MapTreeImplementation implements MapTree {
         NodeFactory nodeFactory = GenFactory.generateFactory(parent);
         MapNode node = nodeFactory.createNode(parent, count);
         return node;
-    }
-
-    private int projectCount() {
-        projectCount++;
-        return projectCount;
     }
 }

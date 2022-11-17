@@ -7,7 +7,6 @@ import dsw.gerumap.app.repository.implementation.ProjectExplorer;
 public class GenFactory {
     private static NodeFactory node;
 
-
     public static NodeFactory generateFactory(Object obj) {
         if (obj instanceof ProjectExplorer)
             node = new ProjectFactory();

@@ -16,7 +16,6 @@ public abstract class MapNodeComposite extends MapNode {
         this.children = new ArrayList<>();
     }
 
-
     public abstract void addChild(MapNode child);
 
     public void removeChild(MapNode child) {

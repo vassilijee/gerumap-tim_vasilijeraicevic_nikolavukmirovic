@@ -27,7 +27,8 @@ public class AuthorAction extends AbstractGerumapAction {
             if (selected.getMapNode() instanceof Project) {
                 String text = ((Project) selected.getMapNode()).getAuthor();
                 JTextField field = new JTextField(text);
-                JOptionPane pane = new JOptionPane(field, JOptionPane.PLAIN_MESSAGE, JOptionPane.OK_CANCEL_OPTION, null);
+                JOptionPane pane = new JOptionPane(field, JOptionPane.PLAIN_MESSAGE, JOptionPane.OK_CANCEL_OPTION,
+                        null);
                 JDialog dialog = pane.createDialog("Author");
                 dialog.addWindowListener(new WindowAdapter() {
                     @Override

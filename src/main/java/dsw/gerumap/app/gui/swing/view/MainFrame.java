@@ -1,6 +1,5 @@
 package dsw.gerumap.app.gui.swing.view;
 
-
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.controller.ActionManager;
 import dsw.gerumap.app.gui.swing.tree.MapTree;
@@ -31,8 +30,9 @@ public class MainFrame extends JFrame implements ISubscriber {
     private void initialise() {
         actionManager = new ActionManager();
         mapTree = new MapTreeImplementation();
-//        MessageGeneratorImplementation.getInstance().addSubscriber(new ConsoleLogger());
-//        MessageGenerator.getInstance().addSubscriber(new FileLogger());
+        // MessageGeneratorImplementation.getInstance().addSubscriber(new
+        // ConsoleLogger());
+        // MessageGenerator.getInstance().addSubscriber(new FileLogger());
         initialiseGUI();
     }
 
@@ -49,7 +49,8 @@ public class MainFrame extends JFrame implements ISubscriber {
         setJMenuBar(menu);
         toolBar = new Toolbar();
         add(toolBar, BorderLayout.NORTH);
-        projectExplorer = mapTree.generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
+        projectExplorer = mapTree
+                .generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
         projectView = new ProjectView();
         JScrollPane scroll = new JScrollPane(projectExplorer);
         scroll.setMinimumSize(new Dimension(200, 150));

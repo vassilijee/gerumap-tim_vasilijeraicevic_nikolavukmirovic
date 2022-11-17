@@ -13,9 +13,6 @@ import dsw.gerumap.app.repository.implementation.Project;
 import dsw.gerumap.app.repository.implementation.ProjectExplorer;
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeNode;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MapTreeImplementation implements MapTree {
     private MapTreeView treeView;

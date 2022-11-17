@@ -20,6 +20,5 @@ public class MapRepositoryImpl implements MapRepository {
     @Override
     public void addChild(MapNodeComposite parent, MapNode child) {
         parent.addChild(child);
-        //System.out.println("repository: " + parent.getName() +  " ---> " + child.getName());
     }
 }

@@ -6,7 +6,6 @@ import java.awt.Image;
 
 public class InfoAction extends AbstractGerumapAction {
     public InfoAction() {
-        //putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_F4, InputEvent.ALT_DOWN_MASK));
         putValue(SMALL_ICON, loadIcon("/images/info.png"));
         putValue(NAME, "Info");
         putValue(SHORT_DESCRIPTION, "Info");

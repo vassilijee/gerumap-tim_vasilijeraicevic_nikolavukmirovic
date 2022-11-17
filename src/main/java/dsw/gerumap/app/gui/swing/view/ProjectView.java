@@ -6,7 +6,6 @@ import dsw.gerumap.app.repository.implementation.MindMap;
 import dsw.gerumap.app.repository.implementation.Project;
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -42,10 +41,8 @@ public class ProjectView extends JPanel implements ISubscriber {
                 tabbedPane.setTitleAt(project.getChildren().indexOf((MindMap) object), ((MindMap) object).getName());
             }
         } else if (notification.equals("DELETE")) {
-            if (object instanceof Project)
-                System.out.println("NE RADI");
-            else if (object instanceof MindMap)
-                tabbedPane.remove(project.getChildren().indexOf((MindMap) object));
+            tabbedPane.remove(project.getChildren().indexOf((MindMap) object));
+            System.out.println(object.toString());
         } else if (notification.equals("AUTHOR")) {
             this.projectName.setText(this.project.getName() + " Autor: " + this.project.getAuthor());
         }

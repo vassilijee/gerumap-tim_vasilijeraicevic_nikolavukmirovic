@@ -1,11 +1,9 @@
 package dsw.gerumap.app.gui.swing.controller;
 
-
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.message.EventType;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
@@ -14,7 +12,6 @@ import java.awt.event.WindowEvent;
 
 public class RenameAction extends AbstractGerumapAction {
     public RenameAction() {
-        //putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_F4, InputEvent.ALT_DOWN_MASK));
         putValue(SMALL_ICON, loadIcon("/images/rename.png"));
         putValue(NAME, "Rename");
         putValue(SHORT_DESCRIPTION, "Rename");

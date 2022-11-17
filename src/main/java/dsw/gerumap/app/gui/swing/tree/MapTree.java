@@ -22,6 +22,4 @@ public interface MapTree {
     void changeAuthor(Project child, String author);
 
     MapTreeItem getSelectedNode();
-
-    List<TreeNode> getChildren(MapTreeItem parent);
 }

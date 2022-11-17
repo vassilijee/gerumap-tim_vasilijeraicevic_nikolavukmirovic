@@ -1,21 +1,18 @@
 package dsw.gerumap.app.repository.implementation;
 
-import dsw.gerumap.app.observer.ISubscriber;
 import dsw.gerumap.app.repository.composite.MapNode;
 import dsw.gerumap.app.repository.composite.MapNodeComposite;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Getter
 @Setter
 public class Project extends MapNodeComposite {
-    private String author = "/";
+    private String author;
 
     public Project(String name, MapNode parent) {
         super(name, parent);
+        this.author = "/";
     }
 
     @Override

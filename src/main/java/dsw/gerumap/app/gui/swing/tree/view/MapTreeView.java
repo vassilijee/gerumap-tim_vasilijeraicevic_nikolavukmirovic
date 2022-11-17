@@ -2,7 +2,6 @@ package dsw.gerumap.app.gui.swing.tree.view;
 
 import dsw.gerumap.app.gui.swing.tree.controller.MapTreeCellEditor;
 import dsw.gerumap.app.gui.swing.tree.controller.MapTreeSelectionListener;
-import dsw.gerumap.app.observer.ISubscriber;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;

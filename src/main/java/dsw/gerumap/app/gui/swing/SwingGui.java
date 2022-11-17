@@ -2,7 +2,6 @@ package dsw.gerumap.app.gui.swing;
 
 
 import dsw.gerumap.app.core.Gui;
-import dsw.gerumap.app.gui.swing.tree.MapTree;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.message.Message;
 

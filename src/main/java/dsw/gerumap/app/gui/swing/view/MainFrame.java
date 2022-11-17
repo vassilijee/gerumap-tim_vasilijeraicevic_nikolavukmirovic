@@ -7,6 +7,7 @@ import dsw.gerumap.app.gui.swing.tree.MapTree;
 import dsw.gerumap.app.gui.swing.tree.MapTreeImplementation;
 import dsw.gerumap.app.observer.ISubscriber;
 import dsw.gerumap.app.repository.implementation.Project;
+import dsw.gerumap.app.repository.implementation.ProjectExplorer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,8 +32,6 @@ public class MainFrame extends JFrame implements ISubscriber {
     private void initialise() {
         actionManager = new ActionManager();
         mapTree = new MapTreeImplementation();
-//        MessageGeneratorImplementation.getInstance().addSubscriber(new ConsoleLogger());
-//        MessageGenerator.getInstance().addSubscriber(new FileLogger());
         initialiseGUI();
     }
 
@@ -68,9 +67,9 @@ public class MainFrame extends JFrame implements ISubscriber {
     }
 
     @Override
-    public void update(Object publisher, Object notification) {
+    public void update(Object object, Object notification) {
         if (notification.equals("DELETE")) {
-            if (publisher instanceof Project)
+            if (object instanceof Project)
                 System.out.println("NE RADI");
         }
     }

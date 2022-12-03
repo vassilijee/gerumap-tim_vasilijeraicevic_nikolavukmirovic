@@ -6,6 +6,8 @@ import java.awt.Image;
 
 public class InfoAction extends AbstractGerumapAction {
     public InfoAction() {
+        // putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_F4,
+        // InputEvent.ALT_DOWN_MASK));
         putValue(SMALL_ICON, loadIcon("/images/info.png"));
         putValue(NAME, "Info");
         putValue(SHORT_DESCRIPTION, "Info");
@@ -18,7 +20,7 @@ public class InfoAction extends AbstractGerumapAction {
         Image novaSlika = slika.getImage().getScaledInstance(400, 300, Image.SCALE_DEFAULT);
         ImageIcon icon = new ImageIcon(novaSlika);
         JLabel label2 = new JLabel(icon);
-        JLabel[] arr = {label2, label1};
+        JLabel[] arr = { label2, label1 };
         JOptionPane pane = new JOptionPane(arr);
         JDialog dialog = pane.createDialog("Info");
         dialog.setVisible(true);

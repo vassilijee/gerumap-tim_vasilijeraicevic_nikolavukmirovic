@@ -1,13 +1,11 @@
 package dsw.gerumap.app.gui.swing.view;
 
-
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.controller.ActionManager;
 import dsw.gerumap.app.gui.swing.tree.MapTree;
 import dsw.gerumap.app.gui.swing.tree.MapTreeImplementation;
 import dsw.gerumap.app.observer.ISubscriber;
 import dsw.gerumap.app.repository.implementation.Project;
-import dsw.gerumap.app.repository.implementation.ProjectExplorer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,6 +30,9 @@ public class MainFrame extends JFrame implements ISubscriber {
     private void initialise() {
         actionManager = new ActionManager();
         mapTree = new MapTreeImplementation();
+        // MessageGeneratorImplementation.getInstance().addSubscriber(new
+        // ConsoleLogger());
+        // MessageGenerator.getInstance().addSubscriber(new FileLogger());
         initialiseGUI();
     }
 
@@ -48,7 +49,8 @@ public class MainFrame extends JFrame implements ISubscriber {
         setJMenuBar(menu);
         toolBar = new Toolbar();
         add(toolBar, BorderLayout.NORTH);
-        projectExplorer = mapTree.generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
+        projectExplorer = mapTree
+                .generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
         projectView = new ProjectView();
         JScrollPane scroll = new JScrollPane(projectExplorer);
         scroll.setMinimumSize(new Dimension(200, 150));
@@ -67,9 +69,9 @@ public class MainFrame extends JFrame implements ISubscriber {
     }
 
     @Override
-    public void update(Object object, Object notification) {
+    public void update(Object publisher, Object notification) {
         if (notification.equals("DELETE")) {
-            if (object instanceof Project)
+            if (publisher instanceof Project)
                 System.out.println("NE RADI");
         }
     }

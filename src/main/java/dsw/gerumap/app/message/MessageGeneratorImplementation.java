@@ -19,21 +19,26 @@ public class MessageGeneratorImplementation implements MessageGenerator {
 
     @Override
     public void addSubscriber(ISubscriber sub) {
-        if (sub == null) return;
-        if (this.getSubscriberList() == null) this.setSubscriberList(new ArrayList<>());
-        if (this.getSubscriberList().contains(sub)) return;
+        if (sub == null)
+            return;
+        if (this.getSubscriberList() == null)
+            this.setSubscriberList(new ArrayList<>());
+        if (this.getSubscriberList().contains(sub))
+            return;
         this.getSubscriberList().add(sub);
     }
 
     @Override
     public void removeSubscriber(ISubscriber sub) {
-        if (sub == null || this.getSubscriberList() == null || !this.getSubscriberList().contains(sub)) return;
+        if (sub == null || this.getSubscriberList() == null || !this.getSubscriberList().contains(sub))
+            return;
         this.getSubscriberList().remove(sub);
     }
 
     @Override
     public void notifySubscribers(Object object, Object notification) {
-        if (notification == null || this.getSubscriberList() == null || this.getSubscriberList().isEmpty()) return;
+        if (notification == null || this.getSubscriberList() == null || this.getSubscriberList().isEmpty())
+            return;
 
         for (ISubscriber listener : getSubscriberList()) {
             listener.update(object, notification);
@@ -43,7 +48,8 @@ public class MessageGeneratorImplementation implements MessageGenerator {
     @Override
     public void generate(EventType eventType) {
         if (eventType.equals(EventType.NAME_CANNOT_BE_EMPTY)) {
-            this.notifySubscribers(new Message("[ERROR] [" + timeStamp + "] Polje za ime ne moze biti prazno."), "ERROR");
+            this.notifySubscribers(new Message("[ERROR] [" + timeStamp + "] Polje za ime ne moze biti prazno."),
+                    "ERROR");
         } else if (eventType.equals(EventType.AUTHOR_CANNOT_BE_ADDED)) {
             this.notifySubscribers(new Message("[ERROR] [" + timeStamp + "] Cvor ne moze imati autora"), "ERROR");
         } else if (eventType.equals(EventType.CHILD_CANNOT_BE_ADDED)) {

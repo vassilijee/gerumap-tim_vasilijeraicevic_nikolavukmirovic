@@ -4,11 +4,10 @@ import dsw.gerumap.app.repository.composite.MapNode;
 import dsw.gerumap.app.repository.composite.MapNodeComposite;
 
 public class MindMap extends MapNodeComposite {
-    private boolean template;
+    // private boolean template = false;
 
     public MindMap(String name, MapNode parent) {
         super(name, parent);
-        this.template = false;
     }
 
     @Override

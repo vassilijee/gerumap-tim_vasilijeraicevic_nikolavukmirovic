@@ -15,7 +15,8 @@ public class ApplicationFramework {
         this.gui.start();
     }
 
-    public void initialise(Gui gui, MapRepository mapRepository, ErrorLogger errorLogger, MessageGenerator messageGenerator) {
+    public void initialise(Gui gui, MapRepository mapRepository, ErrorLogger errorLogger,
+            MessageGenerator messageGenerator) {
         this.gui = gui;
         this.mapRepository = mapRepository;
         this.errorLogger = errorLogger;
@@ -35,4 +36,3 @@ public class ApplicationFramework {
         return instance;
     }
 }
-

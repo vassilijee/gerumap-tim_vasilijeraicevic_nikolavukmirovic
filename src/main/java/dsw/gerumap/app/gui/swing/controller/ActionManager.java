@@ -18,6 +18,7 @@ public class ActionManager {
     private MoveElementAction moveElementAction;
     private NewSubjectAction newSubjectAction;
     private NewLinkAction newLinkAction;
+    private DeleteElementAction deleteElementAction;
 
     public ActionManager() {
         initialiseActions();
@@ -34,5 +35,6 @@ public class ActionManager {
         moveElementAction = new MoveElementAction();
         newSubjectAction = new NewSubjectAction();
         newLinkAction = new NewLinkAction();
+        deleteElementAction = new DeleteElementAction();
     }
 }

@@ -31,23 +31,23 @@ public class StateManager {
         return currState;
     }
 
-    public void setAddLinkState(AddLinkState addLinkState) {
+    public void setAddLinkState() {
         currState = addLinkState;
     }
 
-    public void setAddTopicState(AddTopicState addTopicState) {
+    public void setAddTopicState() {
         currState = addTopicState;
     }
 
-    public void setDeleteState(DeleteState deleteState) {
+    public void setDeleteState() {
         currState = deleteState;
     }
 
-    public void setMoveState(MoveState moveState) {
+    public void setMoveState() {
         currState = moveState;
     }
 
-    public void setSelectState(SelectState selectState) {
+    public void setSelectState() {
         currState = selectState;
     }
 }

@@ -4,6 +4,7 @@ import dsw.gerumap.app.observer.ISubscriber;
 import dsw.gerumap.app.repository.composite.MapNode;
 import dsw.gerumap.app.repository.implementation.MindMap;
 import dsw.gerumap.app.repository.implementation.Project;
+import dsw.gerumap.app.state.StateManager;
 import lombok.Getter;
 import lombok.Setter;
 import javax.swing.*;
@@ -17,6 +18,7 @@ public class ProjectView extends JPanel implements ISubscriber {
     private JLabel projectName;
     private JPanel desktop;
     private Project project;
+    private StateManager stateManager;
 
     public ProjectView() {
         this.project = null;
@@ -25,6 +27,7 @@ public class ProjectView extends JPanel implements ISubscriber {
         tabbedPane = new TabbedPane();
         this.add(tabbedPane, BorderLayout.CENTER);
         this.add(projectName, BorderLayout.NORTH);
+        stateManager = new StateManager();
     }
 
     @Override
@@ -69,5 +72,21 @@ public class ProjectView extends JPanel implements ISubscriber {
             tab.add(new JLabel(tab.getTitle()));
         }
         MainFrame.getInstance().getMapTree().expandPath();
+    }
+
+    public void startAddLinkState(){
+        this.stateManager.setAddLinkState();
+    }
+    public void startAddTopicState(){
+        this.stateManager.setAddTopicState();
+    }
+    public void startDeleteState(){
+        this.stateManager.setDeleteState();
+    }
+    public void startMoveState(){
+        this.stateManager.setMoveState();
+    }
+    public void startSelectState(){
+        this.stateManager.setSelectState();
     }
 }

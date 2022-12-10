@@ -1,5 +1,7 @@
 package dsw.gerumap.app.gui.swing.controller;
 
+import dsw.gerumap.app.gui.swing.view.MainFrame;
+
 import java.awt.event.ActionEvent;
 
 public class NewLinkAction extends AbstractGerumapAction {
@@ -13,6 +15,6 @@ public class NewLinkAction extends AbstractGerumapAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        MainFrame.getInstance().getProjectView().startAddLinkState();
     }
 }

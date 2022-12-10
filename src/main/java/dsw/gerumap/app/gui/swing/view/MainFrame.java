@@ -22,6 +22,7 @@ public class MainFrame extends JFrame implements ISubscriber {
     private static MainFrame instance;
     private ProjectView projectView;
     private JTree projectExplorer;
+    private JToolBar vToolbar;
 
     private MainFrame() {
 
@@ -58,6 +59,8 @@ public class MainFrame extends JFrame implements ISubscriber {
         getContentPane().add(split, BorderLayout.CENTER);
         split.setDividerLocation(250);
         split.setOneTouchExpandable(true);
+        vToolbar = new VToolbar();
+        add(vToolbar, BorderLayout.EAST);
     }
 
     public static MainFrame getInstance() {

@@ -1,4 +1,4 @@
 package dsw.gerumap.app.state;
 
-public class SelectState {
+public class StateManager {
 }

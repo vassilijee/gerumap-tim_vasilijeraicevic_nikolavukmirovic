@@ -1,4 +1,6 @@
 package dsw.gerumap.app.state.concrete;
 
-public class AddLinkState {
+import dsw.gerumap.app.state.State;
+
+public class AddLinkState extends State {
 }

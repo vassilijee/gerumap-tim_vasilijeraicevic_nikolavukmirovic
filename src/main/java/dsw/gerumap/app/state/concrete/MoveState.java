@@ -1,4 +1,6 @@
 package dsw.gerumap.app.state.concrete;
 
-public class MoveState {
+import dsw.gerumap.app.state.State;
+
+public class MoveState extends State {
 }

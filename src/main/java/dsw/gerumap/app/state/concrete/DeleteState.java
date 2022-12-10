@@ -1,4 +1,6 @@
 package dsw.gerumap.app.state.concrete;
 
-public class DeleteState {
+import dsw.gerumap.app.state.State;
+
+public class DeleteState extends State {
 }

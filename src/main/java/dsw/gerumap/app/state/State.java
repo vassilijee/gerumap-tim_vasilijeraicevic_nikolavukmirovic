@@ -1,4 +1,4 @@
 package dsw.gerumap.app.state;
 
-public interface State {
+public abstract class State {
 }

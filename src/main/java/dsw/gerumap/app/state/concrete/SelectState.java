@@ -1,4 +1,6 @@
 package dsw.gerumap.app.state.concrete;
 
-public class SelectState {
+import dsw.gerumap.app.state.State;
+
+public class SelectState extends State {
 }

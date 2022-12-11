@@ -93,7 +93,7 @@ public class ProjectView extends JPanel implements ISubscriber {
         this.stateManager.setSelectState();
     }
 
-    public void clickedMouse(int x, int y, MindMap m){
+    public void clickedMouse(int x, int y, MindMapView m){
         this.stateManager.getCurrent().clickedMouse(x, y, m);
     }
 }

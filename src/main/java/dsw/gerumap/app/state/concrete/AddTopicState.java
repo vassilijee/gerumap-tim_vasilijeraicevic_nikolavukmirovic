@@ -1,15 +1,15 @@
 package dsw.gerumap.app.state.concrete;
 
-import dsw.gerumap.app.observer.ISubscriber;
+import dsw.gerumap.app.gui.swing.view.MindMapView;
 import dsw.gerumap.app.repository.implementation.MindMap;
-import dsw.gerumap.app.repository.implementation.Subject;
+import dsw.gerumap.app.repository.implementation.Topic;
 import dsw.gerumap.app.state.State;
 
 public class AddTopicState extends State {
     @Override
-    public void clickedMouse(int x, int y, MindMap m) {
+    public void clickedMouse(int x, int y, MindMapView m) {
         super.clickedMouse(x, y, m);
-        Subject s = new Subject("Subject", m, x, y);
-        m.addChild(s);
+        Topic t = new Topic("Topic", m.getMindMap(), x, y);
+        m.getMindMap().addChild(t);
     }
 }

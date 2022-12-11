@@ -13,6 +13,7 @@ public class TopicView extends ElementView{
     private Topic topic;
 
     public TopicView(Topic topic) {
+        super(topic);
         this.topic = topic;
         this.s = new Ellipse2D.Double(topic.getX(), topic.getY(), topic.getW(), topic.getH());
     }

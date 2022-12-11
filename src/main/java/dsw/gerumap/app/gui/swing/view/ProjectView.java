@@ -72,7 +72,7 @@ public class ProjectView extends JPanel implements ISubscriber {
             tab.setMindMap((MindMap) child);
             child.addSubscriber(this);
             tabbedPane.add(tab.getTitle(), tab);
-            tab.add(new JLabel(tab.getTitle()));
+            //tab.add(new JLabel(tab.getTitle()));
         }
         MainFrame.getInstance().getMapTree().expandPath();
     }

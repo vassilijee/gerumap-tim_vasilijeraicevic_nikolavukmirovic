@@ -13,6 +13,10 @@ public abstract class ElementView implements ISubscriber {
     protected Shape s;
     private Element element;
 
+    public ElementView(Element element) {
+        this.element = element;
+    }
+
     public void draw(Graphics g){
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(element.getColor());

@@ -13,6 +13,7 @@ public class LinkView extends ElementView{
     private Link link;
 
     public LinkView(Link link) {
+        super(link);
         this.link = link;
         this.s = new Line2D.Double();
     }

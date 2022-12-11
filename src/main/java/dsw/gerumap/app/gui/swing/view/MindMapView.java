@@ -40,19 +40,21 @@ public class MindMapView extends JPanel implements ISubscriber {
     @Override
     public void update(Object object, Object notification) {
         if (notification.equals("RENAME")) {
-            this.removeAll();
-            this.add(new JLabel(mindMap.getName()));
+            //this.removeAll();
+            //this.add(new JLabel(mindMap.getName()));
         }else if(notification.equals("NEW")){
             if(object instanceof Topic){
                 TopicView topicView = new TopicView((Topic) object);
                 painters.add(topicView);
                 ((Topic) object).addSubscriber(topicView);
                 ((Topic) object).addSubscriber(this);
+                repaint();
             }else if(object instanceof Link){
                 LinkView linkView = new LinkView((Link) object);
                 painters.add(linkView);
                 ((Link) object).addSubscriber(linkView);
                 ((Link) object).addSubscriber(this);
+                repaint();
             }
         }
     }
@@ -68,11 +70,13 @@ public class MindMapView extends JPanel implements ISubscriber {
                 painters.add(topicView);
                 child.addSubscriber(this);
                 child.addSubscriber(topicView);
+                repaint();
             }else if(child instanceof Link){
                 LinkView linkView = new LinkView((Link) child);
                 painters.add(linkView);
                 child.addSubscriber(this);
                 child.addSubscriber(linkView);
+                repaint();
             }
         }
     }

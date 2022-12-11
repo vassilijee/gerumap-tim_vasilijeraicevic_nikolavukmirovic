@@ -1,8 +1,8 @@
 package dsw.gerumap.app.state;
 
-import dsw.gerumap.app.gui.swing.view.MindMapView;
+import dsw.gerumap.app.repository.implementation.MindMap;
 
 public abstract class State {
-    public void mousePressed(int x, int y, MindMapView m) {
+    public void clickedMouse(int x, int y, MindMap m) {
     }
 }

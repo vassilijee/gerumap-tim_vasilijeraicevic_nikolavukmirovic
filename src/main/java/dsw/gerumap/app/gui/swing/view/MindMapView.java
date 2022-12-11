@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class MindMapView extends JPanel implements ISubscriber {
     private String title;
     private MindMap mindMap;
     private List<ElementView> painters;
+    private MindMapView mindMapView = this;
 
     public MindMapView() {
         this.mindMap = null;
@@ -31,6 +33,7 @@ public class MindMapView extends JPanel implements ISubscriber {
         if (notification.equals("RENAME")) {
             this.removeAll();
             this.add(new JLabel(mindMap.getName()));
+        }else if(notification.equals("MEW")){
         }
     }
 
@@ -42,9 +45,16 @@ public class MindMapView extends JPanel implements ISubscriber {
 
     private class MouseController extends MouseAdapter{
         public void mousePressed(MouseEvent e){
-            if(e.getButton() == MouseEvent.BUTTON1){
+            MainFrame.getInstance().getProjectView().clickedMouse(e.getX(), e.getY(), mindMapView.getMindMap());
+        }
+    }
 
-            }
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        for (ElementView p:
+             painters) {
+            //p.draw(g);
         }
     }
 }

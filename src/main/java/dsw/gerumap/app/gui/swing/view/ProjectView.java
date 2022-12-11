@@ -2,9 +2,9 @@ package dsw.gerumap.app.gui.swing.view;
 
 import dsw.gerumap.app.observer.ISubscriber;
 import dsw.gerumap.app.repository.composite.MapNode;
+import dsw.gerumap.app.repository.implementation.Element;
 import dsw.gerumap.app.repository.implementation.MindMap;
 import dsw.gerumap.app.repository.implementation.Project;
-import dsw.gerumap.app.state.State;
 import dsw.gerumap.app.state.StateManager;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,10 +34,12 @@ public class ProjectView extends JPanel implements ISubscriber {
     @Override
     public void update(Object object, Object notification) {
         if (notification.equals("NEW")) {
-            MindMapView tab = new MindMapView();
-            tab.setMindMap((MindMap) object);
-            ((MindMap) object).addSubscriber(this);
-            tabbedPane.addTab(((MindMap) object).getName(), tab);
+            if(object instanceof MindMap){
+                MindMapView tab = new MindMapView();
+                tab.setMindMap((MindMap) object);
+                ((MindMap) object).addSubscriber(this);
+                tabbedPane.addTab(((MindMap) object).getName(), tab);
+            }
         } else if (notification.equals("RENAME")) {
             if (object instanceof Project) {
                 this.projectName.setText(this.project.getName() + " Autor: " + this.project.getAuthor());
@@ -91,8 +93,7 @@ public class ProjectView extends JPanel implements ISubscriber {
         this.stateManager.setSelectState();
     }
 
-    public void mousePressed(int x, int y, MindMapView m){
-        this.stateManager.getCurrent().mousePressed(x, y, m);
-
+    public void clickedMouse(int x, int y, MindMap m){
+        this.stateManager.getCurrent().clickedMouse(x, y, m);
     }
 }

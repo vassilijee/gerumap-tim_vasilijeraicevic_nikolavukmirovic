@@ -92,7 +92,9 @@ public class MindMapView extends JPanel implements ISubscriber {
         super.paintComponent(g);
         for (ElementView p:
              painters) {
+            System.out.println(painters.size());
             p.draw(g);
+            System.out.println("CRTAM");
         }
     }
 }

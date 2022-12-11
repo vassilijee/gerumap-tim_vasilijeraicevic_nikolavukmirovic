@@ -4,6 +4,7 @@ import dsw.gerumap.app.observer.ISubscriber;
 import dsw.gerumap.app.repository.composite.MapNode;
 import dsw.gerumap.app.repository.implementation.MindMap;
 import dsw.gerumap.app.repository.implementation.Project;
+import dsw.gerumap.app.state.State;
 import dsw.gerumap.app.state.StateManager;
 import lombok.Getter;
 import lombok.Setter;
@@ -83,10 +84,15 @@ public class ProjectView extends JPanel implements ISubscriber {
     public void startDeleteState(){
         this.stateManager.setDeleteState();
     }
-    public void startMoveState(){
-        this.stateManager.setMoveState();
-    }
+//    public void startMoveState(){
+//        this.stateManager.setMoveState();
+//    }
     public void startSelectState(){
         this.stateManager.setSelectState();
+    }
+
+    public void mousePressed(int x, int y, MindMapView m){
+        this.stateManager.getCurrent().mousePressed(x, y, m);
+
     }
 }

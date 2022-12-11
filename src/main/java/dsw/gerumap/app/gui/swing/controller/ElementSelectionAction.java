@@ -15,5 +15,6 @@ public class ElementSelectionAction extends AbstractGerumapAction{
     @Override
     public void actionPerformed(ActionEvent e) {
         MainFrame.getInstance().getProjectView().startSelectState();
+        System.out.println("Select state");
     }
 }

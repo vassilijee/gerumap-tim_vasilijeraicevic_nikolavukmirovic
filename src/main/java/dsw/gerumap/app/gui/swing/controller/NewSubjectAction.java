@@ -16,5 +16,6 @@ public class NewSubjectAction extends AbstractGerumapAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         MainFrame.getInstance().getProjectView().startAddTopicState();
+        System.out.println("Add topic state");
     }
 }

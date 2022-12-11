@@ -16,5 +16,6 @@ public class NewLinkAction extends AbstractGerumapAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         MainFrame.getInstance().getProjectView().startAddLinkState();
+        System.out.println("Add link state");
     }
 }

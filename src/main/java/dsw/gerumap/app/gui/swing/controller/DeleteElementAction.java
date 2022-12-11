@@ -15,5 +15,6 @@ public class DeleteElementAction extends AbstractGerumapAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         MainFrame.getInstance().getProjectView().startDeleteState();
+        System.out.println("Delete state");
     }
 }

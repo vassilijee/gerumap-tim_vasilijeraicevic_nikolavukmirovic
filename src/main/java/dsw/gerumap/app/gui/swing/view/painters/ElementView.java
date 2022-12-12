@@ -18,18 +18,18 @@ public abstract class ElementView implements ISubscriber {
         this.element = element;
     }
 
-    public void draw(Graphics g){
+    public void draw(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(element.getColor());
         g2.setStroke(new BasicStroke(element.getStroke()));
         g2.draw(s);
-        if(element instanceof Topic){
+        if (element instanceof Topic) {
             Topic t = (Topic) element;
-            g2.drawString(t.getName(), t.getX()+t.getW()/3, t.getY()+t.getH()/2);
+            g2.drawString(t.getName(), t.getX() + t.getW() / 3, t.getY() + t.getH() / 2);
         }
     }
 
-    public void elementAt(int x, int y){
+    public void elementAt(int x, int y) {
         s.contains(x, y);
     }
 }

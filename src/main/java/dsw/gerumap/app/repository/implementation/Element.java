@@ -11,6 +11,7 @@ import java.awt.*;
 public class Element extends MapNode {
     private Color color;
     private int stroke;
+
     public Element(String name, MapNode parent) {
         super(name, parent);
         this.color = Color.black;

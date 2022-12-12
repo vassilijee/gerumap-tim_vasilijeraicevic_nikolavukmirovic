@@ -44,8 +44,8 @@ public class MindMapView extends JPanel implements ISubscriber {
     public void update(Object object, Object notification) {
         if (notification.equals("RENAME")) {
             repaint();
-        }else if(notification.equals("NEW")){
-            if(object instanceof Topic){
+        } else if (notification.equals("NEW")) {
+            if (object instanceof Topic) {
                 TopicView topicView = new TopicView((Topic) object);
                 painters.add(topicView);
                 ((Topic) object).addSubscriber(topicView);
@@ -72,7 +72,7 @@ public class MindMapView extends JPanel implements ISubscriber {
                     }
                 }
                 repaint();
-            }else if(object instanceof Link){
+            } else if (object instanceof Link) {
                 LinkView linkView = new LinkView((Link) object);
                 painters.add(linkView);
                 ((Link) object).addSubscriber(linkView);
@@ -86,15 +86,15 @@ public class MindMapView extends JPanel implements ISubscriber {
         this.mindMap = mindMap;
         mindMap.addSubscriber(this);
         title = mindMap.getName();
-        for (MapNode child:
-             mindMap.getChildren()) {
-            if(child instanceof Topic){
+        for (MapNode child :
+                mindMap.getChildren()) {
+            if (child instanceof Topic) {
                 TopicView topicView = new TopicView((Topic) child);
                 painters.add(topicView);
                 child.addSubscriber(this);
                 child.addSubscriber(topicView);
                 repaint();
-            }else if(child instanceof Link){
+            } else if (child instanceof Link) {
                 LinkView linkView = new LinkView((Link) child);
                 painters.add(linkView);
                 child.addSubscriber(this);
@@ -104,8 +104,8 @@ public class MindMapView extends JPanel implements ISubscriber {
         }
     }
 
-    private class MouseController extends MouseAdapter{
-        public void mousePressed(MouseEvent e){
+    private class MouseController extends MouseAdapter {
+        public void mousePressed(MouseEvent e) {
             MainFrame.getInstance().getProjectView().clickedMouse(e.getX(), e.getY(), mindMapView);
         }
     }
@@ -113,8 +113,8 @@ public class MindMapView extends JPanel implements ISubscriber {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for (ElementView p:
-             painters) {
+        for (ElementView p :
+                painters) {
             p.draw(g);
         }
     }

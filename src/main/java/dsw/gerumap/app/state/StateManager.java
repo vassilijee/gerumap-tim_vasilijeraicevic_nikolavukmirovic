@@ -18,16 +18,16 @@ public class StateManager {
         initState();
     }
 
-    private void initState(){
+    private void initState() {
         addLinkState = new AddLinkState();
         addTopicState = new AddTopicState();
         deleteState = new DeleteState();
         moveState = new MoveState();
         selectState = new SelectState();
-        currState = selectState;
+        currState = addTopicState;
     }
 
-    public State getCurrent(){
+    public State getCurrent() {
         return currState;
     }
 

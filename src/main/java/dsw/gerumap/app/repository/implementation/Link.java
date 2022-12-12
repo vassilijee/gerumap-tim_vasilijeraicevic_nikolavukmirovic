@@ -6,9 +6,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Link extends Element{
+public class Link extends Element {
     private Topic topidOd;
     private Topic topicDo;
+
     public Link(String name, MapNode parent) {
         super(name, parent);
     }

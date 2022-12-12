@@ -9,7 +9,7 @@ import java.awt.geom.Ellipse2D;
 
 @Getter
 @Setter
-public class TopicView extends ElementView{
+public class TopicView extends ElementView {
     private Topic topic;
 
     public TopicView(Topic topic) {
@@ -20,7 +20,7 @@ public class TopicView extends ElementView{
 
     @Override
     public void update(Object publisher, Object notification) {
-        if(notification.equals("RENAME")){
+        if (notification.equals("RENAME")) {
             this.s = new Ellipse2D.Double(topic.getX(), topic.getY(), topic.getW(), topic.getH());
         }
     }

@@ -6,8 +6,9 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class Topic extends Element{
+public class Topic extends Element {
     private int x, y, w, h;
+
     public Topic(String name, MapNode parent, int a, int b) {
         super(name, parent);
         this.x = a;

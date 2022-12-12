@@ -9,7 +9,7 @@ import java.awt.geom.Line2D;
 
 @Getter
 @Setter
-public class LinkView extends ElementView{
+public class LinkView extends ElementView {
     private Link link;
 
     public LinkView(Link link) {

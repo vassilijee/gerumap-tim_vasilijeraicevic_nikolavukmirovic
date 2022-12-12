@@ -7,6 +7,7 @@ import dsw.gerumap.app.observer.ISubscriber;
 import dsw.gerumap.app.repository.composite.MapNode;
 import dsw.gerumap.app.repository.implementation.Link;
 import dsw.gerumap.app.repository.implementation.MindMap;
+import dsw.gerumap.app.repository.implementation.Project;
 import dsw.gerumap.app.repository.implementation.Topic;
 import dsw.gerumap.app.state.State;
 import lombok.Getter;
@@ -16,6 +17,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,14 +43,34 @@ public class MindMapView extends JPanel implements ISubscriber {
     @Override
     public void update(Object object, Object notification) {
         if (notification.equals("RENAME")) {
-            //this.removeAll();
-            //this.add(new JLabel(mindMap.getName()));
+            repaint();
         }else if(notification.equals("NEW")){
             if(object instanceof Topic){
                 TopicView topicView = new TopicView((Topic) object);
                 painters.add(topicView);
                 ((Topic) object).addSubscriber(topicView);
                 ((Topic) object).addSubscriber(this);
+                JTextField field = new JTextField();
+                JOptionPane pane = new JOptionPane(field, JOptionPane.PLAIN_MESSAGE, JOptionPane.OK_CANCEL_OPTION,
+                        null);
+                JDialog dialog = pane.createDialog("Tekst");
+                dialog.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowOpened(WindowEvent e) {
+                        field.requestFocus();
+                        field.selectAll();
+                    }
+                });
+                dialog.setVisible(true);
+                dialog.dispose();
+                Object value = pane.getValue();
+                if (value instanceof Integer) {
+                    int result = (int) value;
+                    if (result == JOptionPane.OK_OPTION) {
+                        String tekst = field.getText();
+                        topicView.getTopic().setName(tekst);
+                    }
+                }
                 repaint();
             }else if(object instanceof Link){
                 LinkView linkView = new LinkView((Link) object);
@@ -92,9 +115,7 @@ public class MindMapView extends JPanel implements ISubscriber {
         super.paintComponent(g);
         for (ElementView p:
              painters) {
-            System.out.println(painters.size());
             p.draw(g);
-            System.out.println("CRTAM");
         }
     }
 }

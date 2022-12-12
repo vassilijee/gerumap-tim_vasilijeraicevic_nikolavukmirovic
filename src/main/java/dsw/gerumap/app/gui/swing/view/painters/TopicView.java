@@ -20,6 +20,8 @@ public class TopicView extends ElementView{
 
     @Override
     public void update(Object publisher, Object notification) {
-
+        if(notification.equals("RENAME")){
+            this.s = new Ellipse2D.Double(topic.getX(), topic.getY(), topic.getW(), topic.getH());
+        }
     }
 }

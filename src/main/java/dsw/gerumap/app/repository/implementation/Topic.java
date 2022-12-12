@@ -12,7 +12,14 @@ public class Topic extends Element{
         super(name, parent);
         this.x = a;
         this.y = b;
-        this.w = 200;
-        this.h = 100;
+        this.w = 1;
+        this.h = 1;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.w = name.length() * 15 + 10;
+        this.h = 50;
+        super.setName(name);
     }
 }

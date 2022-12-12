@@ -13,7 +13,7 @@ public class Element extends MapNode {
     private int stroke;
     public Element(String name, MapNode parent) {
         super(name, parent);
-        this.color = Color.green;
+        this.color = Color.black;
         this.stroke = 2;
     }
 }

@@ -15,9 +15,15 @@ public class Link extends Element {
         super(name, parent);
     }
 
-    public void setEndXY(int x, int y){
+    public void setEndXY(int x, int y) {
         this.setEndX(x);
         this.setEndY(y);
+        this.notifySubscribers(this, "REPAINT");
+    }
+
+    public void setStartXY(int x, int y) {
+        this.setStartX(x);
+        this.setStartY(y);
         this.notifySubscribers(this, "REPAINT");
     }
 }

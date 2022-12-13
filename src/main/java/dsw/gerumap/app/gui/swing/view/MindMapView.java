@@ -79,7 +79,7 @@ public class MindMapView extends JPanel implements ISubscriber {
                 ((Link) object).addSubscriber(this);
                 repaint();
             }
-        }else if(notification.equals("REPAINT")){
+        } else if (notification.equals("REPAINT")) {
             repaint();
         }
     }
@@ -110,9 +110,11 @@ public class MindMapView extends JPanel implements ISubscriber {
         public void mousePressed(MouseEvent e) {
             MainFrame.getInstance().getProjectView().clickedMouse(e.getX(), e.getY(), mindMapView);
         }
-        public void mouseReleased(MouseEvent e){
+
+        public void mouseReleased(MouseEvent e) {
             MainFrame.getInstance().getProjectView().releasedMouse(e.getX(), e.getY(), mindMapView);
         }
+
         public void mouseDragged(MouseEvent e) {
             MainFrame.getInstance().getProjectView().draggedMouse(e.getX(), e.getY(), mindMapView);
         }

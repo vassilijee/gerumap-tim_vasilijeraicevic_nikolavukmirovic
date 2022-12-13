@@ -8,9 +8,9 @@ public class AddTopicState extends State {
     static int count = 0;
 
     @Override
-    public void clickedMouse(int x, int y, MindMapView m) {
-        Topic t = new Topic("Topic" + count, m.getMindMap(), x, y);
+    public void clickedMouse(int x, int y, MindMapView mindMapView) {
+        Topic topic = new Topic("Topic" + count, mindMapView.getMindMap(), x, y);
         count++;
-        m.getMindMap().addChild(t);
+        mindMapView.getMindMap().addChild(topic);
     }
 }

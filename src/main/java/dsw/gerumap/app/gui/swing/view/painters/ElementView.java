@@ -35,7 +35,7 @@ public abstract class ElementView implements ISubscriber {
         }
     }
 
-    public void elementAt(int x, int y) {
-        s.contains(x, y);
+    public boolean elementAt(int x, int y) {
+        return s.contains(x, y);
     }
 }

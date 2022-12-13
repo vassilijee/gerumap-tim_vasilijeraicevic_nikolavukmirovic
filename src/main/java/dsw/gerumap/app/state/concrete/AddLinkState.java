@@ -21,20 +21,28 @@ public class AddLinkState extends State {
     @Override
     public void clickedMouse(int x, int y, MindMapView m) {
         super.clickedMouse(x, y, m);
-        Point point = new Point(x, y);
         for (ElementView elementView : m.getPainters()) {
-            if (elementView instanceof TopicView && elementView.getS().contains(point)) {
+            if (elementView.elementAt(x, y) && elementView instanceof TopicView) {
                 link = new Link("Link" + count, m.getMindMap());
                 link.setStartX(x);
                 link.setStartY(y);
                 link.setEndXY(x, y);
                 count++;
-                m.getMindMap().addChild(link);
             }
         }
-        if (!(link == null)) {
+        if (link == null) {
             ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.NOTHING_IS_SELECTED);
+        }else{
+            m.getMindMap().addChild(link);
         }
+    }
+
+    @Override
+    public void draggedMouse(int x, int y, MindMapView m) {
+        super.draggedMouse(x, y, m);
+        int i = count - 1;
+        Link link = (Link) m.getMindMap().getChildByName("Link" + i);
+        link.setEndXY(x, y);
     }
 
     @Override
@@ -42,9 +50,8 @@ public class AddLinkState extends State {
         super.releasedMouse(x, y, m);
         boolean flag = true;
         int i = count - 1;
-        Point point = new Point(x, y);
         for (ElementView elementView : m.getPainters()) {
-            if (elementView instanceof TopicView && elementView.getS().contains(point)) {
+            if (elementView.elementAt(x, y) && elementView instanceof TopicView) {
                 link = (Link) m.getMindMap().getChildByName("Link" + i);
                 link.setEndXY(x, y);
                 flag = false;
@@ -57,11 +64,5 @@ public class AddLinkState extends State {
         }
     }
 
-    @Override
-    public void draggedMouse(int x, int y, MindMapView m) {
-        super.draggedMouse(x, y, m);
-        int i = count - 1;
-        Link link = (Link) m.getMindMap().getChildByName("Link" + i);
-        link.setEndXY(x, y);
-    }
+
 }

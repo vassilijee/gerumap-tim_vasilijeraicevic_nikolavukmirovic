@@ -28,6 +28,7 @@ public class AddLinkState extends State {
                 link.setStartY(y);
                 link.setEndXY(x, y);
                 count++;
+                link.setTopidOd(((TopicView) elementView).getTopic());
             }
         }
         if (link == null) {
@@ -49,17 +50,27 @@ public class AddLinkState extends State {
     public void releasedMouse(int x, int y, MindMapView m) {
         super.releasedMouse(x, y, m);
         boolean flag = true;
+        boolean isti = false;
         int i = count - 1;
         for (ElementView elementView : m.getPainters()) {
             if (elementView.elementAt(x, y) && elementView instanceof TopicView) {
                 link = (Link) m.getMindMap().getChildByName("Link" + i);
                 link.setEndXY(x, y);
                 flag = false;
+                link.setTopicDo(((TopicView) elementView).getTopic());
+                if(link.getTopidOd() == link.getTopicDo()){
+                    //m.getMindMap().removeChild(link);
+                    isti = true;
+                }
             }
+        }
+        if(isti){
+            m.getMindMap().removeChild(link);
         }
         if (flag) {
             // za sad je ovo budzevina, dok ne bude deleteLink
             link.setStartXY(0,0);
+            link = null;
             ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.NOTHING_IS_SELECTED);
         }
     }

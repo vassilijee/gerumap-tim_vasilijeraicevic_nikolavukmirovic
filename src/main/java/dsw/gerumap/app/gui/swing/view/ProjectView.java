@@ -47,8 +47,10 @@ public class ProjectView extends JPanel implements ISubscriber {
                 tabbedPane.setTitleAt(project.getChildren().indexOf((MindMap) object), ((MindMap) object).getName());
             }
         } else if (notification.equals("DELETE")) {
-            tabbedPane.remove(project.getChildren().indexOf((MindMap) object));
-            System.out.println(object.toString());
+            if(object instanceof MindMap){
+                tabbedPane.remove(project.getChildren().indexOf((MindMap) object));
+                System.out.println(object);
+            }
         } else if (notification.equals("AUTHOR")) {
             this.projectName.setText(this.project.getName() + " Autor: " + this.project.getAuthor());
         }

@@ -5,10 +5,7 @@ import dsw.gerumap.app.gui.swing.view.painters.LinkView;
 import dsw.gerumap.app.gui.swing.view.painters.TopicView;
 import dsw.gerumap.app.observer.ISubscriber;
 import dsw.gerumap.app.repository.composite.MapNode;
-import dsw.gerumap.app.repository.implementation.Link;
-import dsw.gerumap.app.repository.implementation.MindMap;
-import dsw.gerumap.app.repository.implementation.Project;
-import dsw.gerumap.app.repository.implementation.Topic;
+import dsw.gerumap.app.repository.implementation.*;
 import dsw.gerumap.app.state.State;
 import lombok.Getter;
 import lombok.Setter;
@@ -81,6 +78,17 @@ public class MindMapView extends JPanel implements ISubscriber {
             }
         } else if (notification.equals("REPAINT")) {
             repaint();
+        }else if(notification.equals("DELETE")){
+            ElementView e = null;
+            for (ElementView ew:
+                 painters) {
+                if(ew.getElement() == object){
+                     e = ew;
+                }
+            }
+            if(e != null){
+                painters.remove(e);
+            }
         }
     }
 

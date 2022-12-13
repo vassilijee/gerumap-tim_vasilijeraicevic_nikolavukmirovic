@@ -6,16 +6,8 @@ import dsw.gerumap.app.repository.implementation.MindMap;
 public abstract class State {
     public void clickedMouse(int x, int y, MindMapView m) {
     }
-    public void pressedMouse(){
-
+    public void releasedMouse(int x, int y, MindMapView m){
     }
-    public void releasedMouse(){
-
-    }
-    public void movedMouse(){
-
-    }
-    public void draggedMouse(){
-
+    public void draggedMouse(int x, int y, MindMapView m){
     }
 }

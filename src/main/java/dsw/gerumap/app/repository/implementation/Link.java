@@ -9,8 +9,15 @@ import lombok.Setter;
 public class Link extends Element {
     private Topic topidOd;
     private Topic topicDo;
+    private int startX, startY, endX, endY;
 
     public Link(String name, MapNode parent) {
         super(name, parent);
+    }
+
+    public void setEndXY(int x, int y){
+        this.setEndX(x);
+        this.setEndY(y);
+        this.notifySubscribers(this, "REPAINT");
     }
 }

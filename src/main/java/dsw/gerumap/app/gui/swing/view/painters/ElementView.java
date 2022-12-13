@@ -2,6 +2,7 @@ package dsw.gerumap.app.gui.swing.view.painters;
 
 import dsw.gerumap.app.observer.ISubscriber;
 import dsw.gerumap.app.repository.implementation.Element;
+import dsw.gerumap.app.repository.implementation.Link;
 import dsw.gerumap.app.repository.implementation.Topic;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,6 +27,11 @@ public abstract class ElementView implements ISubscriber {
         if (element instanceof Topic) {
             Topic t = (Topic) element;
             g2.drawString(t.getName(), t.getX() + t.getW() / 3, t.getY() + t.getH() / 2);
+        }else if(element instanceof Link){
+            Link l = (Link) element;
+            if(l.getStartX() != 0 && l.getStartY() != 0){
+                g2.drawLine(l.getStartX(), l.getStartY(), l.getEndX(), l.getEndY());
+            }
         }
     }
 

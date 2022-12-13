@@ -1,11 +1,10 @@
-[ERROR] [15.11.2022. 16:43] Nista nije selektovano
-[ERROR] [15.11.2022. 16:43] Nista nije selektovano
-[ERROR] [15.11.2022. 16:43] Cvor ne moze imati autora
-[ERROR] [15.11.2022. 16:43] Cvor ne moze imati dete
-[ERROR] [15.11.2022. 17:03] Cvor ne moze biti obrisan
-[ERROR] [15.11.2022. 17:04] Cvor ne moze biti obrisan
-[ERROR] [16.11.2022. 15:20] Nista nije selektovano
-[ERROR] [16.11.2022. 15:20] Cvor ne moze biti obrisan
-[ERROR] [16.11.2022. 20:01] Nista nije selektovano
-[ERROR] [16.11.2022. 20:03] Nista nije selektovano
+[ERROR] [17.11.2022. 10:51] Nista nije selektovano
+[ERROR] [17.11.2022. 10:51] Nista nije selektovano
+[ERROR] [17.11.2022. 10:52] Nista nije selektovano
+[ERROR] [17.11.2022. 10:52] Nista nije selektovano
+[ERROR] [17.11.2022. 11:07] Nista nije selektovano
+[ERROR] [17.11.2022. 11:07] Nista nije selektovano
+[ERROR] [17.11.2022. 11:22] Nista nije selektovano
+[ERROR] [17.11.2022. 11:39] Cvor ne moze biti obrisan
+[ERROR] [03.12.2022. 18:08] Cvor ne moze imati autora
 [ERROR] [06.12.2022. 16:11] Nista nije selektovano

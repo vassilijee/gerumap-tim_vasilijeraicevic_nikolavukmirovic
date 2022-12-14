@@ -1,32 +1,28 @@
 package dsw.gerumap.app.state.concrete;
 
+import dsw.gerumap.app.gui.swing.view.MindMapView;
 import dsw.gerumap.app.state.State;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
+
 
 public class SelectState extends State {
-    MouseAdapter mouseAdapter = new MouseAdapter() {
-        @Override
-        public void mousePressed(MouseEvent e) {
-            super.mousePressed(e);
-        }
+    @Override
+    public void clickedMouse(int x, int y, MindMapView m) {
+        super.clickedMouse(x, y, m);
+        m.getSelection().setBounds(x, y, 2, 2);
+    }
 
-        @Override
-        public void mouseReleased(MouseEvent e) {
-            super.mouseReleased(e);
-        }
-    };
-    MouseMotionAdapter mouseMotionAdapter = new MouseMotionAdapter() {
-        @Override
-        public void mouseDragged(MouseEvent e) {
-            super.mouseDragged(e);
-        }
+    @Override
+    public void draggedMouse(int x, int y, MindMapView m) {
+        super.draggedMouse(x, y, m);
+        int x1 = (int) m.getSelection().getX();
+        int y1 = (int) m.getSelection().getY();
+        System.out.println("(" + x + ", " + y + ")");
+        m.getSelection().setBounds(x1, y1, x - x1, y - y1);
+    }
 
-        @Override
-        public void mouseMoved(MouseEvent e) {
-            super.mouseMoved(e);
-        }
-    };
+    @Override
+    public void releasedMouse(int x, int y, MindMapView m) {
+        super.releasedMouse(x, y, m);
+    }
 }

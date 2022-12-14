@@ -2,12 +2,12 @@ package dsw.gerumap.app.gui.swing.view;
 
 import dsw.gerumap.app.observer.ISubscriber;
 import dsw.gerumap.app.repository.composite.MapNode;
-import dsw.gerumap.app.repository.implementation.Element;
 import dsw.gerumap.app.repository.implementation.MindMap;
 import dsw.gerumap.app.repository.implementation.Project;
 import dsw.gerumap.app.state.StateManager;
 import lombok.Getter;
 import lombok.Setter;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -34,7 +34,7 @@ public class ProjectView extends JPanel implements ISubscriber {
     @Override
     public void update(Object object, Object notification) {
         if (notification.equals("NEW")) {
-            if(object instanceof MindMap){
+            if (object instanceof MindMap) {
                 MindMapView tab = new MindMapView();
                 tab.setMindMap((MindMap) object);
                 ((MindMap) object).addSubscriber(this);
@@ -47,7 +47,7 @@ public class ProjectView extends JPanel implements ISubscriber {
                 tabbedPane.setTitleAt(project.getChildren().indexOf((MindMap) object), ((MindMap) object).getName());
             }
         } else if (notification.equals("DELETE")) {
-            if(object instanceof MindMap){
+            if (object instanceof MindMap) {
                 tabbedPane.remove(project.getChildren().indexOf((MindMap) object));
                 System.out.println(object);
             }
@@ -78,26 +78,31 @@ public class ProjectView extends JPanel implements ISubscriber {
         MainFrame.getInstance().getMapTree().expandPath();
     }
 
-    public void startAddLinkState(){
+    public void startAddLinkState() {
         this.stateManager.setAddLinkState();
     }
-    public void startAddTopicState(){
+
+    public void startAddTopicState() {
         this.stateManager.setAddTopicState();
     }
-    public void startDeleteState(){
+
+    public void startDeleteState() {
         this.stateManager.setDeleteState();
     }
-    public void startMoveState(){
+
+    public void startMoveState() {
         this.stateManager.setMoveState();
     }
-    public void startSelectState(){
+
+    public void startSelectState() {
         this.stateManager.setSelectState();
     }
-    public void startZoomState(){
+
+    public void startZoomState() {
         this.stateManager.setZoomState();
     }
 
-    public void clickedMouse(int x, int y, MindMapView m){
+    public void clickedMouse(int x, int y, MindMapView m) {
         this.stateManager.getCurrent().clickedMouse(x, y, m);
     }
 
@@ -108,4 +113,5 @@ public class ProjectView extends JPanel implements ISubscriber {
     public void draggedMouse(int x, int y, MindMapView m) {
         this.stateManager.getCurrent().draggedMouse(x, y, m);
     }
+
 }

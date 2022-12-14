@@ -6,7 +6,6 @@ import dsw.gerumap.app.gui.swing.view.painters.TopicView;
 import dsw.gerumap.app.observer.ISubscriber;
 import dsw.gerumap.app.repository.composite.MapNode;
 import dsw.gerumap.app.repository.implementation.*;
-import dsw.gerumap.app.state.State;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,7 +26,7 @@ public class MindMapView extends JPanel implements ISubscriber {
     private List<ElementView> painters;
     private MindMapView mindMapView = this;
     private MouseController mouseController;
-
+    private Rectangle selection;
     public MindMapView() {
         this.mindMap = null;
         title = "";
@@ -78,15 +77,15 @@ public class MindMapView extends JPanel implements ISubscriber {
             }
         } else if (notification.equals("REPAINT")) {
             repaint();
-        }else if(notification.equals("DELETE")){
+        } else if (notification.equals("DELETE")) {
             ElementView e = null;
-            for (ElementView ew:
-                 painters) {
-                if(ew.getElement() == object){
-                     e = ew;
+            for (ElementView ew :
+                    painters) {
+                if (ew.getElement() == object) {
+                    e = ew;
                 }
             }
-            if(e != null){
+            if (e != null) {
                 painters.remove(e);
             }
         }
@@ -127,6 +126,8 @@ public class MindMapView extends JPanel implements ISubscriber {
             MainFrame.getInstance().getProjectView().draggedMouse(e.getX(), e.getY(), mindMapView);
         }
     }
+
+
 
     @Override
     protected void paintComponent(Graphics g) {

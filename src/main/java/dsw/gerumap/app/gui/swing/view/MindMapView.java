@@ -88,6 +88,7 @@ public class MindMapView extends JPanel implements ISubscriber {
             if (e != null) {
                 painters.remove(e);
             }
+            repaint();
         }
     }
 

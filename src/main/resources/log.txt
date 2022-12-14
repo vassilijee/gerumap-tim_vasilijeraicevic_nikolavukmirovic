@@ -300,3 +300,5 @@
 [ERROR] [14.12.2022. 18:46] Nista nije selektovano
 [ERROR] [14.12.2022. 18:46] Nista nije selektovano
 [ERROR] [14.12.2022. 21:10] Nista nije selektovano
+[ERROR] [14.12.2022. 21:59] Nista nije selektovano
+[ERROR] [14.12.2022. 22:05] Nista nije selektovano

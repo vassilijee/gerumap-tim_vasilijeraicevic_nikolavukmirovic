@@ -23,13 +23,14 @@ public abstract class ElementView implements ISubscriber {
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(element.getColor());
         g2.setStroke(new BasicStroke(element.getStroke()));
+        g2.setBackground(Color.WHITE);
         g2.draw(s);
         if (element instanceof Topic) {
             Topic t = (Topic) element;
             g2.drawString(t.getName(), t.getX() + t.getW() / 3, t.getY() + t.getH() / 2);
-        }else if(element instanceof Link){
+        } else if (element instanceof Link) {
             Link l = (Link) element;
-            if(l.getStartX() != 0 && l.getStartY() != 0){
+            if (l.getStartX() != 0 && l.getStartY() != 0) {
                 g2.drawLine(l.getStartX(), l.getStartY(), l.getEndX(), l.getEndY());
             }
         }

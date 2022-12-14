@@ -18,8 +18,16 @@ public class SelectState extends State {
         super.draggedMouse(x, y, m);
         int x1 = (int) m.getSelection().getX();
         int y1 = (int) m.getSelection().getY();
+//        neki pokusaj matematike da bi radilo crtanje na sve strane
+//        sada radi samo od gornjeg levog coska ka desnom donjem
+//        int px = Math.min(x1, x);
+//        int py = Math.min(y1, y);
+//        int pw = Math.abs(x1 - x);
+//        int ph = Math.abs(y1 - y);
+
         //System.out.println("(" + x + ", " + y + ")");
         m.getSelection().setFrame(x1, y1, x - x1, y - y1);
+        m.repaint();
     }
 
     @Override

@@ -15,6 +15,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,8 @@ public class MindMapView extends JPanel implements ISubscriber {
     private List<ElementView> painters;
     private MindMapView mindMapView = this;
     private MouseController mouseController;
+    private double zoom = 1;
+    private AffineTransform affineTransform = new AffineTransform();
     private Rectangle2D selection;
 
     public MindMapView() {
@@ -133,6 +136,9 @@ public class MindMapView extends JPanel implements ISubscriber {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        g2.scale(zoom, zoom);
+        g2.transform(affineTransform);
         for (ElementView p :
                 painters) {
             p.draw(g);

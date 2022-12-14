@@ -15,7 +15,7 @@ public class MoveElementAction extends AbstractGerumapAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-//        MainFrame.getInstance().getProjectView().startMoveState();
-//        System.out.println("Move state");
+        MainFrame.getInstance().getProjectView().startMoveState();
+        System.out.println("Move state");
     }
 }

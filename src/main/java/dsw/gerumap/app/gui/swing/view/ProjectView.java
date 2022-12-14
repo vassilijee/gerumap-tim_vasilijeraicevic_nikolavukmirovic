@@ -74,7 +74,6 @@ public class ProjectView extends JPanel implements ISubscriber {
             tab.setMindMap((MindMap) child);
             child.addSubscriber(this);
             tabbedPane.add(tab.getTitle(), tab);
-            //tab.add(new JLabel(tab.getTitle()));
         }
         MainFrame.getInstance().getMapTree().expandPath();
     }
@@ -88,11 +87,14 @@ public class ProjectView extends JPanel implements ISubscriber {
     public void startDeleteState(){
         this.stateManager.setDeleteState();
     }
-//    public void startMoveState(){
-//        this.stateManager.setMoveState();
-//    }
+    public void startMoveState(){
+        this.stateManager.setMoveState();
+    }
     public void startSelectState(){
         this.stateManager.setSelectState();
+    }
+    public void startZoomState(){
+        this.stateManager.setZoomState();
     }
 
     public void clickedMouse(int x, int y, MindMapView m){

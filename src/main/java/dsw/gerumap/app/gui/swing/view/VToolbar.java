@@ -11,6 +11,8 @@ public class VToolbar extends JToolBar {
         add(MainFrame.getInstance().getActionManager().getNewLinkAction());
         add(MainFrame.getInstance().getActionManager().getElementSelectionAction());
         add(MainFrame.getInstance().getActionManager().getDeleteElementAction());
-        //add(MainFrame.getInstance().getActionManager().getMoveElementAction());
+        add(MainFrame.getInstance().getActionManager().getMoveElementAction());
+        add(MainFrame.getInstance().getActionManager().getZoomAction());
+        add(MainFrame.getInstance().getActionManager().getColorAction());
     }
 }

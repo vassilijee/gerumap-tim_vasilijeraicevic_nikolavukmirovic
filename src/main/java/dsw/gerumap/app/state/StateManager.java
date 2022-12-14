@@ -13,6 +13,7 @@ public class StateManager {
     private DeleteState deleteState;
     private MoveState moveState;
     private SelectState selectState;
+    private ZoomState zoomState;
 
     public StateManager() {
         initState();
@@ -41,6 +42,9 @@ public class StateManager {
 
     public void setDeleteState() {
         currState = deleteState;
+    }
+    public void setZoomState(){
+        currState = zoomState;
     }
 
     public void setMoveState() {

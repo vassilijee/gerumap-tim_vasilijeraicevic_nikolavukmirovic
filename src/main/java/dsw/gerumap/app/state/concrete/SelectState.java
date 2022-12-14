@@ -4,21 +4,20 @@ import dsw.gerumap.app.gui.swing.view.MindMapView;
 import dsw.gerumap.app.state.State;
 
 
-
 public class SelectState extends State {
     @Override
     public void clickedMouse(int x, int y, MindMapView m) {
         super.clickedMouse(x, y, m);
-        m.getSelection().setBounds(x, y, 2, 2);
+        m.getSelection().setFrame(x, y, 2, 2);
     }
 
     @Override
     public void draggedMouse(int x, int y, MindMapView m) {
         super.draggedMouse(x, y, m);
-        int x1 = (int) m.getSelection().getX();
-        int y1 = (int) m.getSelection().getY();
+        double x1 = m.getSelection().getX();
+        double y1 = m.getSelection().getY();
         System.out.println("(" + x + ", " + y + ")");
-        m.getSelection().setBounds(x1, y1, x - x1, y - y1);
+        m.getSelection().setFrame(x1, y1, x - x1, y - y1);
     }
 
     @Override

@@ -19,7 +19,8 @@ public class ActionManager {
     private NewSubjectAction newSubjectAction;
     private NewLinkAction newLinkAction;
     private DeleteElementAction deleteElementAction;
-    private ZoomAction zoomAction;
+    private ZoomInAction zoomInAction;
+    private ZoomOutAction zoomOutAction;
     private ColorAction colorAction;
 
     public ActionManager() {
@@ -38,7 +39,8 @@ public class ActionManager {
         newSubjectAction = new NewSubjectAction();
         newLinkAction = new NewLinkAction();
         deleteElementAction = new DeleteElementAction();
-        zoomAction = new ZoomAction();
+        zoomInAction = new ZoomInAction();
+        zoomOutAction = new ZoomOutAction();
         colorAction = new ColorAction();
     }
 }

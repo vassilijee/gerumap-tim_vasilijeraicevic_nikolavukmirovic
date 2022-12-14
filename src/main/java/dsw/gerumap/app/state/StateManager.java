@@ -25,6 +25,7 @@ public class StateManager {
         deleteState = new DeleteState();
         moveState = new MoveState();
         selectState = new SelectState();
+        zoomState= new ZoomState();
         currState = addTopicState;
     }
 

@@ -12,7 +12,7 @@ public class AppCore {
         Gui gui = new SwingGui();
         MapRepository mapRepository = new MapRepositoryImpl();
         ErrorFactory errorFactory = new ErrorFactory();
-        ErrorLogger errorLogger = errorFactory.newLogger("FileLogger");
+        ErrorLogger errorLogger = errorFactory.newLogger("ConsoleLogger");
         MessageGenerator messageGenerator = new MessageGeneratorImplementation();
         messageGenerator.addSubscriber(gui);
         messageGenerator.addSubscriber(errorLogger);

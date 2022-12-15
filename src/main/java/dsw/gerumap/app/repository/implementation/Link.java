@@ -20,10 +20,4 @@ public class Link extends Element {
         this.setEndY(y);
         this.notifySubscribers(this, "REPAINT");
     }
-
-    public void setStartXY(int x, int y) {
-        this.setStartX(x);
-        this.setStartY(y);
-        this.notifySubscribers(this, "REPAINT");
-    }
 }

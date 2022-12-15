@@ -10,4 +10,7 @@ public abstract class State {
     }
     public void draggedMouse(int x, int y, MindMapView m){
     }
+
+    public void rightMousePressed(int x, int y, MindMapView m) {
+    }
 }

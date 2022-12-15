@@ -114,4 +114,7 @@ public class ProjectView extends JPanel implements ISubscriber {
         this.stateManager.getCurrent().draggedMouse(x, y, m);
     }
 
+    public void pressedRightMouse(int x, int y, MindMapView m) {
+        this.stateManager.getCurrent().rightMousePressed(x, y, m);
+    }
 }

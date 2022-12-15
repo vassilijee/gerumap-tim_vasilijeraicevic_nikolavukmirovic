@@ -2,6 +2,7 @@ package dsw.gerumap.app.gui.swing.view;
 
 import dsw.gerumap.app.gui.swing.view.painters.ElementView;
 import dsw.gerumap.app.gui.swing.view.painters.LinkView;
+import dsw.gerumap.app.gui.swing.view.painters.SelectionRectView;
 import dsw.gerumap.app.gui.swing.view.painters.TopicView;
 import dsw.gerumap.app.observer.ISubscriber;
 import dsw.gerumap.app.repository.composite.MapNode;
@@ -29,17 +30,18 @@ public class MindMapView extends JPanel implements ISubscriber {
     private MouseController mouseController;
     private double zoom = 1;
     private AffineTransform affineTransform = new AffineTransform();
-    private Rectangle selection = new Rectangle();
-    private List<ElementView> selected;
+    //private Rectangle rectangle = new Rectangle();
+    private MapSelectionModel mapSelectionModel;
 
     public MindMapView() {
         this.mindMap = null;
         title = "";
         this.painters = new ArrayList<>();
-        this.selected = new ArrayList<>();
         mouseController = new MouseController();
         addMouseListener(mouseController);
         addMouseMotionListener(mouseController);
+        mapSelectionModel = new MapSelectionModel();
+        this.mapSelectionModel.addSubscriber(this);
     }
 
     @Override
@@ -79,6 +81,12 @@ public class MindMapView extends JPanel implements ISubscriber {
                 painters.add(linkView);
                 ((Link) object).addSubscriber(linkView);
                 ((Link) object).addSubscriber(this);
+                repaint();
+            }else if(object instanceof SelectionRect){
+                SelectionRectView selectionRectView = new SelectionRectView((SelectionRect) object);
+                painters.add(selectionRectView);
+                ((SelectionRect) object).addSubscriber(selectionRectView);
+                ((SelectionRect) object).addSubscriber(this);
                 repaint();
             }
         } else if (notification.equals("REPAINT")) {
@@ -142,7 +150,17 @@ public class MindMapView extends JPanel implements ISubscriber {
         g2.transform(affineTransform);
         for (ElementView p :
                 painters) {
-            p.draw(g);
+            p.draw(g2, this);
         }
+    }
+
+    public ElementView getPainterByElement(Element element){
+        for (ElementView ew:
+             painters) {
+            if(ew.getElement().equals(element)){
+                return ew;
+            }
+        }
+        return null;
     }
 }

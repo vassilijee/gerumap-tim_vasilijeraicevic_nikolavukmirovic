@@ -15,11 +15,13 @@ public class LinkView extends ElementView {
     public LinkView(Link link) {
         super(link);
         this.link = link;
-        this.s = new Line2D.Double();
+        this.s = new Line2D.Double(link.getStartX(), link.getStartY(), link.getEndX(), link.getEndY());
     }
 
     @Override
     public void update(Object publisher, Object notification) {
-
+        if(notification.equals("REPAINT")){
+            this.s = new Line2D.Double(link.getStartX(), link.getStartY(), link.getEndX(), link.getEndY());
+        }
     }
 }

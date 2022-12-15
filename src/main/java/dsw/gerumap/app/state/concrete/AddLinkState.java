@@ -5,6 +5,7 @@ import dsw.gerumap.app.gui.swing.view.painters.ElementView;
 import dsw.gerumap.app.gui.swing.view.painters.LinkView;
 import dsw.gerumap.app.gui.swing.view.painters.TopicView;
 import dsw.gerumap.app.repository.implementation.Link;
+import dsw.gerumap.app.repository.implementation.Topic;
 import dsw.gerumap.app.state.State;
 
 
@@ -55,6 +56,14 @@ public class AddLinkState extends State {
             for (ElementView ew :
                     m.getPainters()) {
                 if (ew instanceof LinkView) {
+                    if (((LinkView) ew).getLink().getTopidOd().equals(link.getTopidOd()) &&
+                            ((LinkView) ew).getLink().getTopicDo().equals(link.getTopicDo()) &&
+                            !(((LinkView) ew).getLink().equals(link))) {
+                        flag = true;
+                    }
+                    Topic temp = ((LinkView) ew).getLink().getTopicDo();
+                    ((LinkView) ew).getLink().setTopicDo(((LinkView) ew).getLink().getTopidOd());
+                    ((LinkView) ew).getLink().setTopidOd(temp);
                     if (((LinkView) ew).getLink().getTopidOd().equals(link.getTopidOd()) &&
                             ((LinkView) ew).getLink().getTopicDo().equals(link.getTopicDo()) &&
                             !(((LinkView) ew).getLink().equals(link))) {

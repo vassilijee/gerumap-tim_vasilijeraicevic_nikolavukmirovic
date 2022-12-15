@@ -1,7 +1,7 @@
 package dsw.gerumap.app.state;
 
 import dsw.gerumap.app.gui.swing.view.MindMapView;
-import dsw.gerumap.app.repository.implementation.MindMap;
+
 
 public abstract class State {
     public void clickedMouse(int x, int y, MindMapView m) {
@@ -9,8 +9,5 @@ public abstract class State {
     public void releasedMouse(int x, int y, MindMapView m){
     }
     public void draggedMouse(int x, int y, MindMapView m){
-    }
-
-    public void rightMousePressed(int x, int y, MindMapView m) {
     }
 }

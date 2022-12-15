@@ -2,7 +2,10 @@ package dsw.gerumap.app.state.concrete;
 
 import dsw.gerumap.app.gui.swing.view.MindMapView;
 import dsw.gerumap.app.gui.swing.view.painters.ElementView;
+import dsw.gerumap.app.gui.swing.view.painters.LinkView;
+import dsw.gerumap.app.gui.swing.view.painters.TopicView;
 import dsw.gerumap.app.repository.implementation.Element;
+import dsw.gerumap.app.repository.implementation.Topic;
 import dsw.gerumap.app.state.State;
 
 import java.util.ArrayList;
@@ -14,6 +17,7 @@ public class DeleteState extends State {
         ElementView e = null;
         List<Element> selected = new ArrayList<>();
         List<ElementView> selectedEw = new ArrayList<>();
+        List<ElementView> selectedEw2 = new ArrayList<>();
         if(!(m.getMapSelectionModel().getSelected().isEmpty())){
             for (ElementView ew:
                  m.getPainters()) {
@@ -22,11 +26,28 @@ public class DeleteState extends State {
                     selected.add(ew.getElement());
                 }
             }
-            if(!(selected.isEmpty())){
-                m.getPainters().removeAll(selectedEw);
-                m.getMindMap().getChildren().removeAll(selected);
-                m.getMapSelectionModel().clearSelected(selected);
+            for (ElementView selektovan:
+                 selectedEw) {
+                if(selektovan instanceof TopicView){
+                    for (ElementView painter:
+                         m.getPainters()) {
+                        if(painter instanceof LinkView){
+                            if(((LinkView) painter).getLink().getTopicDo().equals(((TopicView) selektovan).getTopic()) ||
+                                    ((LinkView) painter).getLink().getTopidOd().equals(((TopicView) selektovan).getTopic())){
+                                selectedEw2.add(painter);
+                                selected.add(painter.getElement());
+                            }
+                        }
+                    }
+                }
             }
+            m.getPainters().removeAll(selectedEw);
+            m.getPainters().removeAll(selectedEw2);
+            m.getMindMap().getChildren().removeAll(selected);
+            m.getMapSelectionModel().clearSelected();
+            selected.clear();
+            selectedEw2.clear();
+            selectedEw.clear();
         }else{
             for (ElementView elementView:
                  m.getPainters()) {
@@ -35,16 +56,22 @@ public class DeleteState extends State {
                 }
             }
             if(e != null) {
+                if(e instanceof TopicView){
+                    for (ElementView ew:
+                            m.getPainters()) {
+                        if(ew instanceof LinkView){
+                            if(((LinkView) ew).getLink().getTopicDo().equals(((TopicView) e).getTopic()) ||
+                                    ((LinkView) ew).getLink().getTopidOd().equals(((TopicView) e).getTopic())){
+                                selectedEw.add(ew);
+                                selected.add(ew.getElement());
+                            }
+                        }
+                    }
+                }
                 m.getMindMap().removeChild(e.getElement());
+                m.getPainters().removeAll(selectedEw);
+                m.getMindMap().getChildren().removeAll(selected);
             }
         }
-    }
-
-    @Override
-    public void releasedMouse(int x, int y, MindMapView m) {
-    }
-
-    @Override
-    public void draggedMouse(int x, int y, MindMapView m) {
     }
 }

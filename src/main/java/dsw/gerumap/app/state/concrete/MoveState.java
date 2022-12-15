@@ -7,12 +7,6 @@ import dsw.gerumap.app.state.State;
 public class MoveState extends State {
     @Override
     public void clickedMouse(int x, int y, MindMapView m) {
-        super.clickedMouse(x, y, m);
-//        for (ElementView elementView : m.getPainters()) {
-////            if (elementView.elementAt(x, y)) {
-////                // move element
-////            }
-//        }
 
     }
 

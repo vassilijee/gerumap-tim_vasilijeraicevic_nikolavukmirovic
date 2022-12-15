@@ -42,8 +42,8 @@ public class MapSelectionModel implements IPublisher {
         }
     }
 
-    public void clearSelected(List<Element> selected){
-        selected.clear();
+    public void clearSelected(){
+        this.selected.clear();
         this.notifySubscribers(this, "REPAINT");
     }
 

@@ -35,7 +35,7 @@ public class ProjectView extends JPanel implements ISubscriber {
     public void update(Object object, Object notification) {
         if (notification.equals("NEW")) {
             if (object instanceof MindMap) {
-                MindMapView tab = new MindMapView();
+            MindMapView tab = new MindMapView();
                 tab.setMindMap((MindMap) object);
                 ((MindMap) object).addSubscriber(this);
                 tabbedPane.addTab(((MindMap) object).getName(), tab);

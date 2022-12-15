@@ -17,4 +17,9 @@ public class Element extends MapNode {
         this.color = Color.black;
         this.stroke = 2;
     }
+
+    public void setColor(Color color) {
+        this.color = color;
+        this.notifySubscribers(this, "REPAINT");
+    }
 }

@@ -30,7 +30,7 @@ public abstract class ElementView implements ISubscriber {
         if(!(m.getMapSelectionModel().getSelected().isEmpty())){
             if(m.getMapSelectionModel().getSelected().contains(element)){
                 g2.setStroke(new BasicStroke(4));
-                g2.setColor(Color.green);
+                g2.setColor(Color.RED);
                 g2.draw(s);
             }
         }

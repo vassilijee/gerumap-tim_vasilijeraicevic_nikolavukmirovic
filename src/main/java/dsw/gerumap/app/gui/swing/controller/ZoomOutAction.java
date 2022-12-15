@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 public class ZoomOutAction extends AbstractGerumapAction{
     public ZoomOutAction() {
         //        putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_F4, InputEvent.ALT_DOWN_MASK));
-        putValue(SMALL_ICON, loadIcon("/images/zoom.png"));
+        putValue(SMALL_ICON, loadIcon("/images/zoomOut.png"));
         putValue(NAME, "Zoom out");
         putValue(SHORT_DESCRIPTION, "Zoom out");
 

@@ -23,4 +23,10 @@ public class Topic extends Element {
         this.h = 50;
         super.setName(name);
     }
+
+    public void setXY(int x, int y){
+        this.setX(x);
+        this.setY(y);
+        this.notifySubscribers(this, "REPAINT");
+    }
 }

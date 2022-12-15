@@ -14,7 +14,6 @@ public class AddLinkState extends State {
 
     @Override
     public void clickedMouse(int x, int y, MindMapView m) {
-        super.clickedMouse(x, y, m);
         for (ElementView elementView : m.getPainters()) {
             if (elementView.elementAt(x, y) && elementView instanceof TopicView) {
                 link = new Link("Link" + count, m.getMindMap());
@@ -32,7 +31,6 @@ public class AddLinkState extends State {
 
     @Override
     public void draggedMouse(int x, int y, MindMapView m) {
-        super.draggedMouse(x, y, m);
         if (!(link == null)) {
             link.setEndXY(x, y);
         }
@@ -40,7 +38,6 @@ public class AddLinkState extends State {
 
     @Override
     public void releasedMouse(int x, int y, MindMapView m) {
-        super.releasedMouse(x, y, m);
         boolean flag = true;
         if (link == null) {
             return;

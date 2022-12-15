@@ -1,11 +1,7 @@
 package dsw.gerumap.app.gui.swing.controller;
 
-
-import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.gui.swing.view.MindMapView;
-import dsw.gerumap.app.gui.swing.view.painters.ElementView;
-import dsw.gerumap.app.message.EventType;
 import dsw.gerumap.app.repository.implementation.Element;
 
 import javax.swing.*;

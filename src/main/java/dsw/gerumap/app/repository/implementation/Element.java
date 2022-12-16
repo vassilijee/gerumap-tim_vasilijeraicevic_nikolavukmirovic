@@ -10,17 +10,22 @@ import java.awt.*;
 @Setter
 public class Element extends MapNode {
     private Color color;
-    private static Color color1 = null;
-
     private int stroke;
+    private static Color color1 = null;
+    private static int stroke1 = -1;
+
+
 
     public Element(String name, MapNode parent) {
         super(name, parent);
-        this.stroke = 2;
         if(color1 != null)
             this.color = color1;
         else
             this.color = Color.black;
+        if(stroke1 > 0)
+            this.stroke = stroke1;
+        else
+            this.stroke = 2;
     }
 
     public void setColor(Color color) {
@@ -30,5 +35,9 @@ public class Element extends MapNode {
 
     public static void setColor1(Color color1) {
         Element.color1 = color1;
+    }
+
+    public static void setStroke1(int stroke1) {
+        Element.stroke1 = stroke1;
     }
 }

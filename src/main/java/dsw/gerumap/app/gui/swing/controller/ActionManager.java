@@ -22,6 +22,7 @@ public class ActionManager {
     private ZoomInAction zoomInAction;
     private ZoomOutAction zoomOutAction;
     private ColorAction colorAction;
+    private StrokeAction strokeAction;
 
     public ActionManager() {
         initialiseActions();
@@ -42,5 +43,6 @@ public class ActionManager {
         zoomInAction = new ZoomInAction();
         zoomOutAction = new ZoomOutAction();
         colorAction = new ColorAction();
+        strokeAction = new StrokeAction();
     }
 }

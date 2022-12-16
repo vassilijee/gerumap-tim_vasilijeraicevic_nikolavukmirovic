@@ -41,6 +41,7 @@ public abstract class ElementView implements ISubscriber {
             g2.draw(s);
         } else if (element instanceof SelectionRect) {
             g2.setStroke(((SelectionRect) element).getStroke1());
+            g2.setColor(Color.black);
             g2.draw(s);
         }
     }

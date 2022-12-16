@@ -18,8 +18,15 @@ public class ColorAction extends AbstractGerumapAction{
     @Override
     public void actionPerformed(ActionEvent e) {
         JColorChooser jColorChooser = new JColorChooser();
-        JOptionPane pane = new JOptionPane(jColorChooser, JOptionPane.PLAIN_MESSAGE, JOptionPane.OK_CANCEL_OPTION, null);
+        //JOptionPane pane = new JOptionPane(jColorChooser, JOptionPane.PLAIN_MESSAGE, JOptionPane.OK_CANCEL_OPTION, null);
+        JOptionPane pane = new JOptionPane(null, JOptionPane.INFORMATION_MESSAGE, JOptionPane.OK_CANCEL_OPTION);
         JDialog dialog = pane.createDialog("Color");
+        dialog.setLayout(new BorderLayout());
+        JLabel label = new JLabel("Stroke: ");
+        JTextField textField = new JTextField();
+        dialog.add(label, BorderLayout.NORTH);
+        dialog.add(textField, BorderLayout.NORTH);
+        dialog.add(jColorChooser, BorderLayout.SOUTH);
         dialog.setVisible(true);
         dialog.dispose();
         Object value = pane.getValue();
@@ -36,6 +43,8 @@ public class ColorAction extends AbstractGerumapAction{
                            element.setColor(color);
                        }
                        mindMapView.getMapSelectionModel().clearSelected();
+                   } else {
+                       Element.setColor1(color);
                    }
                }
             }

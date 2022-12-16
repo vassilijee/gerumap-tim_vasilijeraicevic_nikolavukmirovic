@@ -22,7 +22,7 @@ public class AddLinkState extends State {
                 link.setStartY(y);
                 link.setEndXY(x, y);
                 count++;
-                link.setTopidOd(((TopicView) elementView).getTopic());
+                link.setTopicFrom(((TopicView) elementView).getTopic());
             }
         }
         if (!(link == null)) {
@@ -46,26 +46,26 @@ public class AddLinkState extends State {
         for (ElementView elementView : m.getPainters()) {
             if (elementView.elementAt(x, y) &&
                     elementView instanceof TopicView &&
-                    !(link.getTopidOd().equals(((TopicView) elementView).getTopic()))) {
+                    !(link.getTopicFrom().equals(((TopicView) elementView).getTopic()))) {
                 link.setEndXY(x, y);
                 flag = false;
-                link.setTopicDo(((TopicView) elementView).getTopic());
+                link.setTopicTo(((TopicView) elementView).getTopic());
             }
         }
-        if (link.getTopicDo() != null && link.getTopidOd() != null) {
+        if (link.getTopicTo() != null && link.getTopicFrom() != null) {
             for (ElementView ew :
                     m.getPainters()) {
                 if (ew instanceof LinkView) {
-                    if (((LinkView) ew).getLink().getTopidOd().equals(link.getTopidOd()) &&
-                            ((LinkView) ew).getLink().getTopicDo().equals(link.getTopicDo()) &&
+                    if (((LinkView) ew).getLink().getTopicFrom().equals(link.getTopicFrom()) &&
+                            ((LinkView) ew).getLink().getTopicTo().equals(link.getTopicTo()) &&
                             !(((LinkView) ew).getLink().equals(link))) {
                         flag = true;
                     }
-                    Topic temp = ((LinkView) ew).getLink().getTopicDo();
-                    ((LinkView) ew).getLink().setTopicDo(((LinkView) ew).getLink().getTopidOd());
-                    ((LinkView) ew).getLink().setTopidOd(temp);
-                    if (((LinkView) ew).getLink().getTopidOd().equals(link.getTopidOd()) &&
-                            ((LinkView) ew).getLink().getTopicDo().equals(link.getTopicDo()) &&
+                    Topic temp = ((LinkView) ew).getLink().getTopicTo();
+                    ((LinkView) ew).getLink().setTopicTo(((LinkView) ew).getLink().getTopicFrom());
+                    ((LinkView) ew).getLink().setTopicFrom(temp);
+                    if (((LinkView) ew).getLink().getTopicFrom().equals(link.getTopicFrom()) &&
+                            ((LinkView) ew).getLink().getTopicTo().equals(link.getTopicTo()) &&
                             !(((LinkView) ew).getLink().equals(link))) {
                         flag = true;
                     }

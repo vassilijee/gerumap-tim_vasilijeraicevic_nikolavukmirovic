@@ -57,8 +57,8 @@ public class DeleteState extends State {
             for (ElementView painter :
                     m.getPainters()) {
                 if (painter instanceof LinkView) {
-                    if (((LinkView) painter).getLink().getTopicDo().equals(((TopicView) selektovan).getTopic()) ||
-                            ((LinkView) painter).getLink().getTopidOd().equals(((TopicView) selektovan).getTopic())) {
+                    if (((LinkView) painter).getLink().getTopicTo().equals(((TopicView) selektovan).getTopic()) ||
+                            ((LinkView) painter).getLink().getTopicFrom().equals(((TopicView) selektovan).getTopic())) {
                         selectedEw2.add(painter);
                         selected.add(painter.getElement());
                     }

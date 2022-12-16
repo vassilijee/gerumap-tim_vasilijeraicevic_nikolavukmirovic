@@ -7,8 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Link extends Element {
-    private Topic topidOd;
-    private Topic topicDo;
+    private Topic topicFrom;
+    private Topic topicTo;
     private int startX, startY, endX, endY;
 
     public Link(String name, MapNode parent) {

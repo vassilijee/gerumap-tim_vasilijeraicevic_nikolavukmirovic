@@ -21,6 +21,8 @@ public class LinkView extends ElementView {
     public void update(Object publisher, Object notification) {
         if (notification.equals("REPAINT")) {
             this.s = new Line2D.Double(link.getStartX(), link.getStartY(), link.getEndX(), link.getEndY());
+        }else if(notification.equals("MOVE")){
+            this.s = new Line2D.Double(link.getTopidOd().getX(), link.getTopidOd().getY(), link.getTopicDo().getX(), link.getTopicDo().getY());
         }
     }
 }

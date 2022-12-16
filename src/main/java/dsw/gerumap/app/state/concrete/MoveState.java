@@ -30,8 +30,9 @@ public class MoveState extends State {
                     int x1 = locationX + (x - clickedX);
                     int y1 = locationY + (y - clickedY);
                     topic.setXY(x1, y1);
-
                 }else if(element instanceof Link){
+                    Link link = (Link) element;
+                    link.move();
                 }
             }
             clickedX += (x - clickedX);
@@ -46,8 +47,9 @@ public class MoveState extends State {
                     int x1 = locationX + (x - clickedX);
                     int y1 = locationY + (y - clickedY);
                     topic.setXY(x1, y1);
-
                 }else if(elementView instanceof LinkView){
+                    Link link = (Link) elementView.getElement();
+                    link.move();
                 }
             }
             clickedX += (x - clickedX);

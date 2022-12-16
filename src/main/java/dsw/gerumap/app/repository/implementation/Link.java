@@ -20,4 +20,7 @@ public class Link extends Element {
         this.setEndY(y);
         this.notifySubscribers(this, "REPAINT");
     }
+    public void move(){
+        this.notifySubscribers(this, "MOVE");
+    }
 }

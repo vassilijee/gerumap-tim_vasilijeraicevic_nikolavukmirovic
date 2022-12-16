@@ -10,6 +10,7 @@ import java.awt.geom.Rectangle2D;
 
 public class SelectState extends State {
     SelectionRect selectionRect;
+    static int startX, startY;
 
     @Override
     public void clickedMouse(int x, int y, MindMapView m) {
@@ -25,16 +26,32 @@ public class SelectState extends State {
         selectionRect.setStartXY(x, y);
         selectionRect.setEndXY(x, y);
         m.getMindMap().addChild(selectionRect);
+        startX = x;
+        startY = y;
     }
 
     @Override
     public void draggedMouse(int x, int y, MindMapView m) {
-        selectionRect.setEndXY(x, y);
+        int minX = Math.min(x, startX);
+        int minY = Math.min(y, startY);
+        int maxX = Math.max(x, startX);
+        int maxY = Math.max(y, startY);
+        selectionRect.setStartX(minX);
+        selectionRect.setStartY(minY);
+        selectionRect.setW(maxX - minX);
+        selectionRect.setH(maxY - minY);
     }
 
     @Override
     public void releasedMouse(int x, int y, MindMapView m) {
-        selectionRect.setEndXY(x, y);
+        int minX = Math.min(x, startX);
+        int minY = Math.min(y, startY);
+        int maxX = Math.max(x, startX);
+        int maxY = Math.max(y, startY);
+        selectionRect.setStartX(minX);
+        selectionRect.setStartY(minY);
+        selectionRect.setW(maxX - minX);
+        selectionRect.setH(maxY - minY);
         ElementView ew1 = m.getPainterByElement(selectionRect);
         m.getPainters().remove(ew1);
         for (ElementView ew : m.getPainters()) {

@@ -32,4 +32,14 @@ public class SelectionRect extends Element{
         this.setStartY(y);
         this.notifySubscribers(this, "REPAINT");
     }
+
+    public void setW(int w) {
+        this.w = w;
+        this.notifySubscribers(this, "REPAINT");
+    }
+
+    public void setH(int h){
+        this.h = h;
+        this.notifySubscribers(this, "REPAINT");
+    }
 }

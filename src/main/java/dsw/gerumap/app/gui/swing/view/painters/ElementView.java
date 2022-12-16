@@ -38,11 +38,9 @@ public abstract class ElementView implements ISubscriber {
             Topic t = (Topic) element;
             g2.drawString(t.getName(), t.getX() + t.getW() / 3, t.getY() + t.getH() / 2);
         } else if (element instanceof Link) {
-            Link l = (Link) element;
-            if (l.getStartX() != 0 && l.getStartY() != 0) {
-                g2.draw(s);
-            }
+            g2.draw(s);
         } else if (element instanceof SelectionRect) {
+            g2.setStroke(((SelectionRect) element).getStroke1());
             g2.draw(s);
         }
     }

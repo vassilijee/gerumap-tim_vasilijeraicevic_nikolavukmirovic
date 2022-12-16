@@ -13,16 +13,18 @@ public class AddLinkState extends State {
     static int count;
     Link link = null;
 
+    Topic topic = new Topic("a", null, 0, 0);
+
     @Override
     public void clickedMouse(int x, int y, MindMapView m) {
         for (ElementView elementView : m.getPainters()) {
             if (elementView.elementAt(x, y) && elementView instanceof TopicView) {
                 link = new Link("Link" + count, m.getMindMap());
-                link.setStartX(x);
-                link.setStartY(y);
-                link.setEndXY(x, y);
                 count++;
                 link.setTopicFrom(((TopicView) elementView).getTopic());
+                topic.setX(x);
+                topic.setY(y);
+                link.setTopicTo(topic);
             }
         }
         if (!(link == null)) {
@@ -32,8 +34,10 @@ public class AddLinkState extends State {
 
     @Override
     public void draggedMouse(int x, int y, MindMapView m) {
+        topic.setX(x);
+        topic.setY(y);
         if (!(link == null)) {
-            link.setEndXY(x, y);
+            link.setTopicTo(topic);
         }
     }
 
@@ -47,7 +51,6 @@ public class AddLinkState extends State {
             if (elementView.elementAt(x, y) &&
                     elementView instanceof TopicView &&
                     !(link.getTopicFrom().equals(((TopicView) elementView).getTopic()))) {
-                link.setEndXY(x, y);
                 flag = false;
                 link.setTopicTo(((TopicView) elementView).getTopic());
             }
@@ -76,5 +79,7 @@ public class AddLinkState extends State {
             m.getMindMap().removeChild(link);
         }
         link = null;
+        topic.setX(0);
+        topic.setY(0);
     }
 }

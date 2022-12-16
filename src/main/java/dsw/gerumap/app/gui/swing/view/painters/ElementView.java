@@ -26,7 +26,6 @@ public abstract class ElementView implements ISubscriber {
         g2.setColor(element.getColor());
         g2.setStroke(new BasicStroke(element.getStroke()));
         g2.setBackground(Color.WHITE);
-        g2.draw(s);
         if (!(m.getMapSelectionModel().getSelected().isEmpty())) {
             if (m.getMapSelectionModel().getSelected().contains(element)) {
                 g2.setStroke(new BasicStroke(4));
@@ -36,6 +35,7 @@ public abstract class ElementView implements ISubscriber {
         }
         if (element instanceof Topic) {
             Topic t = (Topic) element;
+            g2.draw(s);
             g2.drawString(t.getName(), t.getX() + t.getW() / 3, t.getY() + t.getH() / 2);
         } else if (element instanceof Link) {
             g2.draw(s);

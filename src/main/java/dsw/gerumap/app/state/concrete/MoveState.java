@@ -35,6 +35,13 @@ public class MoveState extends State {
                     link.move();
                 }
             }
+            for (ElementView elementView:
+                 m.getPainters()) {
+                if(elementView instanceof LinkView){
+                    Link link = (Link) elementView.getElement();
+                    link.move();
+                }
+            }
             clickedX += (x - clickedX);
             clickedY += (y - clickedY);
         }else{

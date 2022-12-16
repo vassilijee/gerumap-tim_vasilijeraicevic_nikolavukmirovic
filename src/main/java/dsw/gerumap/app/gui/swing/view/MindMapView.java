@@ -103,6 +103,8 @@ public class MindMapView extends JPanel implements ISubscriber {
                 painters.remove(e);
             }
             repaint();
+        }else if(notification.equals("MOVE")){
+            repaint();
         }
     }
 

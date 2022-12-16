@@ -28,8 +28,9 @@ public abstract class ElementView implements ISubscriber {
         g2.setBackground(Color.WHITE);
         if (!(m.getMapSelectionModel().getSelected().isEmpty())) {
             if (m.getMapSelectionModel().getSelected().contains(element)) {
-                g2.setStroke(new BasicStroke(4));
-                g2.setColor(Color.RED);
+                float[] dashingPattern1 = {2f, 2f};
+                g2.setStroke(new BasicStroke(2f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 1.0f, dashingPattern1, 2.0f));
+                g2.setColor(Color.red);
                 g2.draw(s);
             }
         }

@@ -1,6 +1,5 @@
 package dsw.gerumap.app.gui.swing.view.painters;
 
-import dsw.gerumap.app.repository.composite.MapNode;
 import dsw.gerumap.app.repository.implementation.Link;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +19,7 @@ public class LinkView extends ElementView {
 
     @Override
     public void update(Object publisher, Object notification) {
-        if(notification.equals("REPAINT")){
+        if (notification.equals("REPAINT")) {
             this.s = new Line2D.Double(link.getStartX(), link.getStartY(), link.getEndX(), link.getEndY());
         }
     }

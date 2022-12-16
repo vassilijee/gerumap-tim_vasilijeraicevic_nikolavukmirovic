@@ -2,7 +2,6 @@ package dsw.gerumap.app.state.concrete;
 
 import dsw.gerumap.app.gui.swing.view.MindMapView;
 import dsw.gerumap.app.gui.swing.view.painters.ElementView;
-import dsw.gerumap.app.repository.implementation.Element;
 import dsw.gerumap.app.repository.implementation.SelectionRect;
 import dsw.gerumap.app.state.State;
 
@@ -17,9 +16,9 @@ public class SelectState extends State {
         m.getMapSelectionModel().getSelected().clear();
         selectionRect = new SelectionRect("Sel", m.getMindMap());
         selectionRect.addSubscriber(m);
-        for (ElementView ew:
+        for (ElementView ew :
                 m.getPainters()) {
-            if(ew.elementAt(x, y) && !(m.getMapSelectionModel().getSelected().contains(ew.getElement()))){
+            if (ew.elementAt(x, y) && !(m.getMapSelectionModel().getSelected().contains(ew.getElement()))) {
                 m.getMapSelectionModel().getSelected().add(ew.getElement());
             }
         }
@@ -39,7 +38,7 @@ public class SelectState extends State {
         ElementView ew1 = m.getPainterByElement(selectionRect);
         m.getPainters().remove(ew1);
         for (ElementView ew : m.getPainters()) {
-            if (ew.getS().intersects((Rectangle2D) ew1.getS()) && !(m.getMapSelectionModel().getSelected().contains(ew.getElement()))){
+            if (ew.getS().intersects((Rectangle2D) ew1.getS()) && !(m.getMapSelectionModel().getSelected().contains(ew.getElement()))) {
                 m.getMapSelectionModel().getSelected().add(ew.getElement());
             }
         }

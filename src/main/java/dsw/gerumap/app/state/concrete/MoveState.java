@@ -12,6 +12,7 @@ import dsw.gerumap.app.state.State;
 public class MoveState extends State {
     private static int clickedX;
     private static int clickedY;
+
     @Override
     public void clickedMouse(int x, int y, MindMapView m) {
         clickedX = x;
@@ -20,10 +21,10 @@ public class MoveState extends State {
 
     @Override
     public void draggedMouse(int x, int y, MindMapView m) {
-        if(!(m.getMapSelectionModel().getSelected().isEmpty())){
-            for (Element element:
-                 m.getMapSelectionModel().getSelected()) {
-                if(element instanceof Topic){
+        if (!(m.getMapSelectionModel().getSelected().isEmpty())) {
+            for (Element element :
+                    m.getMapSelectionModel().getSelected()) {
+                if (element instanceof Topic) {
                     Topic topic = (Topic) element;
                     int locationX = topic.getX();
                     int locationY = topic.getY();
@@ -32,7 +33,7 @@ public class MoveState extends State {
                     topic.setXY(x1, y1);
                     clickedX = x1;
                     clickedY = y1;
-                }else if(element instanceof Link){
+                } else if (element instanceof Link) {
                     Link link = (Link) element;
                     int locationX = link.getStartX();
                     int locationY = link.getStartY();
@@ -45,10 +46,10 @@ public class MoveState extends State {
                     clickedY = y1;
                 }
             }
-        }else{
-            for (ElementView elementView:
+        } else {
+            for (ElementView elementView :
                     m.getPainters()) {
-                if(elementView instanceof TopicView){
+                if (elementView instanceof TopicView) {
                     Topic topic = (Topic) elementView.getElement();
                     int locationX = topic.getX();
                     int locationY = topic.getY();
@@ -57,8 +58,8 @@ public class MoveState extends State {
                     topic.setXY(x1, y1);
                     clickedX = x1;
                     clickedY = y1;
-                }else if(elementView instanceof LinkView){
-                    Link link =(Link) elementView.getElement();
+                } else if (elementView instanceof LinkView) {
+                    Link link = (Link) elementView.getElement();
                     int locationX = link.getStartX();
                     int locationY = link.getStartY();
                     int x1 = locationX - clickedX + x;

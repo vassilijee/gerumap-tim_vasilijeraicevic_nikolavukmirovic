@@ -72,7 +72,22 @@ public class MindMapView extends JPanel implements ISubscriber {
                     int result = (int) value;
                     if (result == JOptionPane.OK_OPTION) {
                         String tekst = field.getText();
-                        topicView.getTopic().setName(tekst);
+                        boolean flag = false;
+                        for (MapNode mapNode:
+                             mindMap.getChildren()) {
+                            if(mapNode.getName().equals(tekst)){
+                                flag = true;
+                                break;
+                            }
+                        }
+                        if(flag){
+                            mindMap.removeChild((Topic)object);
+                            System.out.println("Isto ime");
+                        }else{
+                            topicView.getTopic().setName(tekst);
+                        }
+                    }else{
+                        mindMap.removeChild((Topic)object);
                     }
                 }
                 repaint();

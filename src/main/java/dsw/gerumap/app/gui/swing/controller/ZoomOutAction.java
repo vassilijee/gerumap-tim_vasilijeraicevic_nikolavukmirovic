@@ -17,8 +17,10 @@ public class ZoomOutAction extends AbstractGerumapAction{
     public void actionPerformed(ActionEvent e) {
         MainFrame.getInstance().getProjectView().startZoomState();
         MindMapView mindMapView = (MindMapView) MainFrame.getInstance().getProjectView().getTabbedPane().getSelectedComponent();
-        double zoomOut = mindMapView.getZoom() - 0.1;
-        mindMapView.setZoom(zoomOut);
-        mindMapView.repaint();
+        if(mindMapView != null){
+            double zoomOut = mindMapView.getZoom() - 0.1;
+            mindMapView.setZoom(zoomOut);
+            mindMapView.repaint();
+        }
     }
 }

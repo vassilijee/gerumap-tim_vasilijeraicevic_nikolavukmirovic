@@ -27,22 +27,12 @@ public class MoveState extends State {
                     Topic topic = (Topic) element;
                     int locationX = topic.getX();
                     int locationY = topic.getY();
-                    int x1 = locationX - clickedX + x;
-                    int y1 = locationY - clickedY + y;
+                    int x1 = locationX + (x - clickedX);
+                    int y1 = locationY + (y - clickedY);
                     topic.setXY(x1, y1);
-                    clickedX = x1;
-                    clickedY = y1;
+                    clickedX += (x - clickedX);
+                    clickedY += (y - clickedY);
                 }else if(element instanceof Link){
-                    Link link = (Link) element;
-                    int locationX = link.getStartX();
-                    int locationY = link.getStartY();
-                    int x1 = locationX - clickedX + x;
-                    int y1 = locationY - clickedY + y;
-                    link.setStartX(x1);
-                    link.setStartY(y1);
-                    //link.setEndXY(newX, newY);
-                    clickedX = x1;
-                    clickedY = y1;
                 }
             }
         }else{
@@ -52,22 +42,12 @@ public class MoveState extends State {
                     Topic topic = (Topic) elementView.getElement();
                     int locationX = topic.getX();
                     int locationY = topic.getY();
-                    int x1 = locationX - clickedX + x;
-                    int y1 = locationY - clickedY + y;
+                    int x1 = locationX + (x - clickedX);
+                    int y1 = locationY + (y - clickedY);
                     topic.setXY(x1, y1);
-                    clickedX = x1;
-                    clickedY = y1;
+                    clickedX += (x - clickedX);
+                    clickedY += (y - clickedY);
                 }else if(elementView instanceof LinkView){
-                    Link link =(Link) elementView.getElement();
-                    int locationX = link.getStartX();
-                    int locationY = link.getStartY();
-                    int x1 = locationX - clickedX + x;
-                    int y1 = locationY - clickedY + y;
-                    link.setStartX(x1);
-                    link.setStartY(y1);
-                    //link.setEndXY(newX, newY);
-                    clickedX = x1;
-                    clickedY = y1;
                 }
             }
         }
@@ -75,7 +55,5 @@ public class MoveState extends State {
 
     @Override
     public void releasedMouse(int x, int y, MindMapView m) {
-        clickedY = 0;
-        clickedX = 0;
     }
 }

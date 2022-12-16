@@ -10,9 +10,12 @@ import dsw.gerumap.app.repository.implementation.Topic;
 import dsw.gerumap.app.state.State;
 
 public class MoveState extends State {
+    private static int clickedX;
+    private static int clickedY;
     @Override
     public void clickedMouse(int x, int y, MindMapView m) {
-
+        clickedX = x;
+        clickedY = y;
     }
 
     @Override
@@ -22,12 +25,24 @@ public class MoveState extends State {
                  m.getMapSelectionModel().getSelected()) {
                 if(element instanceof Topic){
                     Topic topic = (Topic) element;
-                    topic.setXY(topic.getX() + x, topic.getY() + y);
+                    int locationX = topic.getX();
+                    int locationY = topic.getY();
+                    int x1 = locationX - clickedX + x;
+                    int y1 = locationY - clickedY + y;
+                    topic.setXY(x1, y1);
+                    clickedX = x1;
+                    clickedY = y1;
                 }else if(element instanceof Link){
                     Link link = (Link) element;
-                    link.setStartX(link.getStartX() + x);
-                    link.setStartY(link.getStartY() + y);
-                    link.setEndXY(link.getEndX() + x, link.getEndY() + y);
+                    int locationX = link.getStartX();
+                    int locationY = link.getStartY();
+                    int x1 = locationX - clickedX + x;
+                    int y1 = locationY - clickedY + y;
+                    link.setStartX(x1);
+                    link.setStartY(y1);
+                    //link.setEndXY(newX, newY);
+                    clickedX = x1;
+                    clickedY = y1;
                 }
             }
         }else{
@@ -35,12 +50,24 @@ public class MoveState extends State {
                     m.getPainters()) {
                 if(elementView instanceof TopicView){
                     Topic topic = (Topic) elementView.getElement();
-                    topic.setXY(topic.getX() + x, topic.getY() + y);
+                    int locationX = topic.getX();
+                    int locationY = topic.getY();
+                    int x1 = locationX - clickedX + x;
+                    int y1 = locationY - clickedY + y;
+                    topic.setXY(x1, y1);
+                    clickedX = x1;
+                    clickedY = y1;
                 }else if(elementView instanceof LinkView){
                     Link link =(Link) elementView.getElement();
-                    link.setStartX(link.getStartX() + x);
-                    link.setStartY(link.getStartY() + y);
-                    link.setEndXY(link.getEndX() + x, link.getEndY() + y);
+                    int locationX = link.getStartX();
+                    int locationY = link.getStartY();
+                    int x1 = locationX - clickedX + x;
+                    int y1 = locationY - clickedY + y;
+                    link.setStartX(x1);
+                    link.setStartY(y1);
+                    //link.setEndXY(newX, newY);
+                    clickedX = x1;
+                    clickedY = y1;
                 }
             }
         }
@@ -48,6 +75,7 @@ public class MoveState extends State {
 
     @Override
     public void releasedMouse(int x, int y, MindMapView m) {
-        super.releasedMouse(x, y, m);
+        clickedY = 0;
+        clickedX = 0;
     }
 }

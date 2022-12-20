@@ -1,5 +1,7 @@
 package dsw.gerumap.app.gui.swing.controller;
 
+import dsw.gerumap.app.core.ApplicationFramework;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -14,5 +16,6 @@ public class UndoAction extends AbstractGerumapAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        ApplicationFramework.getInstance().getGui().getCommandManager().undoCommand();
     }
 }

@@ -1,6 +1,5 @@
 package dsw.gerumap.app.gui.swing.view;
 
-
 import javax.swing.*;
 
 public class VToolbar extends JToolBar {
@@ -16,5 +15,7 @@ public class VToolbar extends JToolBar {
         add(MainFrame.getInstance().getActionManager().getZoomOutAction());
         add(MainFrame.getInstance().getActionManager().getColorAction());
         add(MainFrame.getInstance().getActionManager().getStrokeAction());
+        add(MainFrame.getInstance().getActionManager().getUndoAction());
+        add(MainFrame.getInstance().getActionManager().getRedoAction());
     }
 }

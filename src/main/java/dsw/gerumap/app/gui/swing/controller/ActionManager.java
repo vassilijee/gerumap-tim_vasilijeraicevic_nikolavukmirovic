@@ -23,6 +23,8 @@ public class ActionManager {
     private ZoomOutAction zoomOutAction;
     private ColorAction colorAction;
     private StrokeAction strokeAction;
+    private UndoAction undoAction;
+    private RedoAction redoAction;
 
     public ActionManager() {
         initialiseActions();
@@ -44,5 +46,7 @@ public class ActionManager {
         zoomOutAction = new ZoomOutAction();
         colorAction = new ColorAction();
         strokeAction = new StrokeAction();
+        undoAction = new UndoAction();
+        redoAction = new RedoAction();
     }
 }

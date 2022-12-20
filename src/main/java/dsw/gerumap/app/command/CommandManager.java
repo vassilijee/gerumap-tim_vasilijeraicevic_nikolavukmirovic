@@ -1,5 +1,6 @@
 package dsw.gerumap.app.command;
 
+import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 
 import java.util.ArrayList;
@@ -20,13 +21,20 @@ public class CommandManager {
     public void redoCommand(){
         if(currentCommand < commands.size()){
             commands.get(currentCommand++).redoCommand();
+            ApplicationFramework.getInstance().getGui().enableUndoAction();
+        }
+        if(currentCommand == commands.size()){
+            ApplicationFramework.getInstance().getGui().disableRedoAction();
         }
     }
 
     public void undoCommand(){
         if(currentCommand > 0){
-            MainFrame.getInstance().getActionManager();
+            ApplicationFramework.getInstance().getGui().enableRedoAction();
             commands.get(--currentCommand).undoCommand();
+        }
+        if(currentCommand == 0){
+            ApplicationFramework.getInstance().getGui().disableUndoAction();
         }
     }
 }

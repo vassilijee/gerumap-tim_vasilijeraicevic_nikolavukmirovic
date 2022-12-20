@@ -28,4 +28,24 @@ public class SwingGui implements Gui {
             dialog.dispose();
         }
     }
+
+    @Override
+    public void disableUndoAction() {
+        MainFrame.getInstance().getActionManager().getUndoAction().setEnabled(false);
+    }
+
+    @Override
+    public void disableRedoAction() {
+        MainFrame.getInstance().getActionManager().getRedoAction().setEnabled(false);
+    }
+
+    @Override
+    public void enableUndoAction() {
+        MainFrame.getInstance().getActionManager().getUndoAction().setEnabled(true);
+    }
+
+    @Override
+    public void enableRedoAction() {
+        MainFrame.getInstance().getActionManager().getRedoAction().setEnabled(true);
+    }
 }

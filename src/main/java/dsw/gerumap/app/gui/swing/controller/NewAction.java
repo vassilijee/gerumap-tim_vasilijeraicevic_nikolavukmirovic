@@ -4,7 +4,7 @@ import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.message.EventType;
-import dsw.gerumap.app.repository.implementation.Element;
+import dsw.gerumap.app.repository.implementation.MindMap;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -22,7 +22,7 @@ public class NewAction extends AbstractGerumapAction {
     public void actionPerformed(ActionEvent arg0) {
         MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
         if (!(selected == null)) {
-            if (selected.getMapNode() instanceof Element) {
+            if (selected.getMapNode() instanceof MindMap) {
                 ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.CHILD_CANNOT_BE_ADDED);
             } else {
                 MainFrame.getInstance().getMapTree().addChild(selected);

@@ -5,9 +5,6 @@ import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
 import dsw.gerumap.app.repository.implementation.Project;
 import dsw.gerumap.app.repository.implementation.ProjectExplorer;
 
-import javax.swing.tree.TreeNode;
-import java.util.List;
-
 public interface MapTree {
     MapTreeView generateTree(ProjectExplorer projectExplorer);
 
@@ -22,4 +19,6 @@ public interface MapTree {
     void changeAuthor(Project child, String author);
 
     MapTreeItem getSelectedNode();
+
+    void loadProject(Project node);
 }

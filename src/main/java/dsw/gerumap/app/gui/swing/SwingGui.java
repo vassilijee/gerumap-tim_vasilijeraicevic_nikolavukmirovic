@@ -18,10 +18,10 @@ public class SwingGui implements Gui {
     @Override
     public void start() {
         instance = MainFrame.getInstance();
-        instance.setVisible(true);
         commandManager = new CommandManager();
         disableRedoAction();
         disableUndoAction();
+        instance.setVisible(true);
     }
 
     @Override

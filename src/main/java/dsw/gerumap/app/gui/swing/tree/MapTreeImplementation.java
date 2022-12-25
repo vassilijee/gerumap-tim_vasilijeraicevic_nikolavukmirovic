@@ -4,6 +4,7 @@ import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.factory.GenFactory;
 import dsw.gerumap.app.factory.NodeFactory;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
+import dsw.gerumap.app.gui.swing.tree.model.MapTreeModel;
 import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.repository.composite.MapNode;
@@ -12,19 +13,15 @@ import dsw.gerumap.app.repository.implementation.Project;
 import dsw.gerumap.app.repository.implementation.ProjectExplorer;
 
 import javax.swing.*;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeNode;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MapTreeImplementation implements MapTree {
     private MapTreeView treeView;
-    private DefaultTreeModel treeModel;
+    private MapTreeModel treeModel;
 
     @Override
     public MapTreeView generateTree(ProjectExplorer projectExplorer) {
         MapTreeItem root = new MapTreeItem(projectExplorer);
-        treeModel = new DefaultTreeModel(root);
+        treeModel = new MapTreeModel(root);
         treeView = new MapTreeView(treeModel);
         return treeView;
     }
@@ -59,6 +56,17 @@ public class MapTreeImplementation implements MapTree {
     @Override
     public MapTreeItem getSelectedNode() {
         return (MapTreeItem) treeView.getLastSelectedPathComponent();
+    }
+
+    @Override
+    public void loadProject(Project node) {
+        MapTreeItem loadedProject = new MapTreeItem(node);
+        treeModel.getRoot().add(loadedProject);
+        MapNodeComposite mapNodeComposite = (MapNodeComposite)treeModel.getRoot().getMapNode();
+        mapNodeComposite.addChild(node);
+
+        treeView.expandPath(treeView.getSelectionPath());
+        SwingUtilities.updateComponentTreeUI(treeView);
     }
 
 

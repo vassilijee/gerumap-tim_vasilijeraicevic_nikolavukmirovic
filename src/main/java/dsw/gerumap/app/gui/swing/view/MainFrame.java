@@ -31,9 +31,6 @@ public class MainFrame extends JFrame implements ISubscriber {
     private void initialise() {
         actionManager = new ActionManager();
         mapTree = new MapTreeImplementation();
-        // MessageGeneratorImplementation.getInstance().addSubscriber(new
-        // ConsoleLogger());
-        // MessageGenerator.getInstance().addSubscriber(new FileLogger());
         initialiseGUI();
     }
 

@@ -4,11 +4,15 @@ import dsw.gerumap.app.repository.composite.MapNode;
 import dsw.gerumap.app.repository.composite.MapNodeComposite;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString(callSuper = true)
 public class Project extends MapNodeComposite {
     private String author;
+    protected boolean changed = true;
+    protected String filePath;
 
     public Project(String name, MapNode parent) {
         super(name, parent);
@@ -29,5 +33,11 @@ public class Project extends MapNodeComposite {
     public void setAuthor(String author) {
         this.author = author;
         this.notifySubscribers(this, "AUTHOR");
+    }
+
+    @Override
+    public void setName(String name) {
+        super.setName(name);
+        changed = true;
     }
 }

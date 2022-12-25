@@ -25,6 +25,8 @@ public class ActionManager {
     private StrokeAction strokeAction;
     private UndoAction undoAction;
     private RedoAction redoAction;
+    private SaveAction saveAction;
+    private OpenAction openAction;
 
     public ActionManager() {
         initialiseActions();
@@ -48,5 +50,6 @@ public class ActionManager {
         strokeAction = new StrokeAction();
         undoAction = new UndoAction();
         redoAction = new RedoAction();
+        openAction = new OpenAction();
     }
 }

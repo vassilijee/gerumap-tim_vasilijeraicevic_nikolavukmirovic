@@ -1,4 +1,4 @@
-package dsw.gerumap.app.command;
+package dsw.gerumap.app.repository.command;
 
 public abstract class AbstractCommand {
     public abstract void undoCommand();

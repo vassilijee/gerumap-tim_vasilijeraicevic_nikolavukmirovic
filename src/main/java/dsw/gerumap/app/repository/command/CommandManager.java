@@ -1,7 +1,6 @@
-package dsw.gerumap.app.command;
+package dsw.gerumap.app.repository.command;
 
 import dsw.gerumap.app.core.ApplicationFramework;
-import dsw.gerumap.app.gui.swing.view.MainFrame;
 
 import java.util.ArrayList;
 import java.util.List;

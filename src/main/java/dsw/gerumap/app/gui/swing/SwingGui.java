@@ -1,6 +1,5 @@
 package dsw.gerumap.app.gui.swing;
 
-import dsw.gerumap.app.command.CommandManager;
 import dsw.gerumap.app.core.Gui;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.message.Message;
@@ -10,15 +9,12 @@ import javax.swing.*;
 public class SwingGui implements Gui {
     private MainFrame instance;
 
-    private CommandManager commandManager;
-
     public SwingGui() {
     }
 
     @Override
     public void start() {
         instance = MainFrame.getInstance();
-        commandManager = new CommandManager();
         disableRedoAction();
         disableUndoAction();
         instance.setVisible(true);
@@ -33,11 +29,6 @@ public class SwingGui implements Gui {
             dialog.setVisible(true);
             dialog.dispose();
         }
-    }
-
-    @Override
-    public CommandManager getCommandManager() {
-        return commandManager;
     }
 
     @Override

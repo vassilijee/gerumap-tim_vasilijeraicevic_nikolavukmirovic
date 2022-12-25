@@ -1,5 +1,6 @@
 package dsw.gerumap.app.gui.swing.controller;
-import dsw.gerumap.app.core.ApplicationFramework;
+import dsw.gerumap.app.gui.swing.view.MainFrame;
+import dsw.gerumap.app.gui.swing.view.MindMapView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -15,6 +16,7 @@ public class RedoAction extends AbstractGerumapAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        ApplicationFramework.getInstance().getGui().getCommandManager().redoCommand();
+        MindMapView mindMapView = (MindMapView) MainFrame.getInstance().getProjectView().getTabbedPane().getSelectedComponent();
+        mindMapView.getMindMap().getCommandManager().redoCommand();
     }
 }

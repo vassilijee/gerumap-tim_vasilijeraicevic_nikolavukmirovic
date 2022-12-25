@@ -1,13 +1,19 @@
 package dsw.gerumap.app.repository.implementation;
 
+import dsw.gerumap.app.repository.command.CommandManager;
 import dsw.gerumap.app.repository.composite.MapNode;
 import dsw.gerumap.app.repository.composite.MapNodeComposite;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class MindMap extends MapNodeComposite {
-    // private boolean template = false;
-
+     private boolean template = false;
+     private CommandManager commandManager;
     public MindMap(String name, MapNode parent) {
         super(name, parent);
+        this.commandManager = new CommandManager();
     }
 
     @Override

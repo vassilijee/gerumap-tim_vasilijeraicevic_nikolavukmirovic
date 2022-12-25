@@ -4,6 +4,8 @@ import dsw.gerumap.app.gui.swing.view.MindMapView;
 import dsw.gerumap.app.gui.swing.view.painters.ElementView;
 import dsw.gerumap.app.gui.swing.view.painters.LinkView;
 import dsw.gerumap.app.gui.swing.view.painters.TopicView;
+import dsw.gerumap.app.repository.command.AbstractCommand;
+import dsw.gerumap.app.repository.command.implementation.AddLinkCommand;
 import dsw.gerumap.app.repository.implementation.Link;
 import dsw.gerumap.app.repository.implementation.Topic;
 import dsw.gerumap.app.state.State;

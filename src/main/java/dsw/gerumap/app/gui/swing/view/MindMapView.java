@@ -54,9 +54,7 @@ public class MindMapView extends JPanel implements ISubscriber {
                 painters.add(topicView);
                 ((Topic) object).addSubscriber(topicView);
                 ((Topic) object).addSubscriber(this);
-                int size = mindMap.getChildren().size();
-                --size;
-                if(((Topic) object).getName().equals("Topic"+size)){
+                if(((Topic) object).getName().equals("Topic")){
                     JTextField field = new JTextField();
                     JOptionPane pane = new JOptionPane(field, JOptionPane.PLAIN_MESSAGE, JOptionPane.OK_CANCEL_OPTION,
                             null);

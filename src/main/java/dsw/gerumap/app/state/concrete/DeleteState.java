@@ -4,6 +4,8 @@ import dsw.gerumap.app.gui.swing.view.MindMapView;
 import dsw.gerumap.app.gui.swing.view.painters.ElementView;
 import dsw.gerumap.app.gui.swing.view.painters.LinkView;
 import dsw.gerumap.app.gui.swing.view.painters.TopicView;
+import dsw.gerumap.app.repository.command.AbstractCommand;
+import dsw.gerumap.app.repository.command.implementation.DeleteCommand;
 import dsw.gerumap.app.repository.implementation.Element;
 import dsw.gerumap.app.state.State;
 
@@ -31,8 +33,8 @@ public class DeleteState extends State {
             }
             m.getPainters().removeAll(selectedEw);
             m.getPainters().removeAll(selectedEw2);
-            m.getMindMap().getChildren().removeAll(selected);
-            m.getMapSelectionModel().clearSelected();
+            AbstractCommand abstractCommand = new DeleteCommand(m.getMindMap(), selected, m.getMapSelectionModel());
+            m.getMindMap().getCommandManager().addCommand(abstractCommand);
             selected.clear();
             selectedEw2.clear();
             selectedEw.clear();
@@ -45,9 +47,12 @@ public class DeleteState extends State {
             }
             if (e != null) {
                 deleteSelected(m, selected, selectedEw, e);
-                m.getMindMap().removeChild(e.getElement());
+                //selected.add(e.getElement());
+                AbstractCommand abstractCommand = new DeleteCommand(m.getMindMap(), selected, m.getMapSelectionModel());
+                m.getMindMap().getCommandManager().addCommand(abstractCommand);
+                //m.getMindMap().removeChild(e.getElement());
                 m.getPainters().removeAll(selectedEw);
-                m.getMindMap().getChildren().removeAll(selected);
+                //m.getMindMap().getChildren().removeAll(selected);
             }
         }
     }

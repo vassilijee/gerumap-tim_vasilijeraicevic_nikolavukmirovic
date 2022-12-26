@@ -51,5 +51,6 @@ public class ActionManager {
         undoAction = new UndoAction();
         redoAction = new RedoAction();
         openAction = new OpenAction();
+        saveAction = new SaveAction();
     }
 }

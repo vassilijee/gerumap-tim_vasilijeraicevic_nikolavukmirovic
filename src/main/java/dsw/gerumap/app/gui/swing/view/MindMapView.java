@@ -54,40 +54,44 @@ public class MindMapView extends JPanel implements ISubscriber {
                 painters.add(topicView);
                 ((Topic) object).addSubscriber(topicView);
                 ((Topic) object).addSubscriber(this);
-                JTextField field = new JTextField();
-                JOptionPane pane = new JOptionPane(field, JOptionPane.PLAIN_MESSAGE, JOptionPane.OK_CANCEL_OPTION,
-                        null);
-                JDialog dialog = pane.createDialog("Tekst");
-                dialog.addWindowListener(new WindowAdapter() {
-                    @Override
-                    public void windowOpened(WindowEvent e) {
-                        field.requestFocus();
-                        field.selectAll();
-                    }
-                });
-                dialog.setVisible(true);
-                dialog.dispose();
-                Object value = pane.getValue();
-                if (value instanceof Integer) {
-                    int result = (int) value;
-                    if (result == JOptionPane.OK_OPTION) {
-                        String tekst = field.getText();
-                        boolean flag = false;
-                        for (MapNode mapNode:
-                             mindMap.getChildren()) {
-                            if(mapNode.getName().equals(tekst)){
-                                flag = true;
-                                break;
+                int size = mindMap.getChildren().size();
+                --size;
+                if(((Topic) object).getName().equals("Topic"+size)){
+                    JTextField field = new JTextField();
+                    JOptionPane pane = new JOptionPane(field, JOptionPane.PLAIN_MESSAGE, JOptionPane.OK_CANCEL_OPTION,
+                            null);
+                    JDialog dialog = pane.createDialog("Tekst");
+                    dialog.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowOpened(WindowEvent e) {
+                            field.requestFocus();
+                            field.selectAll();
+                        }
+                    });
+                    dialog.setVisible(true);
+                    dialog.dispose();
+                    Object value = pane.getValue();
+                    if (value instanceof Integer) {
+                        int result = (int) value;
+                        if (result == JOptionPane.OK_OPTION) {
+                            String tekst = field.getText();
+                            boolean flag = false;
+                            for (MapNode mapNode:
+                                    mindMap.getChildren()) {
+                                if(mapNode.getName().equals(tekst)){
+                                    flag = true;
+                                    break;
+                                }
                             }
-                        }
-                        if(flag){
-                            mindMap.removeChild((Topic)object);
-                            System.out.println("Isto ime");
+                            if(flag){
+                                mindMap.removeChild((Topic)object);
+                                System.out.println("Isto ime");
+                            }else{
+                                topicView.getTopic().setName(tekst);
+                            }
                         }else{
-                            topicView.getTopic().setName(tekst);
+                            mindMap.removeChild((Topic)object);
                         }
-                    }else{
-                        mindMap.removeChild((Topic)object);
                     }
                 }
                 repaint();

@@ -30,7 +30,9 @@ public class AddLinkState extends State {
             }
         }
         if (!(link == null)) {
-            m.getMindMap().addChild(link);
+            //m.getMindMap().addChild(link);
+            AbstractCommand abstractCommand = new AddLinkCommand(link, m.getMindMap());
+            m.getMindMap().getCommandManager().addCommand(abstractCommand);
         }
     }
 

@@ -13,7 +13,7 @@ public class OpenAction extends AbstractGerumapAction{
     public OpenAction() {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_O, ActionEvent.CTRL_MASK));
-        //putValue(SMALL_ICON, loadIcon("/images/plus.png"));
+        putValue(SMALL_ICON, loadIcon("/images/open.png"));
         putValue(NAME, "Open");
         putValue(SHORT_DESCRIPTION, "Open");
     }

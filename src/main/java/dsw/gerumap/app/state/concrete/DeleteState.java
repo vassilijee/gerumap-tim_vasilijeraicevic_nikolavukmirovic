@@ -15,60 +15,58 @@ import java.util.List;
 public class DeleteState extends State {
     @Override
     public void clickedMouse(int x, int y, MindMapView m) {
-        ElementView e = null;
+        ElementView elementView = null;
         List<Element> selected = new ArrayList<>();
-        List<ElementView> selectedEw = new ArrayList<>();
-        List<ElementView> selectedEw2 = new ArrayList<>();
+        List<ElementView> selectedElementView = new ArrayList<>();
+        List<ElementView> selectedElementView1 = new ArrayList<>();
         if (!(m.getMapSelectionModel().getSelected().isEmpty())) {
-            for (ElementView ew :
+            for (ElementView elementView1 :
                     m.getPainters()) {
-                if (m.getMapSelectionModel().getSelected().contains(ew.getElement())) {
-                    selectedEw.add(ew);
-                    selected.add(ew.getElement());
+                if (m.getMapSelectionModel().getSelected().contains(elementView1.getElement())) {
+                    selectedElementView.add(elementView1);
+                    selected.add(elementView1.getElement());
                 }
             }
             for (ElementView selektovan :
-                    selectedEw) {
-                deleteSelected(m, selected, selectedEw2, selektovan);
+                    selectedElementView) {
+                findLinks(m, selected, selectedElementView1, selektovan);
             }
-            m.getPainters().removeAll(selectedEw);
-            m.getPainters().removeAll(selectedEw2);
-            m.getMindMap().getChildren().removeAll(selected);
-            m.getMapSelectionModel().clearSelected();
-            //AbstractCommand abstractCommand = new DeleteCommand(m.getMindMap(), selected, m.getMapSelectionModel());
-            //m.getMindMap().getCommandManager().addCommand(abstractCommand);
+            m.getPainters().removeAll(selectedElementView);
+            m.getPainters().removeAll(selectedElementView1);
+            AbstractCommand abstractCommand = new DeleteCommand(m.getMindMap(), selected, m.getMapSelectionModel());
+            m.getMindMap().getCommandManager().addCommand(abstractCommand);
             selected.clear();
-            selectedEw2.clear();
-            selectedEw.clear();
+            selectedElementView.clear();
+            selectedElementView1.clear();
         } else {
-            for (ElementView elementView :
+            for (ElementView elementView1 :
                     m.getPainters()) {
-                if (elementView.elementAt(x, y)) {
-                    e = elementView;
+                if (elementView1.elementAt(x, y)) {
+                    elementView = elementView1;
                 }
             }
-            if (e != null) {
-                deleteSelected(m, selected, selectedEw, e);
-                m.getMindMap().removeChild(e.getElement());
-                selected.add(e.getElement());
-                //AbstractCommand abstractCommand = new DeleteCommand(m.getMindMap(), selected, m.getMapSelectionModel());
-                //m.getMindMap().getCommandManager().addCommand(abstractCommand);
-                m.getMindMap().removeChild(e.getElement());
-                m.getPainters().removeAll(selectedEw);
-                m.getMindMap().getChildren().removeAll(selected);
+            if (elementView != null) {
+                selected.add(elementView.getElement());
+                selectedElementView.add(elementView);
+                findLinks(m, selected, selectedElementView, elementView);
+                m.getPainters().removeAll(selectedElementView);
+                AbstractCommand abstractCommand = new DeleteCommand(m.getMindMap(), selected, m.getMapSelectionModel());
+                m.getMindMap().getCommandManager().addCommand(abstractCommand);
+                selected.clear();
+                selectedElementView.clear();
             }
         }
     }
 
-    private void deleteSelected(MindMapView m, List<Element> selected, List<ElementView> selectedEw2, ElementView selektovan) {
+    private void findLinks(MindMapView m, List<Element> selected, List<ElementView> selectedElementView1, ElementView selektovan) {
         if (selektovan instanceof TopicView) {
-            for (ElementView painter :
+            for (ElementView elementView :
                     m.getPainters()) {
-                if (painter instanceof LinkView) {
-                    if (((LinkView) painter).getLink().getTopicTo().equals(((TopicView) selektovan).getTopic()) ||
-                            ((LinkView) painter).getLink().getTopicFrom().equals(((TopicView) selektovan).getTopic())) {
-                        selectedEw2.add(painter);
-                        selected.add(painter.getElement());
+                if (elementView instanceof LinkView) {
+                    if (((LinkView) elementView).getLink().getTopicTo().equals(((TopicView) selektovan).getTopic()) ||
+                            ((LinkView) elementView).getLink().getTopicFrom().equals(((TopicView) selektovan).getTopic())) {
+                        selectedElementView1.add(elementView);
+                        selected.add(elementView.getElement());
                     }
                 }
             }

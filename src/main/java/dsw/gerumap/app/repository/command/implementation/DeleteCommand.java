@@ -10,11 +10,12 @@ import java.util.List;
 
 public class DeleteCommand extends AbstractCommand {
     private MindMap mindMap;
-    private List<Element> selected = new ArrayList<>();
+    private List<Element> selected;
     private MapSelectionModel mapSelectionModel;
 
     public DeleteCommand(MindMap mindMap, List<Element> selected, MapSelectionModel mapSelectionModel) {
         this.mindMap = mindMap;
+        this.selected = new ArrayList<>();
         this.selected.addAll(selected);
         this.mapSelectionModel = mapSelectionModel;
     }

@@ -109,15 +109,15 @@ public class MindMapView extends JPanel implements ISubscriber {
         } else if (notification.equals("REPAINT")) {
             repaint();
         } else if (notification.equals("DELETE")) {
-            ElementView e = null;
-            for (ElementView ew :
+            ElementView elementView = null;
+            for (ElementView elementView1 :
                     painters) {
-                if (ew.getElement() == object) {
-                    e = ew;
+                if (elementView1.getElement() == object) {
+                    elementView = elementView1;
                 }
             }
-            if (e != null) {
-                painters.remove(e);
+            if (elementView != null) {
+                painters.remove(elementView);
             }
             repaint();
         }else if(notification.equals("MOVE")){

@@ -31,8 +31,7 @@ public class DeleteState extends State {
                     selectedElementView) {
                 findLinks(m, selected, selectedElementView1, selektovan);
             }
-            m.getPainters().removeAll(selectedElementView);
-            m.getPainters().removeAll(selectedElementView1);
+            selectedElementView.addAll(selectedElementView1);
             AbstractCommand abstractCommand = new DeleteCommand(m.getMindMap(), selected, m.getMapSelectionModel());
             m.getMindMap().getCommandManager().addCommand(abstractCommand);
             selected.clear();
@@ -46,10 +45,10 @@ public class DeleteState extends State {
                 }
             }
             if (elementView != null) {
+                System.out.println("KLIK");
                 selected.add(elementView.getElement());
                 selectedElementView.add(elementView);
                 findLinks(m, selected, selectedElementView, elementView);
-                m.getPainters().removeAll(selectedElementView);
                 AbstractCommand abstractCommand = new DeleteCommand(m.getMindMap(), selected, m.getMapSelectionModel());
                 m.getMindMap().getCommandManager().addCommand(abstractCommand);
                 selected.clear();

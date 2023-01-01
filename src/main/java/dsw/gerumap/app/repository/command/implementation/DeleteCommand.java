@@ -1,5 +1,7 @@
 package dsw.gerumap.app.repository.command.implementation;
 
+
+
 import dsw.gerumap.app.repository.command.AbstractCommand;
 import dsw.gerumap.app.repository.implementation.Element;
 import dsw.gerumap.app.repository.implementation.MapSelectionModel;
@@ -25,13 +27,12 @@ public class DeleteCommand extends AbstractCommand {
         for (Element element:
              selected) {
             mindMap.addChild(element);
-            System.out.println(element);
         }
     }
 
     @Override
     public void redoCommand() {
-        mindMap.getChildren().removeAll(selected);
+        mapSelectionModel.getSelected().addAll(selected);
         mapSelectionModel.clearSelected();
     }
 }

@@ -122,6 +122,18 @@ public class MindMapView extends JPanel implements ISubscriber {
             repaint();
         }else if(notification.equals("MOVE")){
             repaint();
+        }else if(notification.equals("DELETEVIEWS")){
+            MapSelectionModel mapSelectionModel1 = (MapSelectionModel) object;
+            List<ElementView> elementViews = new ArrayList<>();
+            for (ElementView elementView:
+                 painters) {
+                if(mapSelectionModel1.getSelected().contains(elementView.getElement())){
+                    elementViews.add(elementView);
+                }
+            }
+            painters.removeAll(elementViews);
+            mindMap.getChildren().removeAll(mapSelectionModel1.getSelected());
+            repaint();
         }
     }
 

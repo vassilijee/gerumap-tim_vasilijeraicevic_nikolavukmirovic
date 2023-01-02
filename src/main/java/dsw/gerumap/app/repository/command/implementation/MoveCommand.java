@@ -33,9 +33,7 @@ public class MoveCommand extends AbstractCommand {
                 int x;
                 int y;
                 x = cordX.get(topic.getName());
-                System.out.println(x);
                 y = cordY.get(topic.getName());
-                System.out.println(y);
                 topic.setXY(x, y);
             }else if(element instanceof Link){
                 Link link = (Link) element;

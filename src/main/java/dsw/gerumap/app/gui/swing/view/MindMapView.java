@@ -30,7 +30,6 @@ public class MindMapView extends JPanel implements ISubscriber {
     private MouseController mouseController;
     private double zoom = 1;
     private AffineTransform affineTransform = new AffineTransform();
-    //private Rectangle rectangle = new Rectangle();
     private MapSelectionModel mapSelectionModel;
 
     public MindMapView() {
@@ -54,10 +53,9 @@ public class MindMapView extends JPanel implements ISubscriber {
                 painters.add(topicView);
                 ((Topic) object).addSubscriber(topicView);
                 ((Topic) object).addSubscriber(this);
-                if(((Topic) object).getName().equals("Topic")){
+                if (((Topic) object).getName().equals("Topic")) {
                     JTextField field = new JTextField();
-                    JOptionPane pane = new JOptionPane(field, JOptionPane.PLAIN_MESSAGE, JOptionPane.OK_CANCEL_OPTION,
-                            null);
+                    JOptionPane pane = new JOptionPane(field, JOptionPane.PLAIN_MESSAGE, JOptionPane.OK_CANCEL_OPTION, null);
                     JDialog dialog = pane.createDialog("Tekst");
                     dialog.addWindowListener(new WindowAdapter() {
                         @Override
@@ -74,21 +72,20 @@ public class MindMapView extends JPanel implements ISubscriber {
                         if (result == JOptionPane.OK_OPTION) {
                             String tekst = field.getText();
                             boolean flag = false;
-                            for (MapNode mapNode:
-                                    mindMap.getChildren()) {
-                                if(mapNode.getName().equals(tekst)){
+                            for (MapNode mapNode : mindMap.getChildren()) {
+                                if (mapNode.getName().equals(tekst)) {
                                     flag = true;
                                     break;
                                 }
                             }
-                            if(flag){
-                                mindMap.removeChild((Topic)object);
+                            if (flag) {
+                                mindMap.removeChild((Topic) object);
                                 System.out.println("Isto ime");
-                            }else{
+                            } else {
                                 topicView.getTopic().setName(tekst);
                             }
-                        }else{
-                            mindMap.removeChild((Topic)object);
+                        } else {
+                            mindMap.removeChild((Topic) object);
                         }
                     }
                 }
@@ -99,7 +96,7 @@ public class MindMapView extends JPanel implements ISubscriber {
                 ((Link) object).addSubscriber(linkView);
                 ((Link) object).addSubscriber(this);
                 repaint();
-            }else if(object instanceof SelectionRect){
+            } else if (object instanceof SelectionRect) {
                 SelectionRectView selectionRectView = new SelectionRectView((SelectionRect) object);
                 painters.add(selectionRectView);
                 ((SelectionRect) object).addSubscriber(selectionRectView);
@@ -110,8 +107,7 @@ public class MindMapView extends JPanel implements ISubscriber {
             repaint();
         } else if (notification.equals("DELETE")) {
             ElementView elementView = null;
-            for (ElementView elementView1 :
-                    painters) {
+            for (ElementView elementView1 : painters) {
                 if (elementView1.getElement() == object) {
                     elementView = elementView1;
                 }
@@ -120,13 +116,12 @@ public class MindMapView extends JPanel implements ISubscriber {
                 painters.remove(elementView);
             }
             repaint();
-        }else if(notification.equals("MOVE")){
+        } else if (notification.equals("MOVE")) {
             repaint();
-        }else if(notification.equals("DELETEVIEWS")){
+        } else if (notification.equals("DELETEVIEWS")) {
             List<ElementView> elementViews = new ArrayList<>();
-            for (ElementView elementView:
-                 painters) {
-                if(mapSelectionModel.getSelected().contains(elementView.getElement())){
+            for (ElementView elementView : painters) {
+                if (mapSelectionModel.getSelected().contains(elementView.getElement())) {
                     elementViews.add(elementView);
                 }
             }
@@ -140,8 +135,7 @@ public class MindMapView extends JPanel implements ISubscriber {
         this.mindMap = mindMap;
         mindMap.addSubscriber(this);
         title = mindMap.getName();
-        for (MapNode child :
-                mindMap.getChildren()) {
+        for (MapNode child : mindMap.getChildren()) {
             if (child instanceof Topic) {
                 TopicView topicView = new TopicView((Topic) child);
                 painters.add(topicView);
@@ -178,16 +172,14 @@ public class MindMapView extends JPanel implements ISubscriber {
         Graphics2D g2 = (Graphics2D) g;
         g2.scale(zoom, zoom);
         g2.transform(affineTransform);
-        for (ElementView p :
-                painters) {
+        for (ElementView p : painters) {
             p.draw(g2, this);
         }
     }
 
-    public ElementView getPainterByElement(Element element){
-        for (ElementView ew:
-             painters) {
-            if(ew.getElement().equals(element)){
+    public ElementView getPainterByElement(Element element) {
+        for (ElementView ew : painters) {
+            if (ew.getElement().equals(element)) {
                 return ew;
             }
         }

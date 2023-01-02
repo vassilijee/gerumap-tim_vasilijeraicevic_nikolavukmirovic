@@ -5,9 +5,11 @@ import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.repository.implementation.Project;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.FileFilter;
 
 public class SaveAction extends AbstractGerumapAction {
     public SaveAction() {
@@ -21,6 +23,10 @@ public class SaveAction extends AbstractGerumapAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         JFileChooser jfc = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter( "*.json", "json");
+        jfc.setFileFilter(filter);
+
+
         if (!(MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode() instanceof Project))
             return;
 

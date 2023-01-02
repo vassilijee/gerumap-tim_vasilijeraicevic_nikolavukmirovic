@@ -32,7 +32,7 @@ public class GsonSerializer implements Serializer {
 
     @Override
     public void saveProject(Project node) {
-        try (FileWriter fileWriter = new FileWriter(node.getFilePath())) {
+        try (FileWriter fileWriter = new FileWriter(node.getFilePath() + ".json")) {
             gson.toJson(node, fileWriter);
         } catch (IOException e) {
             e.printStackTrace();

@@ -29,16 +29,16 @@ public class MoveCommand extends AbstractCommand {
 
     @Override
     public void undoCommand() {
-        for (Element element:
-             mapSelectionModel.getSelected()) {
-            if(element instanceof Topic){
+        for (Element element :
+                mapSelectionModel.getSelected()) {
+            if (element instanceof Topic) {
                 Topic topic = (Topic) element;
                 int x;
                 int y;
                 x = cordX.get(topic.getName());
                 y = cordY.get(topic.getName());
                 topic.setXY(x, y);
-            }else if(element instanceof Link){
+            } else if (element instanceof Link) {
                 Link link = (Link) element;
                 link.move();
             }
@@ -47,12 +47,12 @@ public class MoveCommand extends AbstractCommand {
 
     @Override
     public void redoCommand() {
-        for (Element element:
-             mapSelectionModel.getSelected()) {
-            if(element instanceof Topic){
+        for (Element element :
+                mapSelectionModel.getSelected()) {
+            if (element instanceof Topic) {
                 Topic topic = (Topic) element;
                 topic.setXY(cordEX.get(topic.getName()), cordEY.get(topic.getName()));
-            }else if(element instanceof Link){
+            } else if (element instanceof Link) {
                 Link link = (Link) element;
                 link.move();
             }

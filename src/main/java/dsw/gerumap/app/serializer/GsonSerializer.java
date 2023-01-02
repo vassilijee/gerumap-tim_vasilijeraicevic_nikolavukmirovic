@@ -14,9 +14,9 @@ public class GsonSerializer implements Serializer {
 
     @Override
     public Project loadProject(File file) {
-        try(FileReader fileReader = new FileReader(file)){
+        try (FileReader fileReader = new FileReader(file)) {
             return gson.fromJson(fileReader, Project.class);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
@@ -24,9 +24,9 @@ public class GsonSerializer implements Serializer {
 
     @Override
     public void saveProject(Project node) {
-        try(FileWriter fileWriter = new FileWriter(node.getFilePath())) {
+        try (FileWriter fileWriter = new FileWriter(node.getFilePath())) {
             gson.toJson(node, fileWriter);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

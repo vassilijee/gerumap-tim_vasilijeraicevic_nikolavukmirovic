@@ -17,12 +17,12 @@ public class ApplicationFramework {
     }
 
     public void initialise(Gui gui, MapRepository mapRepository, ErrorLogger errorLogger,
-            MessageGenerator messageGenerator, Serializer serializer) {
+                           MessageGenerator messageGenerator, Serializer serializer) {
         this.gui = gui;
         this.mapRepository = mapRepository;
         this.errorLogger = errorLogger;
         this.messageGenerator = messageGenerator;
-        this.serializer= serializer;
+        this.serializer = serializer;
     }
 
     private static ApplicationFramework instance;

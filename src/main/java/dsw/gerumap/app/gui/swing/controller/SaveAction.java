@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
-public class SaveAction extends AbstractGerumapAction{
+public class SaveAction extends AbstractGerumapAction {
     public SaveAction() {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_S, ActionEvent.CTRL_MASK));
@@ -20,23 +20,24 @@ public class SaveAction extends AbstractGerumapAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JFileChooser jFileChooser = new JFileChooser();
-        if(!(MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode() instanceof Project)) return;
+        JFileChooser jfc = new JFileChooser();
+        if (!(MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode() instanceof Project))
+            return;
+
         Project project = (Project) MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode();
         File projectFile = null;
-        if(!project.isChanged()){
+        if (!project.isChanged()) {
             return;
         }
-        if(project.getFilePath() == null || project.getFilePath().isEmpty()){
-            if (jFileChooser.showSaveDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION){
-                projectFile= jFileChooser.getSelectedFile();
-                project.setFilePath(project.getFilePath());
-            }else {
+        if (project.getFilePath() == null || project.getFilePath().isEmpty()) {
+            if (jfc.showSaveDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION) {
+                projectFile = jfc.getSelectedFile();
+                project.setFilePath(projectFile.getPath());
+            } else {
                 return;
             }
         }
         ApplicationFramework.getInstance().getSerializer().saveProject(project);
         project.setChanged(false);
-
     }
 }

@@ -20,14 +20,14 @@ public class MoveState extends State {
     private static HashMap<String, Integer> cordY = new HashMap<>();
     private static HashMap<String, Integer> cordEX = new HashMap<>();
     private static HashMap<String, Integer> cordEY = new HashMap<>();
+
     @Override
     public void clickedMouse(int x, int y, MindMapView m) {
         clickedX = x;
         clickedY = y;
-        if(!(m.getMapSelectionModel().getSelected().isEmpty())){
-            for (Element element:
-                 m.getMapSelectionModel().getSelected()) {
-                if(element instanceof Topic){
+        if (!(m.getMapSelectionModel().getSelected().isEmpty())) {
+            for (Element element : m.getMapSelectionModel().getSelected()) {
+                if (element instanceof Topic) {
                     Topic topic = (Topic) element;
                     cordX.put(topic.getName(), topic.getX());
                     cordY.put(topic.getName(), topic.getY());
@@ -39,8 +39,7 @@ public class MoveState extends State {
     @Override
     public void draggedMouse(int x, int y, MindMapView m) {
         if (!(m.getMapSelectionModel().getSelected().isEmpty())) {
-            for (Element element :
-                    m.getMapSelectionModel().getSelected()) {
+            for (Element element : m.getMapSelectionModel().getSelected()) {
                 if (element instanceof Topic) {
                     Topic topic = (Topic) element;
                     int locationX = topic.getX();
@@ -55,8 +54,7 @@ public class MoveState extends State {
                     link.move();
                 }
             }
-            for (ElementView elementView :
-                    m.getPainters()) {
+            for (ElementView elementView : m.getPainters()) {
                 if (elementView instanceof LinkView) {
                     Link link = (Link) elementView.getElement();
                     link.move();
@@ -65,8 +63,7 @@ public class MoveState extends State {
             clickedX += (x - clickedX);
             clickedY += (y - clickedY);
         } else {
-            for (ElementView elementView :
-                    m.getPainters()) {
+            for (ElementView elementView : m.getPainters()) {
                 if (elementView instanceof TopicView) {
                     Topic topic = (Topic) elementView.getElement();
                     int locationX = topic.getX();
@@ -83,9 +80,10 @@ public class MoveState extends State {
             clickedY += (y - clickedY);
         }
     }
+
     @Override
     public void releasedMouse(int x, int y, MindMapView m) {
-        if(!(m.getMapSelectionModel().getSelected().isEmpty())){
+        if (!(m.getMapSelectionModel().getSelected().isEmpty())) {
             AbstractCommand abstractCommand = new MoveCommand(m.getMapSelectionModel(), cordX, cordY, cordEX, cordEY);
             m.getMindMap().getCommandManager().addCommand(abstractCommand);
         }

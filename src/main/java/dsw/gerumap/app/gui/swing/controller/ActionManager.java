@@ -27,6 +27,7 @@ public class ActionManager {
     private RedoAction redoAction;
     private SaveAction saveAction;
     private OpenAction openAction;
+    private SaveAsAction saveAsAction;
 
     public ActionManager() {
         initialiseActions();
@@ -52,5 +53,6 @@ public class ActionManager {
         redoAction = new RedoAction();
         openAction = new OpenAction();
         saveAction = new SaveAction();
+        saveAsAction = new SaveAsAction();
     }
 }

@@ -83,7 +83,9 @@ public class MoveState extends State {
     }
     @Override
     public void releasedMouse(int x, int y, MindMapView m) {
-        AbstractCommand abstractCommand = new MoveCommand(m.getMapSelectionModel(), cordX, cordY, x1, y1);
-        m.getMindMap().getCommandManager().addCommand(abstractCommand);
+        if(!(m.getMapSelectionModel().getSelected().isEmpty())){
+            AbstractCommand abstractCommand = new MoveCommand(m.getMapSelectionModel(), cordX, cordY, x1, y1);
+            m.getMindMap().getCommandManager().addCommand(abstractCommand);
+        }
     }
 }

@@ -128,6 +128,15 @@ public class MindMapView extends JPanel implements ISubscriber {
             painters.removeAll(elementViews);
             mindMap.getChildren().removeAll(mapSelectionModel.getSelected());
             repaint();
+        }else if(notification.equals("MOVELINKS")){
+            for (ElementView elementView:
+                 painters) {
+                if(elementView instanceof LinkView){
+                    LinkView linkView = (LinkView) elementView;
+                    Link link = linkView.getLink();
+                    link.move();
+                }
+            }
         }
     }
 

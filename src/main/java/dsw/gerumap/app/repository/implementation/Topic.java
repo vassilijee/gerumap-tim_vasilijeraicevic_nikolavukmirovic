@@ -28,5 +28,6 @@ public class Topic extends Element {
         this.setX(x);
         this.setY(y);
         this.notifySubscribers(this, "REPAINT");
+        this.notifySubscribers(this, "MOVELINKS");
     }
 }

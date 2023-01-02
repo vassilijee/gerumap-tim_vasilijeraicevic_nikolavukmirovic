@@ -46,7 +46,7 @@ public class StrokeAction extends AbstractGerumapAction {
                                 mindMapView.getMapSelectionModel().getSelected()) {
                             element.setStroke(Integer.parseInt(text));
                         }
-                        mindMapView.getMapSelectionModel().clearSelected();
+                        mindMapView.getMapSelectionModel().clearSelectedColorStroke();
                     } else {
                         Element.setStroke1(Integer.parseInt(text));
                     }

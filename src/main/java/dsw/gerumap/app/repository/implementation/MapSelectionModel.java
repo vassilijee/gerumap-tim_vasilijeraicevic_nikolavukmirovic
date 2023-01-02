@@ -46,5 +46,9 @@ public class MapSelectionModel implements IPublisher {
         this.notifySubscribers(this, "DELETEVIEWS");
         this.selected.clear();
     }
+    public void clearSelectedColorStroke(){
+        this.selected.clear();
+        this.notifySubscribers(this, "REPAINT");
+    }
 
 }

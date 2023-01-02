@@ -38,7 +38,7 @@ public class ColorAction extends AbstractGerumapAction{
                                mindMapView.getMapSelectionModel().getSelected()) {
                            element.setColor(color);
                        }
-                       mindMapView.getMapSelectionModel().clearSelected();
+                       mindMapView.getMapSelectionModel().clearSelectedColorStroke();
                    } else {
                        Element.setColor1(color);
                    }

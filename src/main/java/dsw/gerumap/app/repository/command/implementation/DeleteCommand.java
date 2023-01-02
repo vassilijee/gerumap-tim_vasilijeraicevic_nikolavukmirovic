@@ -1,7 +1,6 @@
 package dsw.gerumap.app.repository.command.implementation;
 
 
-
 import dsw.gerumap.app.repository.command.AbstractCommand;
 import dsw.gerumap.app.repository.implementation.Element;
 import dsw.gerumap.app.repository.implementation.MapSelectionModel;
@@ -24,8 +23,8 @@ public class DeleteCommand extends AbstractCommand {
 
     @Override
     public void undoCommand() {
-        for (Element element:
-             selected) {
+        for (Element element :
+                selected) {
             mindMap.addChild(element);
         }
     }

@@ -9,8 +9,7 @@ import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.repository.composite.MapNode;
 import dsw.gerumap.app.repository.composite.MapNodeComposite;
-import dsw.gerumap.app.repository.implementation.Project;
-import dsw.gerumap.app.repository.implementation.ProjectExplorer;
+import dsw.gerumap.app.repository.implementation.*;
 
 import javax.swing.*;
 
@@ -64,7 +63,29 @@ public class MapTreeImplementation implements MapTree {
         treeModel.getRoot().add(loadedProject);
         MapNodeComposite mapNodeComposite = (MapNodeComposite)treeModel.getRoot().getMapNode();
         mapNodeComposite.addChild(node);
-
+        for (MapNode mapNode:
+             node.getChildren()) {
+            MapTreeItem loadedMap = new MapTreeItem(mapNode);
+            mapNode.setParent(node);
+            MapNodeComposite mapNodeComposite1 = (MapNodeComposite) mapNode;
+            for (MapNode mapNode1:
+                 mapNodeComposite1.getChildren()) {
+                mapNode1.setParent(mapNode);
+                if(mapNode1 instanceof Link){
+                    for (MapNode mapNode2:
+                         mapNodeComposite1.getChildren()) {
+                        if(mapNode2 instanceof Topic){
+                            if(mapNode2.getName().equals(((Link) mapNode1).getTopicFrom().getName())){
+                                ((Link) mapNode1).setTopicFrom((Topic) mapNode2);
+                            }else if(mapNode2.getName().equals(((Link) mapNode1).getTopicTo().getName())){
+                                ((Link) mapNode1).setTopicTo((Topic) mapNode2);
+                            }
+                        }
+                    }
+                }
+            }
+            loadedProject.add(loadedMap);
+        }
         treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);
     }

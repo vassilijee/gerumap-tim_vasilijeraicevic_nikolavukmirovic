@@ -18,8 +18,8 @@ public class MoveState extends State {
     private static int clickedY;
     private static HashMap<String, Integer> cordX = new HashMap<>();
     private static HashMap<String, Integer> cordY = new HashMap<>();
-    private static int x1;
-    private static int y1;
+    private static HashMap<String, Integer> cordEX = new HashMap<>();
+    private static HashMap<String, Integer> cordEY = new HashMap<>();
     @Override
     public void clickedMouse(int x, int y, MindMapView m) {
         clickedX = x;
@@ -45,9 +45,11 @@ public class MoveState extends State {
                     Topic topic = (Topic) element;
                     int locationX = topic.getX();
                     int locationY = topic.getY();
-                    x1 = locationX + (x - clickedX);
-                    y1 = locationY + (y - clickedY);
+                    int x1 = locationX + (x - clickedX);
+                    int y1 = locationY + (y - clickedY);
                     topic.setXY(x1, y1);
+                    cordEX.put(topic.getName(), x1);
+                    cordEY.put(topic.getName(), y1);
                 } else if (element instanceof Link) {
                     Link link = (Link) element;
                     link.move();
@@ -69,8 +71,8 @@ public class MoveState extends State {
                     Topic topic = (Topic) elementView.getElement();
                     int locationX = topic.getX();
                     int locationY = topic.getY();
-                    x1 = locationX + (x - clickedX);
-                    y1 = locationY + (y - clickedY);
+                    int x1 = locationX + (x - clickedX);
+                    int y1 = locationY + (y - clickedY);
                     topic.setXY(x1, y1);
                 } else if (elementView instanceof LinkView) {
                     Link link = (Link) elementView.getElement();
@@ -84,7 +86,7 @@ public class MoveState extends State {
     @Override
     public void releasedMouse(int x, int y, MindMapView m) {
         if(!(m.getMapSelectionModel().getSelected().isEmpty())){
-            AbstractCommand abstractCommand = new MoveCommand(m.getMapSelectionModel(), cordX, cordY, x1, y1);
+            AbstractCommand abstractCommand = new MoveCommand(m.getMapSelectionModel(), cordX, cordY, cordEX, cordEY);
             m.getMindMap().getCommandManager().addCommand(abstractCommand);
         }
     }

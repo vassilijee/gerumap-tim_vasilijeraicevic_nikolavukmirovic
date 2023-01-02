@@ -12,16 +12,19 @@ public class MoveCommand extends AbstractCommand {
     private MapSelectionModel mapSelectionModel;
     private HashMap<String, Integer> cordX;
     private HashMap<String, Integer> cordY;
-    private int x1, y1;
+    private HashMap<String, Integer> cordEX;
+    private HashMap<String, Integer> cordEY;
 
-    public MoveCommand(MapSelectionModel mapSelectionModel, HashMap<String, Integer> cordX, HashMap<String, Integer> cordY, int x1, int y1) {
+    public MoveCommand(MapSelectionModel mapSelectionModel, HashMap<String, Integer> cordX, HashMap<String, Integer> cordY, HashMap<String, Integer> cordEX, HashMap<String, Integer> cordEY) {
         this.mapSelectionModel = mapSelectionModel;
         this.cordX = new HashMap<>();
         this.cordY = new HashMap<>();
+        this.cordEX = new HashMap<>();
+        this.cordEY = new HashMap<>();
         this.cordX.putAll(cordX);
         this.cordY.putAll(cordY);
-        this.x1 = x1;
-        this.y1 = y1;
+        this.cordEX.putAll(cordEX);
+        this.cordEY.putAll(cordEY);
     }
 
     @Override
@@ -48,7 +51,7 @@ public class MoveCommand extends AbstractCommand {
              mapSelectionModel.getSelected()) {
             if(element instanceof Topic){
                 Topic topic = (Topic) element;
-                topic.setXY(x1, y1);
+                topic.setXY(cordEX.get(topic.getName()), cordEY.get(topic.getName()));
             }else if(element instanceof Link){
                 Link link = (Link) element;
                 link.move();

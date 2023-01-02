@@ -27,6 +27,7 @@ public class ActionManager {
     private RedoAction redoAction;
     private SaveAction saveAction;
     private OpenAction openAction;
+    private RenameTopicAction renameTopicAction;
     public ActionManager() {
         initialiseActions();
     }
@@ -51,5 +52,6 @@ public class ActionManager {
         redoAction = new RedoAction();
         openAction = new OpenAction();
         saveAction = new SaveAction();
+        renameTopicAction = new RenameTopicAction();
     }
 }

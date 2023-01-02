@@ -38,42 +38,41 @@ public class MoveState extends State {
 
     @Override
     public void draggedMouse(int x, int y, MindMapView m) {
-
-        if(!(m.getMapSelectionModel().getSelected().isEmpty())){
-            for (Element element:
-                 m.getMapSelectionModel().getSelected()) {
-                if(element instanceof Topic){
+        if (!(m.getMapSelectionModel().getSelected().isEmpty())) {
+            for (Element element :
+                    m.getMapSelectionModel().getSelected()) {
+                if (element instanceof Topic) {
                     Topic topic = (Topic) element;
                     int locationX = topic.getX();
                     int locationY = topic.getY();
                     x1 = locationX + (x - clickedX);
                     y1 = locationY + (y - clickedY);
                     topic.setXY(x1, y1);
-                }else if(element instanceof Link){
+                } else if (element instanceof Link) {
                     Link link = (Link) element;
                     link.move();
                 }
             }
-            for (ElementView elementView:
-                 m.getPainters()) {
-                if(elementView instanceof LinkView){
+            for (ElementView elementView :
+                    m.getPainters()) {
+                if (elementView instanceof LinkView) {
                     Link link = (Link) elementView.getElement();
                     link.move();
                 }
             }
             clickedX += (x - clickedX);
             clickedY += (y - clickedY);
-        }else{
-            for (ElementView elementView:
+        } else {
+            for (ElementView elementView :
                     m.getPainters()) {
-                if(elementView instanceof TopicView){
+                if (elementView instanceof TopicView) {
                     Topic topic = (Topic) elementView.getElement();
                     int locationX = topic.getX();
                     int locationY = topic.getY();
                     x1 = locationX + (x - clickedX);
                     y1 = locationY + (y - clickedY);
                     topic.setXY(x1, y1);
-                }else if(elementView instanceof LinkView){
+                } else if (elementView instanceof LinkView) {
                     Link link = (Link) elementView.getElement();
                     link.move();
                 }
@@ -82,7 +81,6 @@ public class MoveState extends State {
             clickedY += (y - clickedY);
         }
     }
-
     @Override
     public void releasedMouse(int x, int y, MindMapView m) {
         AbstractCommand abstractCommand = new MoveCommand(m.getMapSelectionModel(), cordX, cordY, x1, y1);

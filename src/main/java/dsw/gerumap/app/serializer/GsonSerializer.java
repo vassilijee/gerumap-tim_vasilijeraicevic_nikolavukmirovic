@@ -37,6 +37,5 @@ public class GsonSerializer implements Serializer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

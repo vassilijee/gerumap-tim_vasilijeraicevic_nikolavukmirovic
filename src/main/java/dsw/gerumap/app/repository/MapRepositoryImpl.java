@@ -6,7 +6,7 @@ import dsw.gerumap.app.repository.composite.MapNodeComposite;
 import dsw.gerumap.app.repository.implementation.ProjectExplorer;
 
 public class MapRepositoryImpl implements MapRepository {
-    private ProjectExplorer projectExplorer;
+    private final ProjectExplorer projectExplorer;
 
     public MapRepositoryImpl() {
         projectExplorer = new ProjectExplorer("My Project Explorer");
@@ -20,7 +20,7 @@ public class MapRepositoryImpl implements MapRepository {
     @Override
     public void addChild(MapNodeComposite parent, MapNode child) {
         parent.addChild(child);
-         System.out.println("repository: " + parent.getName() + " ---> " +
-         child.getName());
+        System.out.println("repository: " + parent.getName() + " ---> " +
+                child.getName());
     }
 }

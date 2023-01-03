@@ -5,8 +5,8 @@ import dsw.gerumap.app.repository.implementation.MindMap;
 import dsw.gerumap.app.repository.implementation.Topic;
 
 public class AddTopicCommand extends AbstractCommand {
-    private Topic topic;
-    private MindMap mindMap;
+    private final Topic topic;
+    private final MindMap mindMap;
 
     public AddTopicCommand(Topic topic, MindMap mindMap) {
         this.topic = topic;

@@ -5,6 +5,7 @@ import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.message.EventType;
 import dsw.gerumap.app.repository.implementation.Project;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;

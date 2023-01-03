@@ -9,7 +9,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.io.FileFilter;
 
 public class SaveAction extends AbstractGerumapAction {
     public SaveAction() {
@@ -23,7 +22,7 @@ public class SaveAction extends AbstractGerumapAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         JFileChooser jfc = new JFileChooser();
-        FileNameExtensionFilter filter = new FileNameExtensionFilter( "*.json", "json");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.json", "json");
         jfc.setFileFilter(filter);
 
 
@@ -31,7 +30,7 @@ public class SaveAction extends AbstractGerumapAction {
             return;
 
         Project project = (Project) MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode();
-        File projectFile = null;
+        File projectFile;
         if (!project.isChanged()) {
             return;
         }

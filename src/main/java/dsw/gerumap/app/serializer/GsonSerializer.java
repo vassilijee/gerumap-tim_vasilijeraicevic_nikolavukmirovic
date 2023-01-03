@@ -12,8 +12,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class GsonSerializer implements Serializer {
-    private Gson gson;
-    private GsonBuilder gsonBuilder = new GsonBuilder();
+    private final Gson gson;
+    private final GsonBuilder gsonBuilder = new GsonBuilder();
 
     public GsonSerializer() {
         gsonBuilder.registerTypeAdapter(MapNode.class, new MapNodeAdapter());

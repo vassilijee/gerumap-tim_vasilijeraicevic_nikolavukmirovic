@@ -1,8 +1,8 @@
 package dsw.gerumap.app.gui.swing.controller;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.Image;
 
 public class InfoAction extends AbstractGerumapAction {
     public InfoAction() {
@@ -20,7 +20,7 @@ public class InfoAction extends AbstractGerumapAction {
         Image novaSlika = slika.getImage().getScaledInstance(400, 300, Image.SCALE_DEFAULT);
         ImageIcon icon = new ImageIcon(novaSlika);
         JLabel label2 = new JLabel(icon);
-        JLabel[] arr = { label2, label1 };
+        JLabel[] arr = {label2, label1};
         JOptionPane pane = new JOptionPane(arr);
         JDialog dialog = pane.createDialog("Info");
         dialog.setVisible(true);

@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class ColorAction extends AbstractGerumapAction{
+public class ColorAction extends AbstractGerumapAction {
     public ColorAction() {
         putValue(SMALL_ICON, loadIcon("/images/color.png"));
         putValue(NAME, "Color");
@@ -26,23 +26,23 @@ public class ColorAction extends AbstractGerumapAction{
         Color color = jColorChooser.getColor();
         int index = MainFrame.getInstance().getProjectView().getTabbedPane().getSelectedIndex();
         MindMapView mindMapView = null;
-        if(index > -1){
+        if (index > -1) {
             mindMapView = (MindMapView) MainFrame.getInstance().getProjectView().getTabbedPane().getComponentAt(index);
         }
         if (value instanceof Integer) {
             int result = (int) value;
             if (result == JOptionPane.OK_OPTION) {
-               if(mindMapView != null){
-                   if(!(mindMapView.getMapSelectionModel().getSelected().isEmpty())){
-                       for (Element element:
-                               mindMapView.getMapSelectionModel().getSelected()) {
-                           element.setColor(color);
-                       }
-                       mindMapView.getMapSelectionModel().clearSelectedColorStroke();
-                   } else {
-                       Element.setColor1(color);
-                   }
-               }
+                if (mindMapView != null) {
+                    if (!(mindMapView.getMapSelectionModel().getSelected().isEmpty())) {
+                        for (Element element :
+                                mindMapView.getMapSelectionModel().getSelected()) {
+                            element.setColor(color);
+                        }
+                        mindMapView.getMapSelectionModel().clearSelectedColorStroke();
+                    } else {
+                        Element.setColor1(color);
+                    }
+                }
             }
         }
     }

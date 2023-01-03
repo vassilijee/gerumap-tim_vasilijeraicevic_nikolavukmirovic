@@ -9,11 +9,11 @@ import dsw.gerumap.app.repository.implementation.Topic;
 import java.util.HashMap;
 
 public class MoveCommand extends AbstractCommand {
-    private MapSelectionModel mapSelectionModel;
-    private HashMap<String, Integer> cordX;
-    private HashMap<String, Integer> cordY;
-    private HashMap<String, Integer> cordEX;
-    private HashMap<String, Integer> cordEY;
+    private final MapSelectionModel mapSelectionModel;
+    private final HashMap<String, Integer> cordX;
+    private final HashMap<String, Integer> cordY;
+    private final HashMap<String, Integer> cordEX;
+    private final HashMap<String, Integer> cordEY;
 
     public MoveCommand(MapSelectionModel mapSelectionModel, HashMap<String, Integer> cordX, HashMap<String, Integer> cordY, HashMap<String, Integer> cordEX, HashMap<String, Integer> cordEY) {
         this.mapSelectionModel = mapSelectionModel;

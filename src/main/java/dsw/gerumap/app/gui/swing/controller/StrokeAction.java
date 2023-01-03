@@ -34,7 +34,7 @@ public class StrokeAction extends AbstractGerumapAction {
         String text = textField.getText();
         int index = MainFrame.getInstance().getProjectView().getTabbedPane().getSelectedIndex();
         MindMapView mindMapView = null;
-        if(index > -1){
+        if (index > -1) {
             mindMapView = (MindMapView) MainFrame.getInstance().getProjectView().getTabbedPane().getComponentAt(index);
         }
         if (value instanceof Integer) {

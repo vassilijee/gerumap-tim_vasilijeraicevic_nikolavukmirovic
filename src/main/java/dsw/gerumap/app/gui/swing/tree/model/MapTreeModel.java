@@ -9,8 +9,7 @@ public class MapTreeModel extends DefaultTreeModel {
     }
 
     @Override
-    public MapTreeItem getRoot(){
-        MapTreeItem root = (MapTreeItem)super.getRoot();
-        return root;
+    public MapTreeItem getRoot() {
+        return (MapTreeItem) super.getRoot();
     }
 }

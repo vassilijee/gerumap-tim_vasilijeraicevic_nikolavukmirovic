@@ -3,6 +3,7 @@ package dsw.gerumap.app.gui.swing.tree.model;
 import dsw.gerumap.app.repository.composite.MapNode;
 import lombok.Getter;
 import lombok.Setter;
+
 import javax.swing.tree.DefaultMutableTreeNode;
 
 @Getter

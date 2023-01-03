@@ -3,6 +3,7 @@ package dsw.gerumap.app.gui.swing.tree.controller;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.repository.implementation.Project;
+
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
 import javax.swing.tree.DefaultTreeCellRenderer;
@@ -19,7 +20,7 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor {
     }
 
     public Component getTreeCellEditorComponent(JTree arg0, Object arg1, boolean arg2, boolean arg3, boolean arg4,
-            int arg5) {
+                                                int arg5) {
         // super.getTreeCellEditorComponent(arg0,arg1,arg2,arg3,arg4,arg5);
         clickedOn = arg1;
         JTextField edit = new JTextField(arg1.toString());

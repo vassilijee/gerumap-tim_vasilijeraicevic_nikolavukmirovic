@@ -13,7 +13,6 @@ public class ActionManager {
     private DeleteAction deleteAction;
     private InfoAction infoAction;
     private AuthorAction authorAction;
-
     private ElementSelectionAction elementSelectionAction;
     private MoveElementAction moveElementAction;
     private NewSubjectAction newSubjectAction;
@@ -28,6 +27,8 @@ public class ActionManager {
     private SaveAction saveAction;
     private OpenAction openAction;
     private RenameTopicAction renameTopicAction;
+    private ExportAction exportAction;
+
     public ActionManager() {
         initialiseActions();
     }
@@ -53,5 +54,6 @@ public class ActionManager {
         openAction = new OpenAction();
         saveAction = new SaveAction();
         renameTopicAction = new RenameTopicAction();
+        exportAction = new ExportAction();
     }
 }

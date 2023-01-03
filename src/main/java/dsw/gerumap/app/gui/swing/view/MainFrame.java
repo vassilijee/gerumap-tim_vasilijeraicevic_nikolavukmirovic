@@ -15,17 +15,25 @@ import java.awt.*;
 @Getter
 @Setter
 public class MainFrame extends JFrame implements ISubscriber {
+    private static MainFrame instance;
     private ActionManager actionManager;
     private JMenuBar menu;
     private JToolBar toolBar;
     private MapTree mapTree;
-    private static MainFrame instance;
     private ProjectView projectView;
     private JTree projectExplorer;
     private JToolBar vToolbar;
 
     private MainFrame() {
 
+    }
+
+    public static MainFrame getInstance() {
+        if (instance == null) {
+            instance = new MainFrame();
+            instance.initialise();
+        }
+        return instance;
     }
 
     private void initialise() {
@@ -58,14 +66,6 @@ public class MainFrame extends JFrame implements ISubscriber {
         split.setOneTouchExpandable(true);
         vToolbar = new VToolbar();
         add(vToolbar, BorderLayout.EAST);
-    }
-
-    public static MainFrame getInstance() {
-        if (instance == null) {
-            instance = new MainFrame();
-            instance.initialise();
-        }
-        return instance;
     }
 
     @Override

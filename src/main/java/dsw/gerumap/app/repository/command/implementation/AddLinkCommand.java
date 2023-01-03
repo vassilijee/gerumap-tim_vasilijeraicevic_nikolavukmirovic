@@ -5,8 +5,8 @@ import dsw.gerumap.app.repository.implementation.Link;
 import dsw.gerumap.app.repository.implementation.MindMap;
 
 public class AddLinkCommand extends AbstractCommand {
-    private Link link;
-    private MindMap mindMap;
+    private final Link link;
+    private final MindMap mindMap;
 
     public AddLinkCommand(Link link, MindMap mindMap) {
         this.link = link;

@@ -30,7 +30,7 @@ public abstract class MapNode implements IPublisher {
 
     @Override
     public boolean equals(Object o) {
-        if (o != null && o instanceof MapNode) {
+        if (o instanceof MapNode) {
             MapNode otherObj = (MapNode) o;
             return this.getName().equals(otherObj.getName());
         }

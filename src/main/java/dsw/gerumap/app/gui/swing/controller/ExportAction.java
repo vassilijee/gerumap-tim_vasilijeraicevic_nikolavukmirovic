@@ -5,6 +5,7 @@ import dsw.gerumap.app.gui.swing.view.MindMapView;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
@@ -30,9 +31,11 @@ public class ExportAction extends AbstractGerumapAction {
         g2.dispose();
 
         JFileChooser jFileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.png", "png");
+        jFileChooser.setFileFilter(filter);
 
         if (jFileChooser.showSaveDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION) {
-            File file = jFileChooser.getSelectedFile();
+            File file = new File(jFileChooser.getSelectedFile() + ".png");
             try {
                 ImageIO.write(image, "png", file);
             } catch (IOException e) {

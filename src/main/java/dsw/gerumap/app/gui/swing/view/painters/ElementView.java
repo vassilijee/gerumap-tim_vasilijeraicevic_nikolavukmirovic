@@ -23,7 +23,7 @@ public abstract class ElementView implements ISubscriber {
 
     public void draw(Graphics g, MindMapView m) {
         Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(element.getColor());
+        g2.setColor(new Color(element.getColorI()));
         g2.setStroke(new BasicStroke(element.getStroke()));
         g2.setBackground(Color.WHITE);
         if (!(m.getMapSelectionModel().getSelected().isEmpty())) {

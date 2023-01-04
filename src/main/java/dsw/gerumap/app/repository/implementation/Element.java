@@ -9,19 +9,22 @@ import java.awt.*;
 @Getter
 @Setter
 public class Element extends MapNode {
-    private Color color;
+    private int colorI;
     private int stroke;
-    private static Color color1 = null;
+    private static int color1I = -16777216;
     private static int stroke1 = -1;
 
 
 
     public Element(String name, MapNode parent) {
         super(name, parent);
-        if(color1 != null)
-            this.color = color1;
-        else
-            this.color = Color.black;
+        if(color1I != -16777216){
+            this.colorI = color1I;
+        }
+        else{
+            this.colorI = Color.black.getRGB();
+        }
+
         if(stroke1 > 0)
             this.stroke = stroke1;
         else
@@ -29,12 +32,12 @@ public class Element extends MapNode {
     }
 
     public void setColor(Color color) {
-        this.color = color;
+        this.colorI = color.getRGB();
         this.notifySubscribers(this, "REPAINT");
     }
 
-    public static void setColor1(Color color1) {
-        Element.color1 = color1;
+    public static void setColor1I(Color color1) {
+        Element.color1I = color1.getRGB();
     }
 
     public static void setStroke1(int stroke1) {

@@ -4,6 +4,7 @@ import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.gui.swing.view.MindMapView;
 import dsw.gerumap.app.message.EventType;
+import dsw.gerumap.app.repository.implementation.Topic;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -25,7 +26,7 @@ public class RenameTopicAction extends AbstractGerumapAction {
         if (mindMapView.getMapSelectionModel().getSelected().size() != 1) {
             System.out.print("Selektovali ste vise od jenog elementa ili niste selektovali element");
             mindMapView.getMapSelectionModel().clearSelectedColorStroke();
-        } else {
+        } else if(mindMapView.getMapSelectionModel().getSelected().get(0) instanceof Topic){
             String text = mindMapView.getMapSelectionModel().getSelected().get(0).getName();
             JTextField field = new JTextField(text, 20);
             JOptionPane pane = new JOptionPane(field, JOptionPane.PLAIN_MESSAGE, JOptionPane.OK_CANCEL_OPTION, null);
@@ -53,6 +54,9 @@ public class RenameTopicAction extends AbstractGerumapAction {
                         mindMapView.getMapSelectionModel().clearSelectedColorStroke();
                     }
                 }
+            }else{
+                System.out.println("Niste selektovali Topic");
+                mindMapView.getMapSelectionModel().clearSelectedColorStroke();
             }
         }
     }

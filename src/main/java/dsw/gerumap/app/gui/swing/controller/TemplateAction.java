@@ -23,19 +23,19 @@ public class TemplateAction extends AbstractGerumapAction{
         JFileChooser jfc = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("*.json", "json");
         jfc.setFileFilter(filter);
+        jfc.setCurrentDirectory(new File("src/main/resources/templates/"));
 
 
         if (!(MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode() instanceof MindMap))
             return;
 
         MindMap mindMap = (MindMap) MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode();
-        File mindMapFile;
         if (!mindMap.isTemplate()) {
             return;
         }
         if (mindMap.getFilePath() == null || mindMap.getFilePath().isEmpty()) {
             if (jfc.showSaveDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION) {
-                mindMapFile = jfc.getSelectedFile();
+                File mindMapFile = new File(jfc.getSelectedFile()+"");
                 mindMap.setFilePath(mindMapFile.getPath());
             } else {
                 return;

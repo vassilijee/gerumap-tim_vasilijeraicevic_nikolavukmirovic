@@ -37,6 +37,7 @@ public class NewAction extends AbstractGerumapAction {
                     int result = (int) value;
                     if (result == JOptionPane.OK_OPTION) {
                         JFileChooser jFileChooser = new JFileChooser();
+                        jFileChooser.setCurrentDirectory(new File("src/main/resources/templates/"));
                         if (jFileChooser.showOpenDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION) {
                             try {
                                 File file = jFileChooser.getSelectedFile();

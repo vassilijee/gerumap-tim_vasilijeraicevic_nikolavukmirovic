@@ -37,12 +37,11 @@ public class TemplateAction extends AbstractGerumapAction{
             if (jfc.showSaveDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION) {
                 File mindMapFile = new File(jfc.getSelectedFile()+"");
                 mindMap.setFilePath(mindMapFile.getPath());
+                mindMap.setName(jfc.getSelectedFile().getName());
             } else {
                 return;
             }
         }
-        mindMap.setName("Template " + count);
-        count++;
         ApplicationFramework.getInstance().getSerializer().saveMindMap(mindMap);
         mindMap.setTemplate(false);
     }

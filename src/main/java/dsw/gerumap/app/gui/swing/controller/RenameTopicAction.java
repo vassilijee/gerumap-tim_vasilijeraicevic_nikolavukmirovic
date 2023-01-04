@@ -22,7 +22,7 @@ public class RenameTopicAction extends AbstractGerumapAction {
         int index = MainFrame.getInstance().getProjectView().getTabbedPane().getSelectedIndex();
         MindMapView mindMapView = (MindMapView) MainFrame.getInstance().getProjectView().getTabbedPane().getComponentAt(index);
 
-        if (mindMapView.getMapSelectionModel() == null || mindMapView.getMapSelectionModel().getSelected().size() > 1) {
+        if (mindMapView.getMapSelectionModel().getSelected().size() != 1) {
             System.out.print("Selektovali ste vise od jenog elementa ili niste selektovali element");
             mindMapView.getMapSelectionModel().clearSelectedColorStroke();
         } else {

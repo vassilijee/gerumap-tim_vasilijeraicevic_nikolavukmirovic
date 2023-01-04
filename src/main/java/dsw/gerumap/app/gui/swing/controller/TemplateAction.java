@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 
 public class TemplateAction extends AbstractGerumapAction{
+    private static int count = 0;
     public TemplateAction() {
         putValue(SMALL_ICON, loadIcon("/images/template.png"));
         putValue(NAME, "Template mindmap");
@@ -40,6 +41,8 @@ public class TemplateAction extends AbstractGerumapAction{
                 return;
             }
         }
+        mindMap.setName("Template " + count);
+        count++;
         ApplicationFramework.getInstance().getSerializer().saveMindMap(mindMap);
         mindMap.setTemplate(false);
     }

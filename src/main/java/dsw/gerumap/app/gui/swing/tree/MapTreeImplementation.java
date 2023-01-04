@@ -96,6 +96,22 @@ public class MapTreeImplementation implements MapTree {
         MainFrame.getInstance().getMapTree().getSelectedNode().add(loadedMindMap);
         Project mapNodeComposite = (Project) MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode();
         mapNodeComposite.addChild(node);
+        for (MapNode mapNode:
+             node.getChildren()) {
+            mapNode.setParent(node);
+            if(mapNode instanceof Link){
+                for (MapNode mapNode1:
+                     node.getChildren()) {
+                    if(mapNode1 instanceof Topic){
+                        if(mapNode1.getName().equals(((Link) mapNode).getTopicFrom().getName())){
+                            ((Link) mapNode).setTopicFrom((Topic) mapNode1);
+                        }else if(mapNode1.getName().equals(((Link) mapNode).getTopicTo().getName())){
+                            ((Link) mapNode).setTopicTo((Topic) mapNode1);
+                        }
+                    }
+                }
+            }
+        }
         treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);
     }

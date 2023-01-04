@@ -28,6 +28,7 @@ public class ActionManager {
     private OpenAction openAction;
     private RenameTopicAction renameTopicAction;
     private ExportAction exportAction;
+    private TemplateAction templateAction;
 
     public ActionManager() {
         initialiseActions();
@@ -55,5 +56,6 @@ public class ActionManager {
         saveAction = new SaveAction();
         renameTopicAction = new RenameTopicAction();
         exportAction = new ExportAction();
+        templateAction = new TemplateAction();
     }
 }

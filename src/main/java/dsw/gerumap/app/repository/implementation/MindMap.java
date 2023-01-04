@@ -9,7 +9,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MindMap extends MapNodeComposite {
-     private boolean template = false;
+     protected boolean template = true;
+     protected String filePath;
      private CommandManager commandManager;
     public MindMap(String name, MapNode parent) {
         super(name, parent);

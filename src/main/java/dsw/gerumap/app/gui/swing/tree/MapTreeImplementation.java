@@ -90,6 +90,15 @@ public class MapTreeImplementation implements MapTree {
         SwingUtilities.updateComponentTreeUI(treeView);
     }
 
+    @Override
+    public void loadMindMap(MindMap node) {
+        MapTreeItem loadedMindMap = new MapTreeItem(node);
+        MainFrame.getInstance().getMapTree().getSelectedNode().add(loadedMindMap);
+        Project mapNodeComposite = (Project) MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode();
+        mapNodeComposite.addChild(node);
+        treeView.expandPath(treeView.getSelectionPath());
+        SwingUtilities.updateComponentTreeUI(treeView);
+    }
 
     @Override
     public void expandPath() {

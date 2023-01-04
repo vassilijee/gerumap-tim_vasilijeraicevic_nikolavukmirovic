@@ -25,6 +25,7 @@ public class Project extends MapNodeComposite {
             MindMap map = (MindMap) child;
             if (!this.getChildren().contains(map)) {
                 this.getChildren().add(map);
+                map.setParent(this);
                 this.notifySubscribers(map, "NEW");
             }
         }

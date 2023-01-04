@@ -30,7 +30,7 @@ public class SaveAction extends AbstractGerumapAction {
             return;
 
         Project project = (Project) MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode();
-        File projectFile;
+        File projectFile = null;
         if (!project.isChanged()) {
             return;
         }
